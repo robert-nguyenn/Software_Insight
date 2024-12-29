@@ -817,6 +817,18 @@ td {
   margin: auto;
 }
 
+/* filepath: /c:/Users/hunga/Desktop/Software_Insight/style/style.css */
+.section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out, transform 2s ease-out;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Interview content layout */
 .interview-content .row {
   display: flex;
