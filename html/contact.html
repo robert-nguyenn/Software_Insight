@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Front-End Dev</title>
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  </head>
+
+  <body>
+    <section class="sub-header">
+      <nav>
+        <a href="index.html"><img src="../images/logo.png"></a>
+        <div class="nav-links" id="navLinks">
+          <i class="fa-solid fa-xmark" ofnclick="hideMenu()"></i>
+          <ul>
+            <li><a href="../index.html">HOME</a></li>
+            <li><a href="course.html">COURSE</a></li>
+            <li><a href="behavior.html">BEHAVIOR</a></li>
+            <li><a href="interview.html">INTERVIEW</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+          </ul>
+        </div>
+        <i class="fa-solid fa-bars" onclick="showMenu()"></i>
+      </nav>
+      <h1>Contact Us</h1>
+    </section>
+
+    <!-- contact us content -->
+    <section class="location">
+      <!-- copy from gg map -->
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12636.807000677996!2d-84.78952073311922!3d37.64446064290313!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88429a7b23d6a34b%3A0xf2f0d83ce6bb6640!2s600%20W%20Walnut%20St%2C%20Danville%2C%20KY%2040422%2C%20USA!5e0!3m2!1sen!2s!4v1720858614529!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> 
+    </section> 
+
+    <section class="contact-us">
+      <div class="row">
+        <div class="contact-col">
+          <div>
+            <i class="fa-solid fa-house"></i>
+            <span>
+              <h5>XYZ Road, ABC Building</h5>
+              <p>Danville, Kentucky, US</p>
+            </span>
+          </div>
+
+          <div>
+            <i class="fa-solid fa-phone"></i>
+            <span>
+              <h5>+1 0123456789</h5>
+              <p>Monday to Saturday, 10AM to 6PM</p>
+            </span>
+          </div>
+
+          <div>
+            <i class="fa-solid fa-envelope"></i>
+            <span>
+              <h5>info@robertnguyen.com</h5>
+              <p>Email us your query</p>
+            </span>
+          </div>
+        </div>
+
+        <div class="contact-col">
+          <!-- This form is for php 
+            action: The action attribute specifies the URL of the server-side script that will handle the form data when the form is submitted. In this case, the form data will be sent to form-handler.php.
+            
+            method="post": The method attribute determines how the form data will be sent to the server. The value "post" indicates that the data will be sent as part of the HTTP request body, which is more secure and capable of handling larger amounts of data compared to the "get" method.
+          -->
+          <form action="form-handler.php" method="post"> 
+            <input type="text" name="name" placeholder="Enter your name" required>
+            <input type="email" name="email" placeholder="Enter your email address" required>
+            <input type="text" name="subject" placeholder="Enter your subject" required>
+            <textarea row="8" name="message" placeholder="Message" required></textarea>
+            <button type="text" class="hero-btn red-btn">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!--Footer-->
+    <hr>
+    <section class="footer">
+      <h1>About Us</h1>
+      <p>At Robert Edu, we're dedicated to empowering the next generation of front-end developers. Our mission is to provide top-notch education, resources, and a supportive community to help learners thrive in the ever-evolving world of web development. With a focus on practical skills and real-world applications, we offer a range of courses, mentorship opportunities, and industry insights to ensure our students are well-equipped for success. Join us and become a part of our global community of passionate developers committed to excellence and innovation.</p>
+      <div class="icons">
+        <i class="fa-brands fa-facebook"></i>
+        <i class="fa-brands fa-twitter"></i>
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-brands fa-linkedin"></i>
+      </div>
+      <p>Made with <i class="fa-solid fa-heart"></i> by Robert Nguyen</p>
+    </section>
+
+    <!--Javascript for Toggle Menu-->
+    <script>
+      let navLinks = document.getElementById("navLinks");
+      function showMenu() {
+        navLinks.style.right = "0";
+      }
+      function hideMenu() {
+        navLinks.style.right = "-200px";
+      }
+    </script>   
+  </body>
+</html>

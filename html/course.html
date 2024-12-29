@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Software Insight</title>
+  <link rel="stylesheet" href="../style/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <!-- icon  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <!-- Favicon -->
+  <link rel="icon" href="../images/favicon.jpeg" type="image/x-icon">
+</head>
+
+<body>
+  <section class="sub-header">
+    <nav>
+      <a href="index.html"><img src="../images/logo.png"></a>
+      <div class="nav-links" id="navLinks">
+        <i class="fa-solid fa-xmark" onclick="hideMenu()"></i>
+        <ul>
+          <li><a href="../index.html">HOME</a></li>
+          <li><a href="course.html">COURSE</a></li>
+          <li><a href="behavior.html">BEHAVIOR</a></li>
+          <li><a href="interview.html">INTERVIEW</a></li>
+          <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+      </div>
+      <i class="fa-solid fa-bars" onclick="showMenu()"></i>
+    </nav>
+    <h1>The Complete Software Engineering Roadmap</h1>
+  </section>
+
+  <!-- Course -->
+  <section class="course">
+    <h1>About SoftwareInsight</h1>
+    <p>At SoftwareInsight, we are committed to nurturing the next generation of software engineers. Our mission is to provide exceptional education, resources, and a supportive community to help learners excel in the dynamic field of software development. With a focus on practical skills and real-world applications, we offer a variety of courses, mentorship opportunities, and industry insights to ensure our students are well-prepared for success. Join us and become a part of our global community of passionate developers dedicated to innovation and excellence.</p>
+
+    <!--We creat row because we need some cols-->
+    <div class="row">
+      <div class="course-col">
+        <h3>Beginner</h3>
+        <p>Our beginner courses provide a solid foundation in front-end development. You'll start with the basics of HTML and CSS, and gradually progress to JavaScript fundamentals. By the end of this phase, you'll be able to create simple, static web pages and understand the core concepts of web development.</p>
+      </div>
+      <div class="course-col">
+        <h3>Intermediate</h3>
+        <p>In the intermediate courses, you'll build upon your foundational knowledge and start working with more complex tools and technologies. This phase covers advanced JavaScript, TypeScript, React, and CSS preprocessors like SASS and Tailwind CSS. You'll also learn about version control with Git and how to manage larger projects.</p>
+      </div>
+      <div class="course-col">
+        <h3>Advanced</h3>
+        <p>Our advanced courses are designed for those who want to master front-end development. You'll dive into advanced topics such as automated testing, server-side rendering with Next.js, and mobile app development with React Native. These courses will equip you with the skills needed to handle complex projects and excel in a professional environment.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Curriculum -->
+  <section class="curriculum">
+    <h1>Our Curriculum</h1>
+    <p>This guide is designed to help you navigate the essential skills needed to become a successful front-end developer. Whether you're just starting out or looking to enhance your existing skills, this roadmap provides a clear and structured path. (Copyright 2024 Code with Mosh Hamedani)</p>  
+
+    <div class="table-container">
+      <table>
+        <tr id="header-table">
+          <th>Skill</th>
+          <th>Time Required</th>
+          <th>Learning Phase</th>
+        </tr>
+        <tr onclick="showDetails('html')">
+          <td>HTML</td>
+          <td>2 weeks</td>
+          <td>Beginner</td>
+        </tr>
+        <tr onclick="showDetails('css')">
+          <td>CSS</td>
+          <td>1 month</td>
+          <td>Beginner</td>
+        </tr>
+        <tr onclick="showDetails('javascript')">
+          <td>JavaScript</td>
+          <td>2 months</td>
+          <td>Beginner</td>
+        </tr>
+        <tr onclick="showDetails('git')">
+          <td>Git</td>
+          <td>2 weeks</td>
+          <td>Beginner</td>
+        </tr>
+        <tr onclick="showDetails('npm')">
+          <td>NPM</td>
+          <td>2 weeks</td>
+          <td>Beginner</td>
+        </tr>
+        <tr onclick="showDetails('github')">
+          <td>GitHub</td>
+          <td>2 weeks</td>
+          <td>Beginner</td>
+        </tr>
+        <tr onclick="showDetails('typescript')">
+          <td>TypeScript</td>
+          <td>3 weeks</td>
+          <td>Intermediate</td>
+        </tr>
+        <tr onclick="showDetails('react')">
+          <td>React</td>
+          <td>2 months</td>
+          <td>Intermediate</td>
+        </tr>
+        <tr onclick="showDetails('sass')">
+          <td>SASS</td>
+          <td>2 weeks</td>
+          <td>Intermediate</td>
+        </tr>
+        <tr onclick="showDetails('tailwind')">
+          <td>Tailwind CSS</td>
+          <td>3 weeks</td>
+          <td>Intermediate</td>
+        </tr>
+        <tr onclick="showDetails('nodejs')">
+          <td>Node.js</td>
+          <td>2 months</td>
+          <td>Intermediate</td>
+        </tr>
+        <tr onclick="showDetails('postgresql')">
+          <td>PostgreSQL</td>
+          <td>1 month</td>
+          <td>Intermediate</td>
+        </tr>
+        <tr onclick="showDetails('restful')">
+          <td>RESTful APIs</td>
+          <td>1 month</td>
+          <td>Intermediate</td>
+        </tr>
+        <tr onclick="showDetails('jwt')">
+          <td>JWT Auth</td>
+          <td>2 weeks</td>
+          <td>Intermediate</td>
+        </tr>
+        <tr onclick="showDetails('redis')">
+          <td>Redis</td>
+          <td>2 weeks</td>
+          <td>Intermediate</td>
+        </tr>
+        <tr onclick="showDetails('linux')">
+          <td>Linux Basics</td>
+          <td>2 weeks</td>
+          <td>Intermediate</td>
+        </tr>
+        <tr onclick="showDetails('aws')">
+          <td>AWS</td>
+          <td>1 month</td>
+          <td>Advanced</td>
+        </tr>
+        <tr onclick="showDetails('testing')">
+          <td>Automated Testing</td>
+          <td>1 month</td>
+          <td>Advanced</td>
+        </tr>
+        <tr onclick="showDetails('nextjs')">
+          <td>Next.js</td>
+          <td>1.5 months</td>
+          <td>Advanced</td>
+        </tr>
+        <tr onclick="showDetails('reactnative')">
+          <td>React Native</td>
+          <td>2 months</td>
+          <td>Advanced</td>
+        </tr>
+        <tr>
+          <td><strong>Total</strong></td>
+          <td><strong>1 Year</strong></td>
+        </tr>
+      </table>
+    </div>
+    
+    <!-- Modal Window -->
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div id="modal-body"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <hr>
+  <section class="footer">
+    <h1>About SoftwareInsight</h1>
+    <p>At SoftwareInsight, we are committed to nurturing the next generation of software engineers. Our mission is to provide exceptional education, resources, and a supportive community to help learners excel in the dynamic field of software development. With a focus on practical skills and real-world applications, we offer a variety of courses, mentorship opportunities, and industry insights to ensure our students are well-prepared for success. Join us and become a part of our global community of passionate developers dedicated to innovation and excellence.</p>
+    <div class="icons">
+      <a href="https://www.facebook.com/profile.php?id=100054723409088" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+      <a href="https://github.com/robert-nguyenn" target="_blank"><i class="fa-brands fa-github"></i></a>
+      <a href="https://www.centre.edu/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/in/robert-nguyenn/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+    </div>
+    <p>Created with <i class="fa-solid fa-heart"></i> by SoftwareInsight Team</p>
+  </section>
+
+  <!-- Link to external JavaScript file -->
+  <script src="../js/script.js"></script> 
+</body>
+</html>
