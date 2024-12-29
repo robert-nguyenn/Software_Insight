@@ -2,12 +2,13 @@
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Front-End Dev</title>
+  <title>Software Insight</title>
   <link rel="stylesheet" href="../style/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="icon" href="../images/favicon.jpeg" type="image/x-icon">
 </head>
 
 <body>
@@ -19,7 +20,7 @@
         <ul>
           <li><a href="../index.html">HOME</a></li>
           <li><a href="course.html">COURSE</a></li>
-          <li><a href="behavior.html">BEHAVIOR</a></li>
+          <li><a href="internship.html">INTERNSHIP</a></li>
           <li><a href="interview.html">INTERVIEW</a></li>
           <li><a href="contact.html">CONTACT</a></li>
         </ul>
@@ -50,27 +51,31 @@
   <section class="tip-content">
     <h3>Diamond Resources: LeetCode-Grind 75 &amp; Book-Cracking The Coding Interview</h3>
     <div class="row">
-      <div class="tip-col">
-        <h5>Leetcode-Grind 75</h5>
-        <div>
-          <img src="../images/grind75.png">
-          <p>LeetCode-Grind75 is a comprehensive collection of coding problems designed to help you excel in technical interviews. Curated by experts, this set covers a wide range of topics, from fundamental algorithms to complex data structures. Practicing these problems will enhance your problem-solving skills, improve your coding proficiency, and prepare you for the challenging questions you may face in big tech company interviews. Start grinding and gain the confidence to tackle any coding challenge.</p>
+      <div class="tip-card">
+        <div class="tip-card-content">
+          <h5>Leetcode-Grind 75</h5>
+          <p>"LeetCode-Grind75" is a comprehensive collection of coding problems designed to help you excel in technical interviews. Curated by experts, this set covers a wide range of topics, from fundamental algorithms to complex data structures. Practicing these problems will enhance your problem-solving skills, improve your coding proficiency, and prepare you for the challenging questions you may face in big tech company interviews. Start grinding and gain the confidence to tackle any coding challenge.</p>
+        </div>
+        <div class="tip-card-image">
+          <img src="../images/grind75.png" alt="Leetcode-Grind 75">
         </div>
       </div>
-      <div class="tip-col">
-        <h5>Cracking The Coding Interview</h5>
-        <div>
-          <img src="../images/cracking.jpeg">
+      <div class="tip-card">
+        <div class="tip-card-content">
+          <h5>Cracking The Coding Interview</h5>
           <p>"Cracking the Coding Interview" by Gayle Laakmann McDowell is a must-read for anyone aspiring to secure a position in a tech company. This book offers a deep dive into the interview process, providing insights into what interviewers are looking for and how to approach various types of questions. With over 150 programming questions and detailed solutions, it equips you with the strategies and knowledge needed to succeed. Use this invaluable resource to unlock the secrets of successful tech interviews and land your dream job.</p>
+        </div>
+        <div class="tip-card-image">
+          <img src="../images/cracking.jpeg" alt="Cracking The Coding Interview">
         </div>
       </div>
     </div>
     <div class="comment-box">
       <h3>Leave a comment</h3>
-      <form class="comment-form">
-        <input type="text" placeholder="Enter Name">
-        <input type="email" placeholder="Enter Email">
-        <textarea row="5" placeholder="Your Comment"></textarea>
+      <form class="comment-form" action="../php/form-handler.php" method="post">
+        <input type="text" name="name" placeholder="Enter Name" required>
+        <input type="email" name="email" placeholder="Enter Email" required>
+        <textarea name="message" rows="5" placeholder="Your Comment" required></textarea>
         <button type="submit" class="hero-btn red-btn">POST COMMENT</button>
       </form>
     </div>

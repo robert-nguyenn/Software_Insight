@@ -663,34 +663,72 @@ tr:hover {
 }
 
 /* tip content inside interview page */
-.tip-content {
-  width: 80%;
-  margin: auto;
-  margin-bottom: 5%;
+
+th,
+td {
+  padding: 8px;
 }
 
-.tip-col img {
-  height: 70px;
-  width: 70px;
-  background-size: cover;
-  margin-right: 25px;
-}
-
-.tip-col {
-  flex-basis: 40%;
-}
-
-.tip-col div {
+.tip-content .row {
   display: flex;
+  flex-wrap: wrap;
+  gap: 90px; /* Reduced gap */
+  justify-content: center; /* Center the cards */
 }
 
-.tip-col h5 {
-  margin-bottom: 25px;
+.tip-card {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  width: 100%;
+  max-width: 600px;
+  position: relative;
 }
 
-.tip-col p {
-  font-size: 18px;
-  font-weight: 300;
+.tip-card:hover {
+  transform: scale(1.05);
+}
+
+.tip-card-content {
+  padding: 20px;
+  flex: 1;
+  transition: opacity 0.3s ease;
+  z-index: 2; /* Ensure text is above the image */
+}
+
+.tip-card-image {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  transition: opacity 0.3s ease;
+}
+
+.tip-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.tip-card:hover .tip-card-content {
+  opacity: 0;
+}
+
+.tip-card:hover .tip-card-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+}
+
+.tip-card:hover .tip-card-image img {
+  transform: scale(1.1);
 }
 
 /* Modal styles */
@@ -850,15 +888,88 @@ tr:hover {
   transform: translateY(0);
 }
 
-/* Initially hide the sections */
-.section {
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 1s ease-out, transform 1s ease-out;
+.internship-content {
+  width: 80%;
+  margin: auto;
+  padding: 50px 0;
 }
 
-/* Class to make the section visible */
-.section.visible {
-  opacity: 1;
-  transform: translateY(0);
+#internship-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.internship-item {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  width: calc(50% - 20px); /* Two cards per row */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  perspective: 1000px;
+  position: relative;
+  overflow: hidden;
+}
+
+.internship-item:hover {
+  transform: scale(1.05) rotateY(10deg);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.internship-item h3 {
+  margin-bottom: 10px;
+  font-size: 1.5em;
+  color: #333;
+}
+
+.internship-item p {
+  margin-bottom: 5px;
+  color: #666;
+}
+
+.internship-item a {
+  color: #f44336;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.internship-item a:hover {
+  text-decoration: underline;
+}
+
+.internship-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255, 0, 150, 0.1), rgba(0, 204, 255, 0.1));
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+
+.internship-item:hover::before {
+  opacity: 0.5;
+}
+
+.animated-heading {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.animated-heading span {
+  display: inline-block;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.animated-heading span:hover {
+  transform: scale(1.5);
+  color: #f44336;
 }

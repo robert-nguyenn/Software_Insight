@@ -519,3 +519,114 @@ document.addEventListener('DOMContentLoaded', function() {
 
   observer.observe(tipContent);
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  const internshipList = document.getElementById('internship-list');
+
+  // Static list of internship opportunities
+  const internships = [
+    // US Companies
+    { title: 'Software Engineering Intern', company: 'Google', location: 'Mountain View, CA, USA', link: 'https://careers.google.com/jobs/results/' },
+    { title: 'Data Science Intern', company: 'Facebook', location: 'Menlo Park, CA, USA', link: 'https://www.facebookcareers.com/jobs/' },
+    { title: 'Product Management Intern', company: 'Apple', location: 'Cupertino, CA, USA', link: 'https://www.apple.com/careers/us/' },
+    { title: 'Software Engineering Intern', company: 'Microsoft', location: 'Redmond, WA, USA', link: 'https://careers.microsoft.com/us/en' },
+    { title: 'Software Engineering Intern', company: 'Amazon', location: 'Seattle, WA, USA', link: 'https://www.amazon.jobs/en/' },
+    { title: 'Software Engineering Intern', company: 'Intel', location: 'Santa Clara, CA, USA', link: 'https://jobs.intel.com/' },
+    { title: 'Software Engineering Intern', company: 'IBM', location: 'Armonk, NY, USA', link: 'https://www.ibm.com/employment/' },
+    { title: 'Software Engineering Intern', company: 'Oracle', location: 'Redwood City, CA, USA', link: 'https://www.oracle.com/corporate/careers/' },
+    { title: 'Software Engineering Intern', company: 'Cisco', location: 'San Jose, CA, USA', link: 'https://jobs.cisco.com/' },
+    { title: 'Software Engineering Intern', company: 'Tesla', location: 'Palo Alto, CA, USA', link: 'https://www.tesla.com/careers' },
+    { title: 'Software Engineering Intern', company: 'Adobe', location: 'San Jose, CA, USA', link: 'https://adobe.wd5.myworkdayjobs.com/en-US/external_experienced' },
+    { title: 'Software Engineering Intern', company: 'Salesforce', location: 'San Francisco, CA, USA', link: 'https://www.salesforce.com/company/careers/' },
+    { title: 'Software Engineering Intern', company: 'Uber', location: 'San Francisco, CA, USA', link: 'https://www.uber.com/us/en/careers/' },
+    { title: 'Software Engineering Intern', company: 'Lyft', location: 'San Francisco, CA, USA', link: 'https://www.lyft.com/careers' },
+    { title: 'Software Engineering Intern', company: 'Airbnb', location: 'San Francisco, CA, USA', link: 'https://careers.airbnb.com/' },
+    { title: 'Software Engineering Intern', company: 'Twitter', location: 'San Francisco, CA, USA', link: 'https://careers.twitter.com/en.html' },
+    { title: 'Software Engineering Intern', company: 'Snap Inc.', location: 'Santa Monica, CA, USA', link: 'https://www.snap.com/en-US/jobs' },
+    { title: 'Software Engineering Intern', company: 'Pinterest', location: 'San Francisco, CA, USA', link: 'https://www.pinterestcareers.com/' },
+    { title: 'Software Engineering Intern', company: 'LinkedIn', location: 'Sunnyvale, CA, USA', link: 'https://careers.linkedin.com/' },
+    { title: 'Software Engineering Intern', company: 'Netflix', location: 'Los Gatos, CA, USA', link: 'https://jobs.netflix.com/' },
+    { title: 'Software Engineering Intern', company: 'Dropbox', location: 'San Francisco, CA, USA', link: 'https://www.dropbox.com/jobs' },
+    { title: 'Software Engineering Intern', company: 'Slack', location: 'San Francisco, CA, USA', link: 'https://slack.com/careers' },
+    { title: 'Software Engineering Intern', company: 'Square', location: 'San Francisco, CA, USA', link: 'https://squareup.com/us/en/careers' },
+    { title: 'Software Engineering Intern', company: 'Stripe', location: 'San Francisco, CA, USA', link: 'https://stripe.com/jobs' },
+    { title: 'Software Engineering Intern', company: 'Palantir', location: 'Palo Alto, CA, USA', link: 'https://www.palantir.com/careers/' },
+    { title: 'Software Engineering Intern', company: 'Reddit', location: 'San Francisco, CA, USA', link: 'https://www.redditinc.com/careers' },
+    { title: 'Software Engineering Intern', company: 'GitHub', location: 'San Francisco, CA, USA', link: 'https://github.com/about/careers' },
+    { title: 'Software Engineering Intern', company: 'Atlassian', location: 'San Francisco, CA, USA', link: 'https://www.atlassian.com/company/careers' },
+    { title: 'Software Engineering Intern', company: 'Zoom', location: 'San Jose, CA, USA', link: 'https://zoom.us/careers' },
+    { title: 'Software Engineering Intern', company: 'Qualcomm', location: 'San Diego, CA, USA', link: 'https://www.qualcomm.com/company/careers' },
+    { title: 'Software Engineering Intern', company: 'NVIDIA', location: 'Santa Clara, CA, USA', link: 'https://www.nvidia.com/en-us/about-nvidia/careers/' },
+    { title: 'Software Engineering Intern', company: 'HP', location: 'Palo Alto, CA, USA', link: 'https://jobs.hp.com/' },
+    { title: 'Software Engineering Intern', company: 'Dell', location: 'Round Rock, TX, USA', link: 'https://jobs.dell.com/' },
+    { title: 'Software Engineering Intern', company: 'AMD', location: 'Santa Clara, CA, USA', link: 'https://www.amd.com/en/corporate/careers' },
+    { title: 'Software Engineering Intern', company: 'Western Digital', location: 'San Jose, CA, USA', link: 'https://jobs.westerndigital.com/' },
+    { title: 'Software Engineering Intern', company: 'Seagate', location: 'Cupertino, CA, USA', link: 'https://www.seagate.com/jobs/' },
+    { title: 'Software Engineering Intern', company: 'Broadcom', location: 'San Jose, CA, USA', link: 'https://www.broadcom.com/company/careers' },
+    { title: 'Software Engineering Intern', company: 'Texas Instruments', location: 'Dallas, TX, USA', link: 'https://careers.ti.com/' },
+    { title: 'Software Engineering Intern', company: 'Micron', location: 'Boise, ID, USA', link: 'https://www.micron.com/about/careers' },
+
+    // Vietnam Companies
+    { title: 'Software Engineering Intern', company: 'VinGroup', location: 'Hanoi, Vietnam', link: 'https://tuyendung.vingroup.net/' },
+    { title: 'Software Engineering Intern', company: 'FPT Software', location: 'Hanoi, Vietnam', link: 'https://career.fpt-software.com/' },
+    { title: 'Software Engineering Intern', company: 'VNG Corporation', location: 'Ho Chi Minh City, Vietnam', link: 'https://career.vng.com.vn/' },
+    { title: 'Software Engineering Intern', company: 'TMA Solutions', location: 'Ho Chi Minh City, Vietnam', link: 'https://www.tmasolutions.com/careers/' },
+    { title: 'Software Engineering Intern', company: 'KMS Technology', location: 'Ho Chi Minh City, Vietnam', link: 'https://www.kms-technology.com/careers/' },
+    { title: 'Software Engineering Intern', company: 'Axon Active', location: 'Ho Chi Minh City, Vietnam', link: 'https://www.axonactive.com/careers/' },
+    { title: 'Software Engineering Intern', company: 'NashTech', location: 'Ho Chi Minh City, Vietnam', link: 'https://www.nashtechglobal.com/careers/' },
+    { title: 'Software Engineering Intern', company: 'Harvey Nash', location: 'Ho Chi Minh City, Vietnam', link: 'https://www.harveynash.vn/careers/' },
+    { title: 'Software Engineering Intern', company: 'DEK Technologies', location: 'Ho Chi Minh City, Vietnam', link: 'https://www.dektech.com.au/careers/' },
+    { title: 'Software Engineering Intern', company: 'LogiGear', location: 'Ho Chi Minh City, Vietnam', link: 'https://www.logigear.com/careers/' },
+    { title: 'Software Engineering Intern', company: 'Tiki', location: 'Ho Chi Minh City, Vietnam', link: 'https://tuyendung.tiki.vn/' },
+    { title: 'Software Engineering Intern', company: 'Shopee', location: 'Ho Chi Minh City, Vietnam', link: 'https://careers.shopee.vn/' },
+    { title: 'Software Engineering Intern', company: 'Grab', location: 'Ho Chi Minh City, Vietnam', link: 'https://grab.careers/' },
+    { title: 'Software Engineering Intern', company: 'Lazada', location: 'Ho Chi Minh City, Vietnam', link: 'https://www.lazada.com/en/careers/' },
+    { title: 'Software Engineering Intern', company: 'Sendo', location: 'Ho Chi Minh City, Vietnam', link: 'https://www.sendo.vn/tuyen-dung/' },
+    { title: 'Software Engineering Intern', company: 'Viettel', location: 'Hanoi, Vietnam', link: 'https://tuyendung.viettel.vn/' },
+    { title: 'Software Engineering Intern', company: 'VNPT', location: 'Hanoi, Vietnam', link: 'https://www.vnpt.com.vn/tuyen-dung' },
+    { title: 'Software Engineering Intern', company: 'Mobifone', location: 'Hanoi, Vietnam', link: 'https://www.mobifone.vn/tuyen-dung' },
+    { title: 'Software Engineering Intern', company: 'CMC Corporation', location: 'Hanoi, Vietnam', link: 'https://www.cmc.com.vn/tuyen-dung' },
+    { title: 'Software Engineering Intern', company: 'FPT Telecom', location: 'Hanoi, Vietnam', link: 'https://www.fpt.vn/tuyen-dung' },
+    { title: 'Software Engineering Intern', company: 'Vietcombank', location: 'Hanoi, Vietnam', link: 'https://www.vietcombank.com.vn/tuyen-dung' },
+    { title: 'Software Engineering Intern', company: 'Techcombank', location: 'Hanoi, Vietnam', link: 'https://www.techcombank.com.vn/tuyen-dung' },
+    { title: 'Software Engineering Intern', company: 'VPBank', location: 'Hanoi, Vietnam', link: 'https://www.vpbank.com.vn/tuyen-dung' },
+    { title: 'Software Engineering Intern', company: 'VIB', location: 'Hanoi, Vietnam', link: 'https://www.vib.com.vn/tuyen-dung' },
+    { title: 'Software Engineering Intern', company: 'ACB', location: 'Ho Chi Minh City, Vietnam', link: 'https://www.acb.com.vn/tuyen-dung' },
+    { title: 'Software Engineering Intern', company: 'Sacombank', location: 'Ho Chi Minh City, Vietnam', link: 'https://www.sacombank.com.vn/tuyen-dung' },
+    { title: 'Software Engineering Intern', company: 'HDBank', location: 'Ho Chi Minh City, Vietnam', link: 'https://www.hdbank.com.vn/tuyen-dung' },
+    { title: 'Software Engineering Intern', company: 'VietinBank', location: 'Hanoi, Vietnam', link: 'https://www.vietinbank.vn/tuyen-dung' },
+    { title: 'Software Engineering Intern', company: 'BIDV', location: 'Hanoi, Vietnam', link: 'https://www.bidv.com.vn/tuyen-dung' },
+    { title: 'Software Engineering Intern', company: 'MB Bank', location: 'Hanoi, Vietnam', link: 'https://www.mbbank.com.vn/tuyen-dung' },
+    { title: 'Software Engineering Intern', company: 'Agribank', location: 'Hanoi, Vietnam', link: 'https://www.agribank.com.vn/tuyen-dung' },
+    { title: 'Software Engineering Intern', company: 'Viettel Digital', location: 'Hanoi, Vietnam', link: 'https://digital.viettel.vn/tuyen-dung' },
+    { title: 'Software Engineering Intern', company: 'VNPay', location: 'Hanoi, Vietnam', link: 'https://www.vnpay.vn/tuyen-dung' },
+    { title: 'Software Engineering Intern', company: 'MoMo', location: 'Ho Chi Minh City, Vietnam', link: 'https://momo.vn/tuyen-dung' },
+    { title: 'Software Engineering Intern', company: 'ZaloPay', location: 'Ho Chi Minh City, Vietnam', link: 'https://zalopay.vn/tuyen-dung' },
+    { title: 'Software Engineering Intern', company: 'Viettel Solutions', location: 'Hanoi, Vietnam', link: 'https://solutions.viettel.vn/tuyen-dung' }
+  ];
+
+  // Display the internships
+  internships.forEach(internship => {
+    const internshipItem = document.createElement('div');
+    internshipItem.classList.add('internship-item');
+    internshipItem.innerHTML = `
+      <h3>${internship.title}</h3>
+      <p>${internship.company}</p>
+      <p>${internship.location}</p>
+      <a href="${internship.link}" target="_blank">Apply Now</a>
+    `;
+    internshipList.appendChild(internshipItem);
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  const heading = document.querySelector('.animated-heading');
+  const text = heading.textContent;
+  heading.innerHTML = '';
+
+  text.split('').forEach(letter => {
+    const span = document.createElement('span');
+    span.textContent = letter;
+    heading.appendChild(span);
+  });
+});
