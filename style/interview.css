@@ -1,0 +1,80 @@
+/* interview.css */
+/* ----------------------------------------------
+   Interview page styling
+---------------------------------------------- */
+.interview-content {
+  width: 80%;
+  margin: auto;
+  padding: 60px 0;
+}
+
+.interview-left {
+  flex-basis: 65%;
+}
+
+.interview-left h2 {
+  color: #222;
+  font-weight: 900;
+  margin: 40px 0;
+}
+
+.interview-left p {
+  color: #7c7c7c;
+}
+
+.interview-right {
+  flex-basis: 31%;
+}
+
+/* Example highlight box inside .interview-right */
+.interview-right h3 {
+  background-color: #fff306;
+  color: #000;
+  padding: 10px;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.interview-right div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #555;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+/* Comment box form */
+.comment-box {
+  width: 80%;
+  border: 1px solid #afafaf;
+  margin: 60px auto;
+  padding: 15px 20px;
+}
+
+.comment-box h3 {
+  text-align: left;
+}
+
+.comment-form input,
+.comment-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 15px 0;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  background: #e3e3e3;
+}
+
+.comment-form button {
+  margin: 5px 0;
+}
+
+/* Responsive adjustments */
+@media(max-width: 700px) {
+  .sub-header h1 {
+    font-size: 22px;
+    margin-top: 50px;
+  }
+}

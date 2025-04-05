@@ -1,0 +1,83 @@
+/* course.css */
+/* ----------------------------------------------
+   "Course" section and course card styling
+---------------------------------------------- */
+.course {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  padding-top: 100px;
+}
+
+.course h1 {
+  font-size: 36px;
+  font-weight: 600;
+}
+
+.course p {
+  color: #5d5d5d;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22px;
+  padding: 10px;
+}
+
+/* Course columns */
+.course-col {
+  flex-basis: 30%;
+  border-radius: 15px;
+  margin-bottom: 5%;
+  padding: 20px 12px;
+  box-sizing: border-box;
+  transition: 
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease;
+}
+
+/* Color-coded flags */
+.green-flag {
+  background-color: #90ee90; /* Light green */
+}
+
+.blue-flag {
+  background-color: #87cefa; /* Light sky blue */
+}
+
+.red-flag {
+  background-color: #ca6f6d; /* Light red */
+}
+
+/* Hover effect */
+.course-col:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px 10px rgba(0, 0, 0, 0.5);
+  background-color: #ffffff;
+}
+
+/* Zoom animations */
+@keyframes zoomIn {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes zoomOut {
+  from {
+    transform: scale(1.05);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.course-col:hover {
+  animation: zoomIn 0.3s forwards;
+}
+
+.course-col:not(:hover) {
+  animation: zoomOut 0.3s forwards;
+}

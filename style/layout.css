@@ -1,0 +1,24 @@
+/* layout.css */
+/* ----------------------------------------------
+   Layout utility classes and shared containers
+---------------------------------------------- */
+
+/* Container for consistent widths and centering */
+.container {
+  width: 80%;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Generic .row class to display elements side by side */
+.row {
+  margin-top: 5%;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (max-width: 700px) {
+  .row {
+    flex-direction: column;
+  }
+}
