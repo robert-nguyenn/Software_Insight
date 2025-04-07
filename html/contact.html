@@ -5,12 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Front-End Dev</title>
   
-  <link rel="stylesheet" href="../style/base.css">
-  <link rel="stylesheet" href="../style/layout.css">
-  <link rel="stylesheet" href="../style/nav.css">
-  <link rel="stylesheet" href="../style/about-subheader.css">
-  <link rel="stylesheet" href="../style/contact.css">
-  <link rel="stylesheet" href="../style/footer.css">
+  <link rel="stylesheet" href="../style/style.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -106,32 +101,37 @@
   <!-- Link to external JavaScript file -->
   <script src="../js/script.js"></script>  
   <script>
+    async function showMenu() {
+      document.getElementById("navLinks").style.right = "0";
+    }
+    async function hideMenu() {
+      document.getElementById("navLinks").style.right = "-200px";
+    }
+
     const contactForm = document.getElementById('contactForm');
     contactForm.addEventListener('submit', async (event) => {
       event.preventDefault();
-      
       const formData = {
         name: event.target.name.value,
         email: event.target.email.value,
         subject: event.target.subject.value,
         message: event.target.message.value
       };
-  
       try {
-        const res = await fetch('https://rkfjo86v8i.execute-api.us-east-1.amazonaws.com/dev', {
+        const res = await fetch('YOUR_API_GATEWAY_INVOKE_URL', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(formData)
         });
         const json = await res.json();
-        alert(json.message || 'Form submitted!');
+        alert(json.message || 'Form submitted successfully!');
       } catch (err) {
         console.error(err);
         alert('Error submitting form.');
       }
     });
   </script>
+</body>
+</html>
 </body>
 </html>
