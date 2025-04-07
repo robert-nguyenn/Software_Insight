@@ -1,0 +1,26 @@
+/* footer.css */
+/* ----------------------------------------------
+   Footer styles
+---------------------------------------------- */
+.footer {
+  width: 90%;
+  text-align: center;
+  padding: 20px 0;
+  margin: auto;
+}
+
+.footer h1 {
+  margin-bottom: 25px;
+  margin-top: 20px;
+  font-weight: 600;
+}
+
+.icons .fa-brands {
+  margin: 0 15px;
+  cursor: pointer;
+  padding: 28px 0;
+}
+
+.fa-heart {
+  color: #357c1e;
+}

@@ -1,0 +1,27 @@
+/* cta.css */
+/* ----------------------------------------------
+   "Call to Action" section
+---------------------------------------------- */
+.cta {
+  width: 80%;
+  margin: 100px auto 120px auto;
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.35)), 
+    url("../images/cta.jpg");
+  background-position: center;
+  background-size: cover;
+  border-radius: 2px;
+  text-align: center;
+  padding: 100px 0;
+}
+
+.cta h1 {
+  color: #fff;
+  margin-bottom: 50px;
+}
+
+@media(max-width: 700px) {
+  .cta h1 {
+    font-size: 20px;
+  }
+}
