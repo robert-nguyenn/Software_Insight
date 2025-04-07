@@ -630,3 +630,4 @@ document.addEventListener('DOMContentLoaded', function() {
     heading.appendChild(span);
   });
 });
+
