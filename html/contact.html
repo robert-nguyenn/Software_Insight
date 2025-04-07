@@ -19,11 +19,11 @@
       <div class="nav-links" id="navLinks">
         <i class="fa-solid fa-xmark" ofnclick="hideMenu()"></i>
         <ul>
-          <li><a href="index.html">HOME</a></li>
-          <li><a href="html/course.html">COURSE</a></li>
-          <li><a href="html/interview.html">INTERVIEW</a></li>
-          <li><a href="html/internship.html">INTERNSHIP</a></li>
-          <li><a href="html/contact.html">CONTACT</a></li>
+          <li><a href="../index.html">HOME</a></li>
+          <li><a href="course.html">COURSE</a></li>
+          <li><a href="interview.html">INTERVIEW</a></li>
+          <li><a href="internship.html">INTERNSHIP</a></li>
+          <li><a href="contact.html">CONTACT</a></li>
         </ul>
       </div>
       <i class="fa-solid fa-bars" onclick="showMenu()"></i>
@@ -71,12 +71,12 @@
           
           method="post": The method attribute determines how the form data will be sent to the server. The value "post" indicates that the data will be sent as part of the HTTP request body, which is more secure and capable of handling larger amounts of data compared to the "get" method.
         -->
-        <form action="form-handler.php" method="post"> 
+        <form id="contactForm">
           <input type="text" name="name" placeholder="Enter your name" required>
           <input type="email" name="email" placeholder="Enter your email address" required>
           <input type="text" name="subject" placeholder="Enter your subject" required>
-          <textarea row="8" name="message" placeholder="Message" required></textarea>
-          <button type="text" class="hero-btn red-btn">Send Message</button>
+          <textarea rows="8" name="message" placeholder="Message" required></textarea>
+          <button type="submit" class="hero-btn red-btn">Send Message</button>
         </form>
       </div>
     </div>
@@ -98,5 +98,33 @@
 
   <!-- Link to external JavaScript file -->
   <script src="../js/script.js"></script>  
+  <script>
+    const contactForm = document.getElementById('contactForm');
+    contactForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      
+      const formData = {
+        name: event.target.name.value,
+        email: event.target.email.value,
+        subject: event.target.subject.value,
+        message: event.target.message.value
+      };
+  
+      try {
+        const res = await fetch('https://rkfjo86v8i.execute-api.us-east-1.amazonaws.com/dev', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        });
+        const json = await res.json();
+        alert(json.message || 'Form submitted!');
+      } catch (err) {
+        console.error(err);
+        alert('Error submitting form.');
+      }
+    });
+  </script>
 </body>
 </html>
