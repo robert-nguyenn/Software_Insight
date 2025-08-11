@@ -1,0 +1,33 @@
+{
+  "name": "software-insight-project",
+  "version": "1.0.0",
+  "description": "Full-stack Software Insight platform with React frontend and Node.js backend",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm start",
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "build": "cd frontend && npm run build",
+    "start": "cd backend && npm start",
+    "seed": "cd backend && npm run seed",
+    "test": "cd backend && npm test && cd ../frontend && npm test"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/robert-nguyenn/Software_Insight.git"
+  },
+  "keywords": [
+    "software",
+    "education",
+    "internships",
+    "courses",
+    "react",
+    "nodejs",
+    "mongodb"
+  ],
+  "author": "Robert Nguyen",
+  "license": "MIT"
+}
