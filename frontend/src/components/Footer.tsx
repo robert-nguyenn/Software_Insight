@@ -67,7 +67,7 @@ const Footer: React.FC = () => {
               </Typography>
               <Typography variant="body2" sx={{ mb: 3, color: 'grey.300', lineHeight: 1.6 }}>
                 Empowering the next generation of software developers through comprehensive courses, 
-                internship opportunities, and career guidance. Join thousands of students who have 
+                internship opportunities, and career guidance. Join hundreds of students who have 
                 launched successful tech careers with us.
               </Typography>
               
@@ -168,7 +168,7 @@ const Footer: React.FC = () => {
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                     <Email fontSize="small" sx={{ color: 'grey.400' }} />
                     <Link
-                      href="mailto:contact@softwareinsight.com"
+                      href="mailto:robert.nguyenanh@gmail.com"
                       sx={{
                         color: 'grey.300',
                         textDecoration: 'none',
@@ -176,13 +176,13 @@ const Footer: React.FC = () => {
                         '&:hover': { color: 'white' },
                       }}
                     >
-                      contact@softwareinsight.com
+                      robert.nguyenanh@gmail.com
                     </Link>
                   </Box>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                     <Phone fontSize="small" sx={{ color: 'grey.400' }} />
                     <Link
-                      href="tel:+15551234567"
+                      href="tel:+18596918194"
                       sx={{
                         color: 'grey.300',
                         textDecoration: 'none',
@@ -190,14 +190,14 @@ const Footer: React.FC = () => {
                         '&:hover': { color: 'white' },
                       }}
                     >
-                      +1 (555) 123-4567
+                      (859) 691-8194
                     </Link>
                   </Box>
                   <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 1 }}>
                     <LocationOn fontSize="small" sx={{ color: 'grey.400', mt: 0.5 }} />
                     <Typography variant="body2" sx={{ color: 'grey.300', fontSize: '0.875rem' }}>
-                      123 Tech Street<br />
-                      Innovation City, IC 12345
+                      Danville, Kentucky<br />
+                      USA
                     </Typography>
                   </Box>
                 </Stack>

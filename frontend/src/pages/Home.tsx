@@ -61,10 +61,10 @@ const Home: React.FC = () => {
   ];
 
   const stats = [
-    { number: '10,000+', label: 'Students Enrolled', icon: <Group /> },
-    { number: '500+', label: 'Courses Available', icon: <School /> },
-    { number: '1,200+', label: 'Job Placements', icon: <Work /> },
-    { number: '95%', label: 'Success Rate', icon: <TrendingUp /> },
+    { number: '1,000+', label: 'Students Enrolled', icon: <Group /> },
+    { number: '50+', label: 'Courses Available', icon: <School /> },
+    { number: '120+', label: 'Job Placements', icon: <Work /> },
+    { number: '85%', label: 'Success Rate', icon: <TrendingUp /> },
   ];
 
   return (
@@ -184,11 +184,11 @@ const Home: React.FC = () => {
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                 <Star fontSize="small" />
-                <Typography variant="body2">4.8/5 Rating</Typography>
+                <Typography variant="body2">4.7/5 Rating</Typography>
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                 <Group fontSize="small" />
-                <Typography variant="body2">10,000+ Students</Typography>
+                <Typography variant="body2">1,000+ Students</Typography>
               </Box>
             </Box>
           </MotionBox>
@@ -530,7 +530,7 @@ const Home: React.FC = () => {
               Ready to Start Your Journey?
             </Typography>
             <Typography variant="h6" sx={{ mb: 4, opacity: 0.9 }}>
-              Join thousands of students who have transformed their careers with Software Insight
+              Join hundreds of students who have transformed their careers with Software Insight
             </Typography>
             
             <Stack
