@@ -17,7 +17,6 @@ import {
   ListItemButton,
   Divider,
   useTheme,
-  useMediaQuery,
 } from '@mui/material';
 import {
   Menu as MenuIcon,
@@ -119,7 +118,16 @@ const Header: React.FC = () => {
         },
       }}
     >
-      <Box sx={{ p: 2 }}>
+      <Box sx={{ p: 2, display: 'flex', alignItems: 'center' }}>
+        <img
+          src="/images/softwareinsightlogo.png"
+          alt="Software Insight Logo"
+          style={{
+            height: '32px',
+            width: 'auto',
+            marginRight: '12px',
+          }}
+        />
         <Typography variant="h6" sx={{ fontWeight: 'bold', color: theme.palette.primary.main }}>
           Software Insight
         </Typography>
@@ -306,20 +314,37 @@ const Header: React.FC = () => {
           </IconButton>
 
           {/* Logo */}
-          <Typography
-            variant="h6"
+          <Box
             component={Link}
             to="/"
             sx={{
-              fontWeight: 'bold',
+              display: 'flex',
+              alignItems: 'center',
               textDecoration: 'none',
               color: 'inherit',
               flexGrow: { xs: 1, md: 0 },
               mr: { md: 4 },
             }}
           >
-            Software Insight
-          </Typography>
+            <img
+              src="/images/softwareinsightlogo.png"
+              alt="Software Insight Logo"
+              style={{
+                height: '40px',
+                width: 'auto',
+                marginRight: '12px',
+              }}
+            />
+            <Typography
+              variant="h6"
+              sx={{
+                fontWeight: 'bold',
+                display: { xs: 'none', sm: 'block' },
+              }}
+            >
+              Software Insight
+            </Typography>
+          </Box>
 
           {/* Desktop Navigation */}
           {renderDesktopMenu()}

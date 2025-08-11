@@ -12,7 +12,6 @@ import {
   Chip,
   Stack,
   useTheme,
-  useMediaQuery,
 } from '@mui/material';
 import {
   School,
@@ -26,7 +25,7 @@ import {
 } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { useFeaturedTestimonials, useFeaturedInternships, useCourses } from '../hooks/useApi';
+import { useFeaturedTestimonials, useCourses } from '../hooks/useApi';
 
 const MotionBox = motion(Box);
 const MotionCard = motion(Card);

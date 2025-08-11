@@ -52,19 +52,29 @@ const Footer: React.FC = () => {
           >
             {/* Company Info */}
             <Box sx={{ flex: { xs: 1, md: 2 }, maxWidth: { md: '400px' } }}>
-              <Typography
-                variant="h6"
-                sx={{
-                  fontWeight: 'bold',
-                  mb: 3,
-                  background: 'linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%)',
-                  backgroundClip: 'text',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                }}
-              >
-                Software Insight
-              </Typography>
+              <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
+                <img
+                  src="/images/softwareinsightlogo.png"
+                  alt="Software Insight Logo"
+                  style={{
+                    height: '32px',
+                    width: 'auto',
+                    marginRight: '12px',
+                  }}
+                />
+                <Typography
+                  variant="h6"
+                  sx={{
+                    fontWeight: 'bold',
+                    background: 'linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%)',
+                    backgroundClip: 'text',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                  }}
+                >
+                  Software Insight
+                </Typography>
+              </Box>
               <Typography variant="body2" sx={{ mb: 3, color: 'grey.300', lineHeight: 1.6 }}>
                 Empowering the next generation of software developers through comprehensive courses, 
                 internship opportunities, and career guidance. Join hundreds of students who have 
