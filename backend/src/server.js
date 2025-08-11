@@ -86,9 +86,18 @@ const connectDB = async () => {
   try {
     const conn = await mongoose.connect(process.env.MONGODB_URI);
     console.log(`MongoDB Connected: ${conn.connection.host}`);
+    return true;
   } catch (error) {
-    console.error('Database connection error:', error);
-    process.exit(1);
+    console.error('Database connection error:', error.message);
+    console.log('\n=== DATABASE CONNECTION TROUBLESHOOTING ===');
+    console.log('1. Make sure MongoDB is installed and running locally');
+    console.log('2. Install MongoDB Community Server from: https://www.mongodb.com/try/download/community');
+    console.log('3. Start MongoDB service:');
+    console.log('   - Windows: net start MongoDB');
+    console.log('   - macOS/Linux: brew services start mongodb-community');
+    console.log('4. Or use MongoDB Atlas (cloud): https://cloud.mongodb.com/');
+    console.log('==========================================\n');
+    return false;
   }
 };
 
@@ -96,10 +105,17 @@ const connectDB = async () => {
 const PORT = process.env.PORT || 5000;
 
 const startServer = async () => {
-  await connectDB();
+  const dbConnected = await connectDB();
+  
+  if (!dbConnected) {
+    console.log('⚠️  Server starting without database connection');
+    console.log('📝 API endpoints will return mock data until DB is connected');
+  }
   
   app.listen(PORT, () => {
-    console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
+    console.log(`🚀 Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
+    console.log(`🌐 Backend API: http://localhost:${PORT}`);
+    console.log(`📱 Frontend: ${process.env.FRONTEND_URL || 'http://localhost:3001'}`);
   });
 };
 

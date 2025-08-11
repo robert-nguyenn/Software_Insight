@@ -4,7 +4,6 @@ import {
   Container,
   Typography,
   Link,
-  IconButton,
   Divider,
   Stack,
 } from '@mui/material';
@@ -12,23 +11,15 @@ import {
   Email,
   Phone,
   LocationOn,
-  Facebook,
-  Twitter,
-  LinkedIn,
-  GitHub,
-  Instagram,
 } from '@mui/icons-material';
 import { Link as RouterLink } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
-  const socialLinks = [
-    { icon: <Facebook />, href: 'https://facebook.com/softwareinsight', label: 'Facebook' },
-    { icon: <Twitter />, href: 'https://twitter.com/softwareinsight', label: 'Twitter' },
-    { icon: <LinkedIn />, href: 'https://linkedin.com/company/softwareinsight', label: 'LinkedIn' },
-    { icon: <GitHub />, href: 'https://github.com/softwareinsight', label: 'GitHub' },
-    { icon: <Instagram />, href: 'https://instagram.com/softwareinsight', label: 'Instagram' },
+  const contactInfo = [
+    { icon: <Phone />, text: '(859) 691-8194', href: 'tel:8596918194' },
+    { icon: <Email />, text: 'robert.nguyenanh@gmail.com', href: 'mailto:robert.nguyenanh@gmail.com' },
   ];
 
   return (
@@ -81,26 +72,29 @@ const Footer: React.FC = () => {
                 launched successful tech careers with us.
               </Typography>
               
-              {/* Social Links */}
-              <Stack direction="row" spacing={1}>
-                {socialLinks.map((social) => (
-                  <IconButton
-                    key={social.label}
+              {/* Contact Information */}
+              <Stack direction="row" spacing={3}>
+                {contactInfo.map((contact, index) => (
+                  <Box
+                    key={index}
                     component="a"
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href={contact.href}
                     sx={{
-                      color: 'grey.400',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 1,
+                      color: 'grey.300',
+                      textDecoration: 'none',
                       '&:hover': {
                         color: 'white',
-                        backgroundColor: 'rgba(255, 255, 255, 0.1)',
                       },
                     }}
-                    aria-label={social.label}
                   >
-                    {social.icon}
-                  </IconButton>
+                    {contact.icon}
+                    <Typography variant="body2">
+                      {contact.text}
+                    </Typography>
+                  </Box>
                 ))}
               </Stack>
             </Box>

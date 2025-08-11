@@ -130,14 +130,18 @@ const Home: React.FC = () => {
                 size="large"
                 endIcon={<ArrowForward />}
                 sx={{
-                  backgroundColor: 'white',
-                  color: theme.palette.primary.main,
+                  backgroundColor: '#1976d2',
+                  color: 'white',
                   px: 4,
                   py: 1.5,
                   fontSize: '1.1rem',
+                  fontWeight: 'bold',
+                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
+                  border: '2px solid #1976d2',
                   '&:hover': {
-                    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                    backgroundColor: '#1565c0',
                     transform: 'translateY(-2px)',
+                    boxShadow: '0 6px 25px rgba(0, 0, 0, 0.4)',
                   },
                 }}
               >
@@ -281,8 +285,12 @@ const Home: React.FC = () => {
 
           <Box
             sx={{
-              display: 'flex',
-              flexWrap: 'wrap',
+              display: 'grid',
+              gridTemplateColumns: {
+                xs: '1fr',
+                sm: '1fr 1fr',
+                md: '1fr 1fr 1fr 1fr',
+              },
               gap: 3,
               justifyContent: 'center',
             }}
@@ -294,13 +302,13 @@ const Home: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 sx={{
-                  maxWidth: 280,
                   p: 3,
                   textAlign: 'center',
                   height: '100%',
                   '&:hover': {
                     transform: 'translateY(-8px)',
                     transition: 'transform 0.3s ease-in-out',
+                    boxShadow: '0 8px 30px rgba(0, 0, 0, 0.12)',
                   },
                 }}
               >
@@ -543,13 +551,18 @@ const Home: React.FC = () => {
                 variant="contained"
                 size="large"
                 sx={{
-                  backgroundColor: 'white',
-                  color: theme.palette.primary.main,
+                  backgroundColor: '#1976d2',
+                  color: 'white',
                   px: 4,
                   py: 1.5,
                   fontSize: '1.1rem',
+                  fontWeight: 'bold',
+                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
+                  border: '2px solid #1976d2',
                   '&:hover': {
-                    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                    backgroundColor: '#1565c0',
+                    transform: 'translateY(-2px)',
+                    boxShadow: '0 6px 25px rgba(0, 0, 0, 0.4)',
                   },
                 }}
               >

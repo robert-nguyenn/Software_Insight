@@ -1,10 +1,74 @@
 const Testimonial = require('../models/Testimonial');
+const mongoose = require('mongoose');
+
+// Mock data fallback when DB is not connected
+const mockTestimonials = [
+  {
+    _id: '1',
+    studentName: 'Sarah Johnson',
+    rating: 5,
+    comment: 'Software Insight transformed my career! The courses are comprehensive and the instructors are amazing.',
+    course: { _id: '1', title: 'Full Stack Development', slug: 'full-stack-development' },
+    featured: true,
+    createdAt: new Date('2024-01-15'),
+    isApproved: true
+  },
+  {
+    _id: '2',
+    studentName: 'Michael Chen',
+    rating: 5,
+    comment: 'The interview preparation course helped me land my dream job at Google!',
+    course: { _id: '2', title: 'Interview Preparation', slug: 'interview-preparation' },
+    featured: true,
+    createdAt: new Date('2024-02-10'),
+    isApproved: true
+  },
+  {
+    _id: '3',
+    studentName: 'Emily Rodriguez',
+    rating: 4,
+    comment: 'Great platform with practical projects and excellent support from instructors.',
+    course: { _id: '3', title: 'React Development', slug: 'react-development' },
+    featured: true,
+    createdAt: new Date('2024-03-05'),
+    isApproved: true
+  }
+];
 
 // @desc    Get all testimonials
 // @route   GET /api/testimonials
 // @access  Public
 const getTestimonials = async (req, res) => {
   try {
+    // Check if database is connected
+    if (mongoose.connection.readyState !== 1) {
+      // Return mock data when DB is not connected
+      const {
+        featured,
+        limit = 10
+      } = req.query;
+
+      let filteredMockData = mockTestimonials;
+      
+      if (featured === 'true') {
+        filteredMockData = mockTestimonials.filter(t => t.featured);
+      }
+
+      const limitedData = filteredMockData.slice(0, parseInt(limit));
+
+      return res.status(200).json({
+        success: true,
+        data: limitedData,
+        pagination: {
+          page: 1,
+          pages: 1,
+          count: limitedData.length,
+          total: filteredMockData.length
+        },
+        message: 'Using mock data - Database not connected'
+      });
+    }
+
     const {
       page = 1,
       limit = 10,
