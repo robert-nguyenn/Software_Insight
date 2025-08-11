@@ -162,7 +162,12 @@ const seedData = async () => {
       }
     ];
 
-    const createdCourses = await Course.insertMany(courses);
+    // Create courses one by one to trigger pre-save middleware for slug generation
+    const createdCourses = [];
+    for (const courseData of courses) {
+      const course = await Course.create(courseData);
+      createdCourses.push(course);
+    }
     console.log('📚 Created sample courses');
 
     // Create sample testimonials

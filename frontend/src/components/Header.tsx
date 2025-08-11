@@ -363,7 +363,7 @@ const Header: React.FC = () => {
                   opacity: 0.9,
                 }}
               >
-                Hi, {user?.firstName}
+                Hi, {user?.name?.split(' ')[0] || user?.name}
               </Typography>
               <IconButton
                 size="large"
@@ -376,7 +376,7 @@ const Header: React.FC = () => {
                 {user?.avatar ? (
                   <Avatar
                     src={user.avatar}
-                    alt={user.firstName}
+                    alt={user.name}
                     sx={{ width: 32, height: 32 }}
                   />
                 ) : (

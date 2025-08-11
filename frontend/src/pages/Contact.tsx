@@ -20,6 +20,7 @@ import {
 } from '@mui/icons-material';
 import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
+import { contactAPI } from '../services/api';
 
 const MotionBox = motion(Box);
 const MotionCard = motion(Card);
@@ -45,16 +46,24 @@ const Contact: React.FC = () => {
     setSubmitStatus('submitting');
     
     try {
-      // Simulate API call - replace with actual implementation
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      const response = await contactAPI.submitContact({
+        name: data.name,
+        email: data.email,
+        subject: data.subject,
+        message: data.message,
+        category: 'general' // Default category
+      });
       
-      console.log('Contact form submitted:', data);
-      setSubmitStatus('success');
-      reset();
-      
-      // Reset success message after 5 seconds
-      setTimeout(() => setSubmitStatus('idle'), 5000);
-    } catch (error) {
+      if (response.success) {
+        setSubmitStatus('success');
+        reset();
+        
+        // Reset success message after 5 seconds
+        setTimeout(() => setSubmitStatus('idle'), 5000);
+      } else {
+        throw new Error(response.error || 'Failed to submit contact form');
+      }
+    } catch (error: any) {
       console.error('Error submitting contact form:', error);
       setSubmitStatus('error');
       
