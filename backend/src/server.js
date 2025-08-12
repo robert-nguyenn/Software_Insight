@@ -67,6 +67,24 @@ app.use('/api/internships', internshipRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/upload', uploadRoutes);
 
+// Root route
+app.get('/', (req, res) => {
+  res.status(200).json({
+    message: 'Software Insight API Server',
+    version: '1.0.0',
+    status: 'running',
+    endpoints: {
+      health: '/api/health',
+      courses: '/api/courses',
+      internships: '/api/internships',
+      auth: '/api/auth',
+      testimonials: '/api/testimonials',
+      contact: '/api/contact',
+      users: '/api/users'
+    }
+  });
+});
+
 // Health check endpoint
 app.get('/api/health', (req, res) => {
   res.status(200).json({
