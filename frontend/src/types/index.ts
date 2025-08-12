@@ -24,6 +24,14 @@ export interface EnrolledCourse {
   course: string | Course;
   enrolledAt: string;
   progress: number;
+  completedLessons: CompletedLesson[];
+  lastAccessedAt: string;
+}
+
+export interface CompletedLesson {
+  moduleIndex: number;
+  resourceIndex: number;
+  completedAt: string;
 }
 
 export interface Course {
@@ -68,7 +76,12 @@ export interface CourseModule {
 export interface CourseResource {
   title: string;
   url: string;
-  type: 'video' | 'article' | 'documentation' | 'tutorial' | 'book';
+  type: 'video' | 'article' | 'documentation' | 'tutorial' | 'book' | 'interactive';
+  description?: string;
+  duration?: string;
+  difficulty?: 'Beginner' | 'Intermediate' | 'Advanced';
+  isRequired?: boolean;
+  estimatedTime?: string;
 }
 
 export interface CourseProject {

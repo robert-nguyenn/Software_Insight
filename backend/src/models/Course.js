@@ -62,8 +62,20 @@ const courseSchema = new mongoose.Schema({
       url: String,
       type: {
         type: String,
-        enum: ['video', 'article', 'documentation', 'tutorial', 'book']
-      }
+        enum: ['video', 'article', 'documentation', 'tutorial', 'book', 'interactive']
+      },
+      description: String,
+      duration: String,
+      difficulty: {
+        type: String,
+        enum: ['Beginner', 'Intermediate', 'Advanced'],
+        default: 'Beginner'
+      },
+      isRequired: {
+        type: Boolean,
+        default: true
+      },
+      estimatedTime: String
     }]
   }],
   projects: [{

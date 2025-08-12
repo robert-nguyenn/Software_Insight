@@ -392,6 +392,230 @@ const getCourseStats = async (req, res) => {
   }
 };
 
+// @desc    Mark lesson as completed
+// @route   POST /api/courses/:id/complete-lesson
+// @access  Private
+const markLessonComplete = async (req, res) => {
+  try {
+    const { moduleIndex, resourceIndex } = req.body;
+    const courseId = req.params.id;
+    const userId = req.user.id;
+
+    // Validate input
+    if (moduleIndex === undefined || resourceIndex === undefined) {
+      return res.status(400).json({
+        success: false,
+        message: 'Module index and resource index are required'
+      });
+    }
+
+    // Find the course
+    const course = await Course.findById(courseId);
+    if (!course) {
+      return res.status(404).json({
+        success: false,
+        message: 'Course not found'
+      });
+    }
+
+    // Validate module and resource indices
+    if (moduleIndex >= course.modules.length || 
+        resourceIndex >= course.modules[moduleIndex].resources.length) {
+      return res.status(400).json({
+        success: false,
+        message: 'Invalid module or resource index'
+      });
+    }
+
+    // Find the user
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: 'User not found'
+      });
+    }
+
+    // Find the enrolled course
+    const enrolledCourseIndex = user.enrolledCourses.findIndex(
+      enrollment => enrollment.course.toString() === courseId
+    );
+
+    if (enrolledCourseIndex === -1) {
+      return res.status(400).json({
+        success: false,
+        message: 'User is not enrolled in this course'
+      });
+    }
+
+    // Check if lesson is already completed
+    const existingCompletion = user.enrolledCourses[enrolledCourseIndex].completedLessons.find(
+      lesson => lesson.moduleIndex === moduleIndex && lesson.resourceIndex === resourceIndex
+    );
+
+    if (existingCompletion) {
+      return res.status(400).json({
+        success: false,
+        message: 'Lesson already completed'
+      });
+    }
+
+    // Mark lesson as completed
+    user.enrolledCourses[enrolledCourseIndex].completedLessons.push({
+      moduleIndex,
+      resourceIndex,
+      completedAt: new Date()
+    });
+
+    // Update last accessed time
+    user.enrolledCourses[enrolledCourseIndex].lastAccessedAt = new Date();
+
+    // Calculate new progress
+    const totalLessons = course.modules.reduce((total, module) => total + module.resources.length, 0);
+    const completedLessons = user.enrolledCourses[enrolledCourseIndex].completedLessons.length;
+    const newProgress = Math.round((completedLessons / totalLessons) * 100);
+    
+    user.enrolledCourses[enrolledCourseIndex].progress = newProgress;
+
+    await user.save();
+
+    res.json({
+      success: true,
+      message: 'Lesson marked as completed',
+      data: {
+        progress: newProgress,
+        completedLessons,
+        totalLessons
+      }
+    });
+  } catch (error) {
+    console.error('Mark lesson complete error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Server error'
+    });
+  }
+};
+
+// @desc    Mark lesson as incomplete
+// @route   DELETE /api/courses/:id/complete-lesson
+// @access  Private
+const markLessonIncomplete = async (req, res) => {
+  try {
+    const { moduleIndex, resourceIndex } = req.body;
+    const courseId = req.params.id;
+    const userId = req.user.id;
+
+    // Find the user
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: 'User not found'
+      });
+    }
+
+    // Find the enrolled course
+    const enrolledCourseIndex = user.enrolledCourses.findIndex(
+      enrollment => enrollment.course.toString() === courseId
+    );
+
+    if (enrolledCourseIndex === -1) {
+      return res.status(400).json({
+        success: false,
+        message: 'User is not enrolled in this course'
+      });
+    }
+
+    // Remove the completed lesson
+    user.enrolledCourses[enrolledCourseIndex].completedLessons = user.enrolledCourses[enrolledCourseIndex].completedLessons.filter(
+      lesson => !(lesson.moduleIndex === moduleIndex && lesson.resourceIndex === resourceIndex)
+    );
+
+    // Update last accessed time
+    user.enrolledCourses[enrolledCourseIndex].lastAccessedAt = new Date();
+
+    // Calculate new progress
+    const course = await Course.findById(courseId);
+    const totalLessons = course.modules.reduce((total, module) => total + module.resources.length, 0);
+    const completedLessons = user.enrolledCourses[enrolledCourseIndex].completedLessons.length;
+    const newProgress = Math.round((completedLessons / totalLessons) * 100);
+    
+    user.enrolledCourses[enrolledCourseIndex].progress = newProgress;
+
+    await user.save();
+
+    res.json({
+      success: true,
+      message: 'Lesson marked as incomplete',
+      data: {
+        progress: newProgress,
+        completedLessons,
+        totalLessons
+      }
+    });
+  } catch (error) {
+    console.error('Mark lesson incomplete error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Server error'
+    });
+  }
+};
+
+// @desc    Get user's course progress
+// @route   GET /api/courses/:id/progress
+// @access  Private
+const getUserCourseProgress = async (req, res) => {
+  try {
+    const courseId = req.params.id;
+    const userId = req.user.id;
+
+    // Find the user with enrolled course progress
+    const user = await User.findById(userId).populate('enrolledCourses.course');
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: 'User not found'
+      });
+    }
+
+    // Find the enrolled course
+    const enrolledCourse = user.enrolledCourses.find(
+      enrollment => enrollment.course._id.toString() === courseId
+    );
+
+    if (!enrolledCourse) {
+      return res.status(404).json({
+        success: false,
+        message: 'User is not enrolled in this course'
+      });
+    }
+
+    // Get course details
+    const course = await Course.findById(courseId);
+    const totalLessons = course.modules.reduce((total, module) => total + module.resources.length, 0);
+
+    res.json({
+      success: true,
+      data: {
+        courseId,
+        progress: enrolledCourse.progress,
+        completedLessons: enrolledCourse.completedLessons,
+        totalLessons,
+        enrolledAt: enrolledCourse.enrolledAt,
+        lastAccessedAt: enrolledCourse.lastAccessedAt
+      }
+    });
+  } catch (error) {
+    console.error('Get user course progress error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Server error'
+    });
+  }
+};
+
 module.exports = {
   getCourses,
   getCourse,
@@ -399,5 +623,8 @@ module.exports = {
   updateCourse,
   deleteCourse,
   enrollCourse,
-  getCourseStats
+  getCourseStats,
+  markLessonComplete,
+  markLessonIncomplete,
+  getUserCourseProgress
 };

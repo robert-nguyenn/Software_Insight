@@ -6,7 +6,10 @@ const {
   updateCourse,
   deleteCourse,
   enrollCourse,
-  getCourseStats
+  getCourseStats,
+  markLessonComplete,
+  markLessonIncomplete,
+  getUserCourseProgress
 } = require('../controllers/courseController');
 const { protect, admin, optionalAuth } = require('../middleware/auth');
 
@@ -19,6 +22,9 @@ router.get('/:id', getCourse);
 
 // Protected routes
 router.post('/:id/enroll', protect, enrollCourse);
+router.post('/:id/complete-lesson', protect, markLessonComplete);
+router.delete('/:id/complete-lesson', protect, markLessonIncomplete);
+router.get('/:id/progress', protect, getUserCourseProgress);
 
 // Admin routes
 router.post('/', protect, admin, createCourse);

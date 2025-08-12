@@ -87,6 +87,16 @@ export const coursesAPI = {
   enrollCourse: (id: string): Promise<ApiResponse<any>> =>
     api.post(`/courses/${id}/enroll`).then(res => res.data),
   
+  // Lesson Progress Tracking
+  markLessonComplete: (courseId: string, moduleIndex: number, resourceIndex: number): Promise<ApiResponse<{ progress: number; completedLessons: number; totalLessons: number }>> =>
+    api.post(`/courses/${courseId}/complete-lesson`, { moduleIndex, resourceIndex }).then(res => res.data),
+  
+  markLessonIncomplete: (courseId: string, moduleIndex: number, resourceIndex: number): Promise<ApiResponse<{ progress: number; completedLessons: number; totalLessons: number }>> =>
+    api.delete(`/courses/${courseId}/complete-lesson`, { data: { moduleIndex, resourceIndex } }).then(res => res.data),
+  
+  getUserCourseProgress: (courseId: string): Promise<ApiResponse<{ courseId: string; progress: number; completedLessons: any[]; totalLessons: number; enrolledAt: string; lastAccessedAt: string }>> =>
+    api.get(`/courses/${courseId}/progress`).then(res => res.data),
+  
   // Admin only
   createCourse: (data: Partial<Course>): Promise<ApiResponse<Course>> =>
     api.post('/courses', data).then(res => res.data),

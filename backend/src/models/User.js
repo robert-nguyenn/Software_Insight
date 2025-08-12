@@ -47,6 +47,24 @@ const userSchema = new mongoose.Schema({
       default: 0,
       min: 0,
       max: 100
+    },
+    completedLessons: [{
+      moduleIndex: {
+        type: Number,
+        required: true
+      },
+      resourceIndex: {
+        type: Number,
+        required: true
+      },
+      completedAt: {
+        type: Date,
+        default: Date.now
+      }
+    }],
+    lastAccessedAt: {
+      type: Date,
+      default: Date.now
     }
   }],
   skills: [{

@@ -56,7 +56,7 @@ import { coursesAPI } from '../services/api';
 import { Course, CompletedLesson } from '../types';
 import { useAuth } from '../contexts/AuthContext';
 
-const CourseDetail: React.FC = () => {
+const EnhancedCourseDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { user } = useAuth();
@@ -761,4 +761,4 @@ const CourseDetail: React.FC = () => {
   );
 };
 
-export default CourseDetail;
+export default EnhancedCourseDetail;

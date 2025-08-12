@@ -3,6 +3,7 @@ const User = require('../models/User');
 const Course = require('../models/Course');
 const Testimonial = require('../models/Testimonial');
 const Internship = require('../models/Internship');
+const { techRoadmaps } = require('./techRoadmapSeeds');
 
 const seedData = async () => {
   try {
@@ -44,466 +45,245 @@ const seedData = async () => {
 
     console.log('🎭 Created demo user');
 
-    // Create sample learning roadmaps (renamed from courses)
-    const courses = [
-      {
-        title: 'Full Stack Development Roadmap',
-        shortDescription: 'Complete roadmap to become a full-stack web developer with hands-on projects and free resources',
-        description: 'Master the complete web development stack from frontend to backend. This comprehensive roadmap includes free YouTube courses, documentation, and practical projects to build your portfolio for internship applications.',
-        level: 'Beginner',
-        category: 'Full Stack',
-        duration: '12 weeks',
-        technologies: ['HTML', 'CSS', 'JavaScript', 'React', 'Node.js', 'MongoDB', 'Express.js'],
-        prerequisites: ['Basic computer skills', 'Understanding of internet basics'],
-        learningOutcomes: [
-          'Build responsive websites with HTML and CSS',
-          'Create interactive web applications with JavaScript',
-          'Develop modern frontend applications with React',
-          'Build RESTful APIs with Node.js and Express',
-          'Work with databases using MongoDB',
-          'Deploy applications to production',
-          'Build a complete portfolio ready for internship applications'
-        ],
-        modules: [
-          {
-            title: 'HTML & CSS Fundamentals',
-            description: 'Learn the building blocks of web development',
-            duration: '2 weeks',
-            topics: ['HTML structure', 'CSS styling', 'Responsive design', 'Flexbox', 'Grid'],
-            resources: [
-              {
-                title: 'HTML Full Course - FreeCodeCamp',
-                url: 'https://www.youtube.com/watch?v=pQN-pnXPaVg',
-                type: 'video'
-              },
-              {
-                title: 'CSS Tutorial for Beginners - Traversy Media',
-                url: 'https://www.youtube.com/watch?v=yfoY53QXEnI',
-                type: 'video'
-              },
-              {
-                title: 'MDN HTML Documentation',
-                url: 'https://developer.mozilla.org/en-US/docs/Web/HTML',
-                type: 'documentation'
-              }
-            ]
-          },
-          {
-            title: 'JavaScript Programming',
-            description: 'Master the programming language of the web',
-            duration: '3 weeks',
-            topics: ['Variables and data types', 'Functions', 'DOM manipulation', 'Events', 'Async programming'],
-            resources: [
-              {
-                title: 'JavaScript Full Course - FreeCodeCamp',
-                url: 'https://www.youtube.com/watch?v=PkZNo7MFNFg',
-                type: 'video'
-              },
-              {
-                title: 'JavaScript.info',
-                url: 'https://javascript.info/',
-                type: 'tutorial'
-              },
-              {
-                title: 'Modern JavaScript Tutorial - Net Ninja',
-                url: 'https://www.youtube.com/playlist?list=PL4cUxeGkcC9haFPT7J25Q9GRB_ZkFrQAc',
-                type: 'video'
-              }
-            ]
-          },
-          {
-            title: 'React Frontend Development',
-            description: 'Build modern user interfaces with React',
-            duration: '3 weeks',
-            topics: ['Components', 'JSX', 'Props and State', 'Hooks', 'Routing'],
-            resources: [
-              {
-                title: 'React Course for Beginners - FreeCodeCamp',
-                url: 'https://www.youtube.com/watch?v=bMknfKXIFA8',
-                type: 'video'
-              },
-              {
-                title: 'Official React Documentation',
-                url: 'https://reactjs.org/docs/getting-started.html',
-                type: 'documentation'
-              },
-              {
-                title: 'React Tutorial - Programming with Mosh',
-                url: 'https://www.youtube.com/watch?v=Ke90Tje7VS0',
-                type: 'video'
-              }
-            ]
-          },
-          {
-            title: 'Backend Development with Node.js',
-            description: 'Create server-side applications and APIs',
-            duration: '3 weeks',
-            topics: ['Node.js basics', 'Express.js', 'REST APIs', 'Authentication', 'Database integration'],
-            resources: [
-              {
-                title: 'Node.js Tutorial for Beginners - Programming with Mosh',
-                url: 'https://www.youtube.com/watch?v=TlB_eWDSMt4',
-                type: 'video'
-              },
-              {
-                title: 'Express.js Course - FreeCodeCamp',
-                url: 'https://www.youtube.com/watch?v=L72fhGm1tfE',
-                type: 'video'
-              },
-              {
-                title: 'Node.js Official Documentation',
-                url: 'https://nodejs.org/en/docs/',
-                type: 'documentation'
-              }
-            ]
-          },
-          {
-            title: 'Database & Deployment',
-            description: 'Learn database management and deployment strategies',
-            duration: '1 week',
-            topics: ['MongoDB basics', 'Database design', 'Cloud deployment', 'Environment variables'],
-            resources: [
-              {
-                title: 'MongoDB Tutorial - Net Ninja',
-                url: 'https://www.youtube.com/playlist?list=PL4cUxeGkcC9h77dJ-QJlwGlZlTd4ecZOA',
-                type: 'video'
-              },
-              {
-                title: 'Deploy to Heroku - Traversy Media',
-                url: 'https://www.youtube.com/watch?v=71wSzpLyW9k',
-                type: 'video'
-              }
-            ]
-          }
-        ],
-        projects: [
-          {
-            title: 'Personal Portfolio Website',
-            description: 'Create a responsive portfolio to showcase your projects for internship applications',
-            difficulty: 'Easy',
-            technologies: ['HTML', 'CSS', 'JavaScript']
-          },
-          {
-            title: 'Task Management App',
-            description: 'Build a full-stack task management application with authentication',
-            difficulty: 'Medium',
-            technologies: ['React', 'Node.js', 'MongoDB']
-          },
-          {
-            title: 'E-commerce Platform',
-            description: 'Complete e-commerce solution with payment integration',
-            difficulty: 'Hard',
-            technologies: ['React', 'Node.js', 'MongoDB', 'Stripe API']
-          }
-        ],
-        instructor: {
-          name: 'Robert Nguyen',
-          bio: 'Senior Full-Stack Developer with 8+ years of experience helping students land internships',
-          socialLinks: {
-            github: 'https://github.com/robert-nguyenn',
-            linkedin: 'https://linkedin.com/in/robert-nguyenn'
-          }
+    // Add the original full-stack course to maintain compatibility
+    const originalFullStackCourse = {
+      title: 'Full Stack Development Roadmap',
+      shortDescription: 'Complete roadmap to become a full-stack web developer with hands-on projects and free resources',
+      description: 'Master the complete web development stack from frontend to backend. This comprehensive roadmap includes free YouTube courses, documentation, and practical projects to build your portfolio for internship applications.',
+      level: 'Beginner',
+      category: 'Full Stack',
+      duration: '12 weeks',
+      technologies: ['HTML', 'CSS', 'JavaScript', 'React', 'Node.js', 'MongoDB', 'Express.js'],
+      prerequisites: ['Basic computer skills', 'Understanding of internet basics'],
+      learningOutcomes: [
+        'Build responsive websites with HTML and CSS',
+        'Create interactive web applications with JavaScript',
+        'Develop modern frontend applications with React',
+        'Build RESTful APIs with Node.js and Express',
+        'Work with databases using MongoDB',
+        'Deploy applications to production',
+        'Build a complete portfolio ready for internship applications'
+      ],
+      modules: [
+        {
+          title: 'HTML & CSS Fundamentals',
+          description: 'Learn the building blocks of web development',
+          duration: '2 weeks',
+          topics: ['HTML structure', 'CSS styling', 'Responsive design', 'Flexbox', 'Grid'],
+          resources: [
+            {
+              title: 'HTML Full Course - FreeCodeCamp',
+              url: 'https://www.youtube.com/watch?v=pQN-pnXPaVg',
+              type: 'video',
+              description: 'Complete HTML tutorial for beginners',
+              duration: '2 hours',
+              difficulty: 'Beginner',
+              estimatedTime: '2 hours'
+            },
+            {
+              title: 'CSS Tutorial for Beginners - Traversy Media',
+              url: 'https://www.youtube.com/watch?v=yfoY53QXEnI',
+              type: 'video',
+              description: 'CSS fundamentals and styling techniques',
+              duration: '1.5 hours',
+              difficulty: 'Beginner',
+              estimatedTime: '2 hours'
+            },
+            {
+              title: 'MDN HTML Documentation',
+              url: 'https://developer.mozilla.org/en-US/docs/Web/HTML',
+              type: 'documentation',
+              description: 'Comprehensive HTML reference',
+              difficulty: 'Beginner',
+              estimatedTime: '3 hours'
+            }
+          ]
         },
-        featured: true,
-        isPublished: true,
-        rating: { average: 4.8, count: 234 },
-        enrollmentCount: 1250,
-        tags: ['web development', 'full stack', 'javascript', 'react', 'nodejs', 'internship prep']
+        {
+          title: 'JavaScript Programming',
+          description: 'Master the programming language of the web',
+          duration: '3 weeks',
+          topics: ['Variables and data types', 'Functions', 'DOM manipulation', 'Events', 'Async programming'],
+          resources: [
+            {
+              title: 'JavaScript Full Course - FreeCodeCamp',
+              url: 'https://www.youtube.com/watch?v=PkZNo7MFNFg',
+              type: 'video',
+              description: 'Complete JavaScript programming course',
+              duration: '3.5 hours',
+              difficulty: 'Beginner',
+              estimatedTime: '4 hours'
+            },
+            {
+              title: 'JavaScript.info',
+              url: 'https://javascript.info/',
+              type: 'tutorial',
+              description: 'Modern JavaScript tutorial with interactive examples',
+              difficulty: 'Intermediate',
+              estimatedTime: '20 hours'
+            },
+            {
+              title: 'Modern JavaScript Tutorial - Net Ninja',
+              url: 'https://www.youtube.com/playlist?list=PL4cUxeGkcC9haFPT7J25Q9GRB_ZkFrQAc',
+              type: 'video',
+              description: 'ES6+ features and modern JavaScript',
+              duration: '8 hours',
+              difficulty: 'Intermediate',
+              estimatedTime: '10 hours'
+            }
+          ]
+        },
+        {
+          title: 'React Frontend Development',
+          description: 'Build modern user interfaces with React',
+          duration: '3 weeks',
+          topics: ['Components', 'JSX', 'Props and State', 'Hooks', 'Routing'],
+          resources: [
+            {
+              title: 'React Course for Beginners - FreeCodeCamp',
+              url: 'https://www.youtube.com/watch?v=bMknfKXIFA8',
+              type: 'video',
+              description: 'Complete React course for beginners',
+              duration: '12 hours',
+              difficulty: 'Intermediate',
+              estimatedTime: '15 hours'
+            },
+            {
+              title: 'Official React Documentation',
+              url: 'https://reactjs.org/docs/getting-started.html',
+              type: 'documentation',
+              description: 'Official React documentation and guides',
+              difficulty: 'Intermediate',
+              estimatedTime: '10 hours'
+            },
+            {
+              title: 'React Tutorial - Programming with Mosh',
+              url: 'https://www.youtube.com/watch?v=Ke90Tje7VS0',
+              type: 'video',
+              description: 'React fundamentals and best practices',
+              duration: '2 hours',
+              difficulty: 'Intermediate',
+              estimatedTime: '3 hours'
+            }
+          ]
+        },
+        {
+          title: 'Backend Development with Node.js',
+          description: 'Create server-side applications and APIs',
+          duration: '3 weeks',
+          topics: ['Node.js basics', 'Express.js', 'REST APIs', 'Authentication', 'Database integration'],
+          resources: [
+            {
+              title: 'Node.js Tutorial for Beginners - Programming with Mosh',
+              url: 'https://www.youtube.com/watch?v=TlB_eWDSMt4',
+              type: 'video',
+              description: 'Complete Node.js course',
+              duration: '3 hours',
+              difficulty: 'Intermediate',
+              estimatedTime: '4 hours'
+            },
+            {
+              title: 'Express.js Course - FreeCodeCamp',
+              url: 'https://www.youtube.com/watch?v=L72fhGm1tfE',
+              type: 'video',
+              description: 'Build REST APIs with Express.js',
+              duration: '2 hours',
+              difficulty: 'Intermediate',
+              estimatedTime: '3 hours'
+            },
+            {
+              title: 'Node.js Official Documentation',
+              url: 'https://nodejs.org/en/docs/',
+              type: 'documentation',
+              description: 'Official Node.js documentation',
+              difficulty: 'Intermediate',
+              estimatedTime: '5 hours'
+            }
+          ]
+        },
+        {
+          title: 'Database & Deployment',
+          description: 'Learn database management and deployment strategies',
+          duration: '1 week',
+          topics: ['MongoDB basics', 'Database design', 'Cloud deployment', 'Environment variables'],
+          resources: [
+            {
+              title: 'MongoDB Tutorial - Net Ninja',
+              url: 'https://www.youtube.com/playlist?list=PL4cUxeGkcC9h77dJ-QJlwGlZlTd4ecZOA',
+              type: 'video',
+              description: 'MongoDB fundamentals and operations',
+              duration: '3 hours',
+              difficulty: 'Beginner',
+              estimatedTime: '4 hours'
+            },
+            {
+              title: 'Deploy to Heroku - Traversy Media',
+              url: 'https://www.youtube.com/watch?v=71wSzpLyW9k',
+              type: 'video',
+              description: 'Deploy Node.js apps to Heroku',
+              duration: '30 minutes',
+              difficulty: 'Beginner',
+              estimatedTime: '1 hour'
+            }
+          ]
+        }
+      ],
+      projects: [
+        {
+          title: 'Personal Portfolio Website',
+          description: 'Create a responsive portfolio to showcase your projects for internship applications',
+          difficulty: 'Easy',
+          technologies: ['HTML', 'CSS', 'JavaScript']
+        },
+        {
+          title: 'Task Management App',
+          description: 'Build a full-stack task management application with authentication',
+          difficulty: 'Medium',
+          technologies: ['React', 'Node.js', 'MongoDB']
+        },
+        {
+          title: 'E-commerce Platform',
+          description: 'Complete e-commerce solution with payment integration',
+          difficulty: 'Hard',
+          technologies: ['React', 'Node.js', 'MongoDB', 'Stripe API']
+        }
+      ],
+      instructor: {
+        name: 'Robert Nguyen',
+        bio: 'Senior Full-Stack Developer with 8+ years of experience helping students land internships',
+        socialLinks: {
+          github: 'https://github.com/robert-nguyenn',
+          linkedin: 'https://linkedin.com/in/robert-nguyenn'
+        }
       },
-      {
-        title: 'Backend Development Roadmap',
-        shortDescription: 'Master server-side development, databases, and cloud deployment for backend engineer roles',
-        description: 'Comprehensive backend development roadmap covering APIs, databases, authentication, microservices, and cloud deployment. Perfect preparation for backend engineering internships.',
-        level: 'Intermediate',
-        category: 'Backend',
-        duration: '10 weeks',
-        technologies: ['Node.js', 'Express.js', 'PostgreSQL', 'MongoDB', 'Redis', 'Docker', 'AWS'],
-        prerequisites: ['Basic programming knowledge', 'Understanding of HTTP', 'Command line basics'],
-        learningOutcomes: [
-          'Build RESTful APIs with Node.js and Express',
-          'Design and optimize database schemas',
-          'Implement authentication and authorization',
-          'Deploy applications to cloud platforms',
-          'Build microservices architecture',
-          'Create production-ready backend systems'
-        ],
-        modules: [
-          {
-            title: 'Node.js & Express Fundamentals',
-            description: 'Build server-side applications and APIs',
-            duration: '2 weeks',
-            topics: ['Node.js core modules', 'Express.js framework', 'Middleware', 'Routing', 'Error handling'],
-            resources: [
-              {
-                title: 'Node.js Backend Development Course - Academind',
-                url: 'https://www.youtube.com/watch?v=0oXYLzuucwE',
-                type: 'video'
-              },
-              {
-                title: 'Express.js Official Guide',
-                url: 'https://expressjs.com/en/guide/routing.html',
-                type: 'documentation'
-              }
-            ]
-          },
-          {
-            title: 'Database Design & Management',
-            description: 'Master both SQL and NoSQL databases',
-            duration: '3 weeks',
-            topics: ['SQL fundamentals', 'PostgreSQL', 'MongoDB', 'Database optimization', 'ORM/ODM'],
-            resources: [
-              {
-                title: 'PostgreSQL Tutorial - FreeCodeCamp',
-                url: 'https://www.youtube.com/watch?v=qw--VYLpxG4',
-                type: 'video'
-              },
-              {
-                title: 'MongoDB University',
-                url: 'https://university.mongodb.com/',
-                type: 'tutorial'
-              }
-            ]
-          },
-          {
-            title: 'Authentication & Security',
-            description: 'Implement secure user authentication systems',
-            duration: '2 weeks',
-            topics: ['JWT tokens', 'OAuth', 'Password hashing', 'Session management', 'Security best practices'],
-            resources: [
-              {
-                title: 'JWT Authentication Tutorial - Web Dev Simplified',
-                url: 'https://www.youtube.com/watch?v=mbsmsi7l3r4',
-                type: 'video'
-              },
-              {
-                title: 'OWASP Security Guidelines',
-                url: 'https://owasp.org/www-project-top-ten/',
-                type: 'documentation'
-              }
-            ]
-          },
-          {
-            title: 'Testing & Documentation',
-            description: 'Write tests and comprehensive API documentation',
-            duration: '1.5 weeks',
-            topics: ['Unit testing', 'Integration testing', 'API documentation', 'Test-driven development'],
-            resources: [
-              {
-                title: 'Testing Node.js Applications - Traversy Media',
-                url: 'https://www.youtube.com/watch?v=I4BZQr-5mBY',
-                type: 'video'
-              }
-            ]
-          },
-          {
-            title: 'Deployment & DevOps',
-            description: 'Deploy applications to production environments',
-            duration: '1.5 weeks',
-            topics: ['Docker containers', 'AWS deployment', 'CI/CD pipelines', 'Monitoring', 'Performance optimization'],
-            resources: [
-              {
-                title: 'Docker Tutorial for Beginners - Programming with Mosh',
-                url: 'https://www.youtube.com/watch?v=pTFZFxd4hOI',
-                type: 'video'
-              },
-              {
-                title: 'AWS Fundamentals - Amazon',
-                url: 'https://aws.amazon.com/getting-started/',
-                type: 'tutorial'
-              }
-            ]
-          }
-        ],
-        projects: [
-          {
-            title: 'REST API with Authentication',
-            description: 'Build a complete REST API with user authentication and CRUD operations',
-            difficulty: 'Medium',
-            technologies: ['Node.js', 'Express.js', 'PostgreSQL', 'JWT']
-          },
-          {
-            title: 'Microservices E-commerce Backend',
-            description: 'Create a microservices architecture for an e-commerce platform',
-            difficulty: 'Hard',
-            technologies: ['Node.js', 'Docker', 'MongoDB', 'Redis', 'AWS']
-          }
-        ],
-        instructor: {
-          name: 'Sarah Chen',
-          bio: 'Senior Backend Engineer with experience at Google and startup companies',
-          socialLinks: {
-            github: 'https://github.com/sarahchen',
-            linkedin: 'https://linkedin.com/in/sarahchen'
-          }
-        },
-        featured: true,
-        isPublished: true,
-        rating: { average: 4.9, count: 156 },
-        enrollmentCount: 892,
-        tags: ['backend', 'api', 'database', 'nodejs', 'cloud', 'internship prep']
-      },
-      {
-        title: 'Machine Learning Engineer Roadmap',
-        shortDescription: 'Complete pathway to become an ML engineer with Python, TensorFlow, and real-world projects',
-        description: 'Comprehensive machine learning roadmap covering Python programming, data science fundamentals, ML algorithms, deep learning, and MLOps. Perfect preparation for ML engineering internships at tech companies.',
-        level: 'Intermediate',
-        category: 'AI/ML',
-        duration: '16 weeks',
-        technologies: ['Python', 'TensorFlow', 'PyTorch', 'Scikit-learn', 'Pandas', 'NumPy', 'Jupyter', 'Git'],
-        prerequisites: ['Basic programming knowledge', 'High school mathematics', 'Statistics fundamentals'],
-        learningOutcomes: [
-          'Build and deploy machine learning models',
-          'Analyze and process large datasets',
-          'Implement deep learning neural networks',
-          'Create end-to-end ML pipelines',
-          'Deploy models to production environments',
-          'Apply ML to real-world business problems'
-        ],
-        modules: [
-          {
-            title: 'Python for Data Science',
-            description: 'Master Python libraries for data science and ML',
-            duration: '3 weeks',
-            topics: ['Python fundamentals', 'NumPy', 'Pandas', 'Matplotlib', 'Seaborn', 'Jupyter notebooks'],
-            resources: [
-              {
-                title: 'Python for Data Science - FreeCodeCamp',
-                url: 'https://www.youtube.com/watch?v=LHBE6Q9XlzI',
-                type: 'video'
-              },
-              {
-                title: 'Pandas Documentation',
-                url: 'https://pandas.pydata.org/docs/',
-                type: 'documentation'
-              }
-            ]
-          },
-          {
-            title: 'Statistics & Mathematics for ML',
-            description: 'Essential math concepts for machine learning',
-            duration: '2 weeks',
-            topics: ['Linear algebra', 'Probability', 'Statistics', 'Calculus basics', 'Optimization'],
-            resources: [
-              {
-                title: 'Statistics for Data Science - StatQuest',
-                url: 'https://www.youtube.com/c/joshstarmer',
-                type: 'video'
-              },
-              {
-                title: 'Khan Academy Linear Algebra',
-                url: 'https://www.khanacademy.org/math/linear-algebra',
-                type: 'tutorial'
-              }
-            ]
-          },
-          {
-            title: 'Machine Learning Fundamentals',
-            description: 'Core ML algorithms and concepts',
-            duration: '4 weeks',
-            topics: ['Supervised learning', 'Unsupervised learning', 'Model evaluation', 'Cross-validation', 'Feature engineering'],
-            resources: [
-              {
-                title: 'Machine Learning Course - Andrew Ng',
-                url: 'https://www.coursera.org/learn/machine-learning',
-                type: 'tutorial'
-              },
-              {
-                title: 'Scikit-learn Tutorials',
-                url: 'https://scikit-learn.org/stable/tutorial/index.html',
-                type: 'documentation'
-              }
-            ]
-          },
-          {
-            title: 'Deep Learning with TensorFlow',
-            description: 'Build neural networks and deep learning models',
-            duration: '4 weeks',
-            topics: ['Neural networks', 'CNNs', 'RNNs', 'Transfer learning', 'Model optimization'],
-            resources: [
-              {
-                title: 'TensorFlow for Beginners - FreeCodeCamp',
-                url: 'https://www.youtube.com/watch?v=tPYj3fFJGjk',
-                type: 'video'
-              },
-              {
-                title: 'TensorFlow Official Tutorials',
-                url: 'https://www.tensorflow.org/tutorials',
-                type: 'documentation'
-              }
-            ]
-          },
-          {
-            title: 'MLOps & Model Deployment',
-            description: 'Deploy and maintain ML models in production',
-            duration: '3 weeks',
-            topics: ['Model versioning', 'CI/CD for ML', 'Model monitoring', 'Cloud deployment', 'Docker for ML'],
-            resources: [
-              {
-                title: 'MLOps Course - Made with ML',
-                url: 'https://madewithml.com/',
-                type: 'tutorial'
-              },
-              {
-                title: 'ML Model Deployment - Krish Naik',
-                url: 'https://www.youtube.com/watch?v=mrExsjcvF4o',
-                type: 'video'
-              }
-            ]
-          }
-        ],
-        projects: [
-          {
-            title: 'Predictive Analytics Dashboard',
-            description: 'Build a complete ML pipeline with data visualization dashboard',
-            difficulty: 'Medium',
-            technologies: ['Python', 'Scikit-learn', 'Streamlit', 'Pandas']
-          },
-          {
-            title: 'Computer Vision Application',
-            description: 'Create an image classification system using deep learning',
-            difficulty: 'Hard',
-            technologies: ['TensorFlow', 'OpenCV', 'Python', 'Docker']
-          },
-          {
-            title: 'NLP Sentiment Analysis API',
-            description: 'Deploy a natural language processing model as a REST API',
-            difficulty: 'Hard',
-            technologies: ['PyTorch', 'FastAPI', 'Docker', 'AWS']
-          }
-        ],
-        instructor: {
-          name: 'Dr. Michael Johnson',
-          bio: 'ML Engineer with PhD in AI, worked at Tesla and Microsoft on autonomous systems',
-          socialLinks: {
-            linkedin: 'https://linkedin.com/in/dr-michael-johnson'
-          }
-        },
-        featured: true,
-        isPublished: true,
-        rating: { average: 4.7, count: 89 },
-        enrollmentCount: 567,
-        tags: ['machine learning', 'python', 'tensorflow', 'data science', 'ai', 'internship prep']
-      }
-    ];
+      featured: true,
+      isPublished: true,
+      rating: { average: 4.8, count: 234 },
+      enrollmentCount: 1250,
+      tags: ['web development', 'full stack', 'javascript', 'react', 'nodejs', 'internship prep']
+    };
+
+    // Combine original course with new comprehensive roadmaps
+    const allCourses = [originalFullStackCourse, ...techRoadmaps];
 
     // Create courses one by one to trigger pre-save middleware for slug generation
     const createdCourses = [];
-    for (const courseData of courses) {
+    for (const courseData of allCourses) {
       const course = await Course.create(courseData);
       createdCourses.push(course);
     }
-    console.log('📚 Created sample courses');
+    console.log('📚 Created comprehensive tech roadmaps and courses');
 
     // Create sample testimonials
     const testimonials = [
       {
         name: 'Diego Sic',
         email: 'diego.sic@example.com',
-        company: 'Tech Innovations Inc.',
-        position: 'Frontend Developer',
-        content: 'My experience with SoftwareInsight has been transformative. The guidance and resources provided have not only deepened my understanding of front-end development but also equipped me with practical skills that are crucial in the industry.',
+        company: 'Google',
+        position: 'Software Engineer Intern',
+        content: 'The Frontend Development Roadmap was instrumental in landing my Google internship. The structured approach and real-world projects helped me build a portfolio that stood out to recruiters.',
         rating: 5,
-        course: createdCourses[0]._id,
+        course: createdCourses[1]._id, // Frontend roadmap
         featured: true,
         isApproved: true,
         approvedBy: adminUser._id,
@@ -516,11 +296,11 @@ const seedData = async () => {
       {
         name: 'Aiden Do',
         email: 'aiden.do@example.com',
-        company: 'StartupXYZ',
-        position: 'Full Stack Developer',
-        content: 'Enrolling in SoftwareInsight has been one of the best decisions I\'ve made. The interactive learning environment and dedicated instructors have made learning front-end development not only educational but also enjoyable.',
+        company: 'Meta',
+        position: 'Backend Engineer Intern',
+        content: 'The Backend Development Roadmap completely transformed my understanding of scalable systems. I went from struggling with basic APIs to building microservices that got me noticed by Meta recruiters.',
         rating: 5,
-        course: createdCourses[0]._id,
+        course: createdCourses[2]._id, // Backend roadmap
         featured: true,
         isApproved: true,
         approvedBy: adminUser._id,
@@ -533,15 +313,32 @@ const seedData = async () => {
       {
         name: 'Emily Rodriguez',
         email: 'emily.rodriguez@example.com',
-        company: 'Data Corp',
-        position: 'Data Analyst',
-        content: 'The Data Science course provided exactly what I needed to transition from a business analyst to a data scientist. The hands-on projects and real-world examples made complex concepts easy to understand.',
+        company: 'Netflix',
+        position: 'Data Engineer Intern',
+        content: 'The Data Engineer roadmap gave me the practical skills I needed to transition into data engineering. The real-world projects using Spark and Airflow were exactly what interviewers asked about.',
         rating: 5,
-        course: createdCourses[2]._id,
+        course: createdCourses[3]._id, // Data Engineering roadmap
         featured: true,
         isApproved: true,
         approvedBy: adminUser._id,
         approvedAt: new Date()
+      },
+      {
+        name: 'Marcus Johnson',
+        email: 'marcus.j@example.com',
+        company: 'OpenAI',
+        position: 'AI Engineer Intern',
+        content: 'The AI Engineer roadmap kept me up to date with the latest in LLMs and MLOps. The hands-on experience with transformers and deployment strategies helped me land my dream internship at OpenAI.',
+        rating: 5,
+        course: createdCourses[4]._id, // AI Engineering roadmap
+        featured: true,
+        isApproved: true,
+        approvedBy: adminUser._id,
+        approvedAt: new Date(),
+        socialLinks: {
+          github: 'https://github.com/marcus-ai',
+          linkedin: 'https://linkedin.com/in/marcus-johnson-ai'
+        }
       }
     ];
 
