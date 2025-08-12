@@ -8,7 +8,8 @@ const {
   changePassword,
   logout,
 } = require('../controllers/authController');
-const { protect } = require('../middleware/auth');
+const { protect, admin } = require('../middleware/auth');
+const User = require('../models/User');
 
 const router = express.Router();
 
@@ -46,5 +47,25 @@ router.get('/me', protect, getMe);
 router.put('/profile', protect, updateProfile);
 router.put('/change-password', protect, changePassword);
 router.post('/logout', protect, logout);
+
+// @desc    Get all users (for admin dashboard)
+// @route   GET /api/auth/users
+// @access  Private/Admin
+router.get('/users', protect, admin, async (req, res) => {
+  try {
+    const users = await User.find({})
+      .select('-password')
+      .sort({ createdAt: -1 })
+      .limit(10);
+
+    res.json(users);
+  } catch (error) {
+    console.error('Get users error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Server error'
+    });
+  }
+});
 
 module.exports = router;

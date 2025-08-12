@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import {
   Container,
   Typography,
-  Grid,
   Card,
   CardContent,
   CardActions,
@@ -179,20 +178,26 @@ const Internships: React.FC = () => {
 
       {/* Filters */}
       <Box sx={{ mb: 4 }}>
-        <Grid container spacing={2} alignItems="center">
-          <Grid item xs={12} md={3}>
-            <TextField
-              fullWidth
-              label="Search internships..."
-              variant="outlined"
-              value={searchTerm}
-              onChange={handleSearchChange}
-              placeholder="Search by title, company, or skills"
-            />
-          </Grid>
-          <Grid item xs={12} md={3}>
-            <FormControl fullWidth>
-              <InputLabel>Category</InputLabel>
+        <Box sx={{ 
+          display: 'grid',
+          gridTemplateColumns: {
+            xs: '1fr',
+            sm: 'repeat(2, 1fr)',
+            md: 'repeat(4, 1fr)'
+          },
+          gap: 2,
+          alignItems: 'center'
+        }}>
+          <TextField
+            fullWidth
+            label="Search internships..."
+            variant="outlined"
+            value={searchTerm}
+            onChange={handleSearchChange}
+            placeholder="Search by title, company, or skills"
+          />
+          <FormControl fullWidth>
+            <InputLabel>Category</InputLabel>
               <Select
                 value={selectedCategory}
                 label="Category"
@@ -206,39 +211,34 @@ const Internships: React.FC = () => {
                 ))}
               </Select>
             </FormControl>
-          </Grid>
-          <Grid item xs={12} md={3}>
-            <FormControl fullWidth>
-              <InputLabel>Level</InputLabel>
-              <Select
-                value={selectedLevel}
-                label="Level"
-                onChange={handleLevelChange}
-              >
-                <MenuItem value="">All Levels</MenuItem>
-                {levels.map((level) => (
-                  <MenuItem key={level} value={level}>
-                    {level}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </Grid>
-          <Grid item xs={12} md={3}>
-            <FormControlLabel
-              control={
-                <Switch
-                  checked={remoteOnly}
-                  onChange={(e) => {
-                    setRemoteOnly(e.target.checked);
-                    setPage(1);
-                  }}
-                />
-              }
-              label="Remote only"
-            />
-          </Grid>
-        </Grid>
+          <FormControl fullWidth>
+            <InputLabel>Level</InputLabel>
+            <Select
+              value={selectedLevel}
+              label="Level"
+              onChange={handleLevelChange}
+            >
+              <MenuItem value="">All Levels</MenuItem>
+              {levels.map((level) => (
+                <MenuItem key={level} value={level}>
+                  {level}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+          <FormControlLabel
+            control={
+              <Switch
+                checked={remoteOnly}
+                onChange={(e) => {
+                  setRemoteOnly(e.target.checked);
+                  setPage(1);
+                }}
+              />
+            }
+            label="Remote only"
+          />
+        </Box>
       </Box>
 
       {/* Loading */}
@@ -258,16 +258,26 @@ const Internships: React.FC = () => {
       {/* Internships Grid */}
       {!loading && !error && (
         <>
-          <Grid container spacing={3}>
+          <Box sx={{ 
+            display: 'grid',
+            gridTemplateColumns: {
+              xs: '1fr',
+              sm: 'repeat(2, 1fr)',
+              md: 'repeat(2, 1fr)',
+              lg: 'repeat(3, 1fr)'
+            },
+            gap: 3,
+            mb: 4
+          }}>
             {internships.map((internship) => (
-              <Grid item xs={12} md={6} lg={4} key={internship._id}>
-                <Card 
-                  sx={{ 
-                    height: '100%', 
-                    display: 'flex', 
-                    flexDirection: 'column',
-                    cursor: 'pointer',
-                    transition: 'transform 0.2s',
+              <Card 
+                key={internship._id}
+                sx={{ 
+                  height: '100%', 
+                  display: 'flex', 
+                  flexDirection: 'column',
+                  cursor: 'pointer',
+                  transition: 'transform 0.2s',
                     '&:hover': {
                       transform: 'translateY(-4px)'
                     }
@@ -422,9 +432,8 @@ const Internships: React.FC = () => {
                     </Button>
                   </CardActions>
                 </Card>
-              </Grid>
             ))}
-          </Grid>
+          </Box>
 
           {/* No results */}
           {internships.length === 0 && (

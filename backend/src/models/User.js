@@ -57,6 +57,14 @@ const userSchema = new mongoose.Schema({
     type: String,
     maxlength: [500, 'Bio cannot be more than 500 characters']
   },
+  company: {
+    type: String,
+    maxlength: [100, 'Company name cannot be more than 100 characters']
+  },
+  title: {
+    type: String,
+    maxlength: [100, 'Job title cannot be more than 100 characters']
+  },
   socialLinks: {
     github: String,
     linkedin: String,

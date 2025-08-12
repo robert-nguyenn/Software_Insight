@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   Container,
   Typography,
-  Grid,
   Card,
   CardContent,
   CardMedia,
@@ -123,8 +122,13 @@ const Courses: React.FC = () => {
 
       {/* Filters */}
       <Box sx={{ mb: 4 }}>
-        <Grid container spacing={2} alignItems="center">
-          <Grid item xs={12} md={4}>
+        <Box sx={{ 
+          display: 'flex', 
+          flexDirection: { xs: 'column', md: 'row' },
+          gap: 2,
+          alignItems: 'center'
+        }}>
+          <Box sx={{ flex: 1, minWidth: { xs: '100%', md: '200px' } }}>
             <TextField
               fullWidth
               label="Search courses..."
@@ -133,8 +137,8 @@ const Courses: React.FC = () => {
               onChange={handleSearchChange}
               placeholder="Search by title, description, or technology"
             />
-          </Grid>
-          <Grid item xs={12} md={4}>
+          </Box>
+          <Box sx={{ flex: 1, minWidth: { xs: '100%', md: '200px' } }}>
             <FormControl fullWidth>
               <InputLabel>Level</InputLabel>
               <Select
@@ -150,8 +154,8 @@ const Courses: React.FC = () => {
                 ))}
               </Select>
             </FormControl>
-          </Grid>
-          <Grid item xs={12} md={4}>
+          </Box>
+          <Box sx={{ flex: 1, minWidth: { xs: '100%', md: '200px' } }}>
             <FormControl fullWidth>
               <InputLabel>Category</InputLabel>
               <Select
@@ -167,8 +171,8 @@ const Courses: React.FC = () => {
                 ))}
               </Select>
             </FormControl>
-          </Grid>
-        </Grid>
+          </Box>
+        </Box>
       </Box>
 
       {/* Loading */}
@@ -188,22 +192,32 @@ const Courses: React.FC = () => {
       {/* Courses Grid */}
       {!loading && !error && (
         <>
-          <Grid container spacing={3}>
+          <Box sx={{ 
+            display: 'grid',
+            gridTemplateColumns: {
+              xs: '1fr',
+              sm: 'repeat(2, 1fr)',
+              md: 'repeat(2, 1fr)',
+              lg: 'repeat(3, 1fr)'
+            },
+            gap: 3,
+            mb: 4
+          }}>
             {courses.map((course) => (
-              <Grid item xs={12} md={6} lg={4} key={course._id}>
-                <Card 
-                  sx={{ 
-                    height: '100%', 
-                    display: 'flex', 
-                    flexDirection: 'column',
-                    cursor: 'pointer',
-                    transition: 'transform 0.2s',
-                    '&:hover': {
-                      transform: 'translateY(-4px)'
-                    }
-                  }}
-                  onClick={() => handleCourseClick(course)}
-                >
+              <Card 
+                key={course._id}
+                sx={{ 
+                  height: '100%', 
+                  display: 'flex', 
+                  flexDirection: 'column',
+                  cursor: 'pointer',
+                  transition: 'transform 0.2s',
+                  '&:hover': {
+                    transform: 'translateY(-4px)'
+                  }
+                }}
+                onClick={() => handleCourseClick(course)}
+              >
                   {course.thumbnail && (
                     <CardMedia
                       component="img"
@@ -322,9 +336,8 @@ const Courses: React.FC = () => {
                     </Box>
                   </CardActions>
                 </Card>
-              </Grid>
             ))}
-          </Grid>
+          </Box>
 
           {/* No results */}
           {courses.length === 0 && (

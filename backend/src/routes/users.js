@@ -4,6 +4,83 @@ const { protect, admin } = require('../middleware/auth');
 
 const router = express.Router();
 
+// @desc    Get current user profile
+// @route   GET /api/users/profile
+// @access  Private
+router.get('/profile', protect, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id)
+      .populate('enrolledCourses.course', 'title slug');
+
+    // Get applied internships from applications
+    // Note: This would need an applications model in a real app
+    const profile = {
+      name: user.name,
+      email: user.email,
+      bio: user.bio || '',
+      company: user.company || '',
+      title: user.title || '',
+      enrolledCourses: user.enrolledCourses.map(ec => ({
+        _id: ec.course._id,
+        title: ec.course.title,
+        progress: ec.progress || 0
+      })),
+      appliedInternships: [] // Would be populated from applications model
+    };
+
+    res.json(profile);
+  } catch (error) {
+    console.error('Get profile error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Server error'
+    });
+  }
+});
+
+// @desc    Update current user profile
+// @route   PUT /api/users/profile
+// @access  Private
+router.put('/profile', protect, async (req, res) => {
+  try {
+    const { name, bio, company, title } = req.body;
+
+    const user = await User.findById(req.user.id);
+
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: 'User not found'
+      });
+    }
+
+    if (name) user.name = name;
+    if (bio !== undefined) user.bio = bio;
+    if (company !== undefined) user.company = company;
+    if (title !== undefined) user.title = title;
+
+    await user.save();
+
+    res.json({
+      success: true,
+      message: 'Profile updated successfully',
+      data: {
+        name: user.name,
+        email: user.email,
+        bio: user.bio,
+        company: user.company,
+        title: user.title
+      }
+    });
+  } catch (error) {
+    console.error('Update profile error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Server error'
+    });
+  }
+});
+
 // @desc    Get all users
 // @route   GET /api/users
 // @access  Private/Admin

@@ -3,7 +3,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import {
   Container,
   Typography,
-  Grid,
   Card,
   CardContent,
   Button,
@@ -131,9 +130,16 @@ const CourseDetail: React.FC = () => {
 
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
-      <Grid container spacing={4}>
+      <Box sx={{ 
+        display: 'grid',
+        gridTemplateColumns: {
+          xs: '1fr',
+          md: '2fr 1fr'
+        },
+        gap: 4
+      }}>
         {/* Main Content */}
-        <Grid item xs={12} md={8}>
+        <Box>
           {/* Course Header */}
           <Box sx={{ mb: 4 }}>
             <Typography variant="h3" component="h1" gutterBottom fontWeight="bold">
@@ -283,10 +289,16 @@ const CourseDetail: React.FC = () => {
                 <Typography variant="h5" gutterBottom>
                   Projects You'll Build
                 </Typography>
-                <Grid container spacing={2}>
+                <Box sx={{ 
+                  display: 'grid',
+                  gridTemplateColumns: {
+                    xs: '1fr',
+                    md: 'repeat(2, 1fr)'
+                  },
+                  gap: 2
+                }}>
                   {course.projects.map((project, index) => (
-                    <Grid item xs={12} md={6} key={index}>
-                      <Paper sx={{ p: 2 }}>
+                    <Paper sx={{ p: 2 }}>
                         <Typography variant="h6" gutterBottom>
                           {project.title}
                         </Typography>
@@ -313,16 +325,15 @@ const CourseDetail: React.FC = () => {
                           ))}
                         </Box>
                       </Paper>
-                    </Grid>
                   ))}
-                </Grid>
+                </Box>
               </CardContent>
             </Card>
           )}
-        </Grid>
+        </Box>
 
         {/* Sidebar */}
-        <Grid item xs={12} md={4}>
+        <Box>
           {/* Course Thumbnail */}
           {course.thumbnail && (
             <Card sx={{ mb: 3 }}>
@@ -487,8 +498,8 @@ const CourseDetail: React.FC = () => {
               </Box>
             </CardContent>
           </Card>
-        </Grid>
-      </Grid>
+        </Box>
+      </Box>
     </Container>
   );
 };
