@@ -28,6 +28,22 @@ const seedData = async () => {
 
     console.log('👤 Created admin user');
 
+    // Create demo user for easy testing
+    const demoUser = await User.create({
+      name: 'Demo Student',
+      email: 'demo.student@internprep.com',
+      password: 'demo123',
+      role: 'user',
+      bio: 'Demo account for exploring the Software Insight internship preparation platform',
+      skills: ['JavaScript', 'Python', 'React', 'Problem Solving'],
+      socialLinks: {
+        github: 'https://github.com/demostudent',
+        linkedin: 'https://linkedin.com/in/demostudent'
+      }
+    });
+
+    console.log('🎭 Created demo user');
+
     // Create sample learning roadmaps (renamed from courses)
     const courses = [
       {

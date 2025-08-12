@@ -66,8 +66,8 @@ const Login: React.FC = () => {
 
   const handleDemoLogin = async () => {
     const demoCredentials = {
-      email: 'admin@softwareinsight.com',
-      password: 'admin123'
+      email: 'demo.student@internprep.com',
+      password: 'demo123'
     };
     
     setFormData(demoCredentials);
