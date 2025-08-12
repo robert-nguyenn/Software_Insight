@@ -36,53 +36,42 @@ import {
   OpenInNew
 } from '@mui/icons-material';
 
-export interface CompanyInternshipData {
-  id: string;
+interface CompanyInternshipData {
+  id: number;
   name: string;
   logo: string;
-  position: string;
+  description: string;
+  payRange: [number, number];
   duration: string;
-  payRange: {
-    min: number;
-    max: number;
-    currency: string;
-    period: string;
-  };
   locations: Array<{
     city: string;
     state?: string;
     country: string;
-    headcount: string;
-    isRemote?: boolean;
+    headcount: number;
   }>;
-  description: string;
+  skills: string[];
   requirements: string[];
   benefits: string[];
+  applicationDeadline: string;
   difficulty: string;
+  openRoles: number;
+  companySize: string;
+  industry: string;
   website: string;
-  industry?: string;
-  companySize?: string;
-  openRoles?: number;
-  applicationDeadline?: string;
-  techStack?: string[];
   interviewProcess: {
     totalRounds: number;
-    onlineAssessment?: boolean;
     rounds: Array<{
       name: string;
       duration: string;
-      format: string;
       description: string;
-      difficulty: string;
-      tips?: string[];
+      tips: string[];
     }>;
     timeline: string;
-    tips: string[];
+    onlineAssessment: boolean;
   };
   applicationTips: string[];
-  skills: string[];
+  techStack: string[];
   companyValues: string[];
-  responsibilities: string[];
 }
 
 interface CompanyInternshipCardProps {
@@ -119,11 +108,12 @@ const CompanyInternshipCard: React.FC<CompanyInternshipCardProps> = ({ company }
   const [expanded, setExpanded] = useState(false);
   const [activeTab, setActiveTab] = useState(0);
 
-  const formatSalary = (range: { min: number; max: number; currency: string; period: string }): string => {
-    if (range.min === range.max) {
-      return `$${range.min.toLocaleString()} ${range.currency}/${range.period}`;
+  const formatSalary = (range: [number, number]): string => {
+    const [min, max] = range;
+    if (min === max) {
+      return `$${min.toLocaleString()}/month`;
     }
-    return `$${range.min.toLocaleString()} - $${range.max.toLocaleString()} ${range.currency}/${range.period}`;
+    return `$${min.toLocaleString()} - $${max.toLocaleString()}/month`;
   };
 
   const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -403,7 +393,7 @@ const CompanyInternshipCard: React.FC<CompanyInternshipCardProps> = ({ company }
                       Tips for Success:
                     </Typography>
                     <List dense>
-                      {round.tips?.map((tip, tipIndex) => (
+                      {round.tips.map((tip, tipIndex) => (
                         <ListItem key={tipIndex}>
                           <ListItemIcon>
                             <Star color="primary" sx={{ fontSize: 16 }} />
@@ -445,7 +435,7 @@ const CompanyInternshipCard: React.FC<CompanyInternshipCardProps> = ({ company }
                           {location.state ? `${location.state}, ` : ''}{location.country}
                         </Typography>
                         <Typography variant="body2" sx={{ mt: 1 }}>
-                          This is one of our {parseInt(location.headcount.replace(/[^\d]/g, '')) > 5000 ? 'major' : parseInt(location.headcount.replace(/[^\d]/g, '')) > 1000 ? 'significant' : 'growing'} offices
+                          This is one of our {location.headcount > 5000 ? 'major' : location.headcount > 1000 ? 'significant' : 'growing'} offices
                         </Typography>
                       </Paper>
                     </Box>
@@ -481,7 +471,7 @@ const CompanyInternshipCard: React.FC<CompanyInternshipCardProps> = ({ company }
                       Technical Skills
                     </Typography>
                     <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-                      {company.techStack?.map((tech, index) => (
+                      {company.techStack.map((tech, index) => (
                         <Chip 
                           key={index}
                           label={tech} 
