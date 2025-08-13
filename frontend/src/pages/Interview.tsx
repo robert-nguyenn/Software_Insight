@@ -377,20 +377,87 @@ const Interview: React.FC = () => {
               </Box>
             </AccordionSummary>
             <AccordionDetails>
-              <Box>
-                <Typography variant="subtitle1" sx={{ fontWeight: 600, mb: 1, color: 'primary.main' }}>
-                  Tips:
-                </Typography>
-                <List dense>
-                  {question.tips.map((tip, tipIndex) => (
-                    <ListItem key={tipIndex}>
-                      <ListItemIcon>
-                        <CheckCircle color="success" fontSize="small" />
-                      </ListItemIcon>
-                      <ListItemText primary={tip} />
-                    </ListItem>
-                  ))}
-                </List>
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+                {/* Category Badge */}
+                <Box>
+                  <Chip 
+                    label={question.category} 
+                    size="small" 
+                    color="secondary" 
+                    variant="outlined"
+                    sx={{ fontWeight: 500 }}
+                  />
+                </Box>
+
+                {/* STAR Template */}
+                <Box>
+                  <Typography variant="subtitle1" sx={{ fontWeight: 600, mb: 2, color: 'primary.main' }}>
+                    📝 STAR Method Template:
+                  </Typography>
+                  <Box sx={{ display: 'grid', gap: 2, gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' } }}>
+                    <Card variant="outlined" sx={{ p: 2 }}>
+                      <Typography variant="subtitle2" sx={{ fontWeight: 600, color: 'error.main', mb: 1 }}>
+                        🎯 Situation
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        {question.template.situation}
+                      </Typography>
+                    </Card>
+                    <Card variant="outlined" sx={{ p: 2 }}>
+                      <Typography variant="subtitle2" sx={{ fontWeight: 600, color: 'warning.main', mb: 1 }}>
+                        📋 Task
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        {question.template.task}
+                      </Typography>
+                    </Card>
+                    <Card variant="outlined" sx={{ p: 2 }}>
+                      <Typography variant="subtitle2" sx={{ fontWeight: 600, color: 'info.main', mb: 1 }}>
+                        ⚡ Action
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        {question.template.action}
+                      </Typography>
+                    </Card>
+                    <Card variant="outlined" sx={{ p: 2 }}>
+                      <Typography variant="subtitle2" sx={{ fontWeight: 600, color: 'success.main', mb: 1 }}>
+                        🎉 Result
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        {question.template.result}
+                      </Typography>
+                    </Card>
+                  </Box>
+                </Box>
+
+                {/* Sample Answer */}
+                <Box>
+                  <Typography variant="subtitle1" sx={{ fontWeight: 600, mb: 2, color: 'primary.main' }}>
+                    💡 Sample Answer:
+                  </Typography>
+                  <Card sx={{ p: 3, backgroundColor: 'grey.50', border: '1px solid', borderColor: 'primary.light' }}>
+                    <Typography variant="body2" sx={{ lineHeight: 1.6, fontStyle: 'italic' }}>
+                      "{question.sampleAnswer}"
+                    </Typography>
+                  </Card>
+                </Box>
+
+                {/* Tips */}
+                <Box>
+                  <Typography variant="subtitle1" sx={{ fontWeight: 600, mb: 1, color: 'primary.main' }}>
+                    💎 Tips for Success:
+                  </Typography>
+                  <List dense>
+                    {question.tips.map((tip, tipIndex) => (
+                      <ListItem key={tipIndex}>
+                        <ListItemIcon>
+                          <CheckCircle color="success" fontSize="small" />
+                        </ListItemIcon>
+                        <ListItemText primary={tip} />
+                      </ListItem>
+                    ))}
+                  </List>
+                </Box>
               </Box>
             </AccordionDetails>
           </Accordion>
@@ -409,8 +476,20 @@ const Interview: React.FC = () => {
 
         <Box sx={{ display: 'grid', gap: 3, gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', lg: '1fr 1fr 1fr' } }}>
           {internshipPlatforms.map((platform, index) => (
-            <Card key={index} sx={{ height: 'fit-content' }}>
-              <CardContent>
+            <Card 
+              key={index} 
+              sx={{ 
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
+                '&:hover': {
+                  transform: 'translateY(-4px)',
+                  boxShadow: 4
+                }
+              }}
+            >
+              <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 2 }}>
                   <Typography variant="h6" sx={{ fontWeight: 600, color: 'primary.main' }}>
                     {platform.name}
@@ -422,17 +501,56 @@ const Interview: React.FC = () => {
                     variant="outlined"
                   />
                 </Box>
-                <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                <Typography 
+                  variant="body2" 
+                  color="text.secondary" 
+                  sx={{ 
+                    mb: 2, 
+                    flexGrow: 1,
+                    overflow: 'hidden',
+                    display: '-webkit-box',
+                    WebkitLineClamp: 3,
+                    WebkitBoxOrient: 'vertical',
+                    lineHeight: 1.5,
+                    minHeight: '4.5em' // 3 lines × 1.5 line-height
+                  }}
+                >
                   {platform.description}
                 </Typography>
+                <Box sx={{ mt: 'auto' }}>
+                  <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 500 }}>
+                    Specialties:
+                  </Typography>
+                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5, mt: 0.5 }}>
+                    {platform.specialties.slice(0, 3).map((specialty, idx) => (
+                      <Chip 
+                        key={idx}
+                        label={specialty} 
+                        size="small" 
+                        variant="outlined" 
+                        sx={{ fontSize: '0.7rem', height: '20px' }}
+                      />
+                    ))}
+                    {platform.specialties.length > 3 && (
+                      <Chip 
+                        label={`+${platform.specialties.length - 3}`} 
+                        size="small" 
+                        variant="outlined" 
+                        sx={{ fontSize: '0.7rem', height: '20px' }}
+                      />
+                    )}
+                  </Box>
+                </Box>
               </CardContent>
-              <CardActions>
+              <CardActions sx={{ mt: 'auto', px: 2, pb: 2 }}>
                 <Button 
                   href={platform.url} 
                   target="_blank" 
                   startIcon={<Launch />}
                   variant="outlined"
                   size="small"
+                  fullWidth
+                  sx={{ fontWeight: 500 }}
                 >
                   Visit Platform
                 </Button>
@@ -468,10 +586,22 @@ const Interview: React.FC = () => {
               </Typography>
               <Box sx={{ display: 'grid', gap: 2, gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' } }}>
                 {filteredResources.map((resource, index) => (
-                  <Card key={index}>
-                    <CardContent>
+                  <Card 
+                    key={index}
+                    sx={{ 
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
+                      '&:hover': {
+                        transform: 'translateY(-2px)',
+                        boxShadow: 3
+                      }
+                    }}
+                  >
+                    <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
                       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 1 }}>
-                        <Typography variant="h6" sx={{ fontWeight: 600 }}>
+                        <Typography variant="h6" sx={{ fontWeight: 600, color: 'primary.main' }}>
                           {resource.title}
                         </Typography>
                         <Chip 
@@ -481,17 +611,31 @@ const Interview: React.FC = () => {
                           variant="outlined"
                         />
                       </Box>
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography 
+                        variant="body2" 
+                        color="text.secondary" 
+                        sx={{ 
+                          flexGrow: 1,
+                          overflow: 'hidden',
+                          display: '-webkit-box',
+                          WebkitLineClamp: 3,
+                          WebkitBoxOrient: 'vertical',
+                          lineHeight: 1.5,
+                          minHeight: '4.5em'
+                        }}
+                      >
                         {resource.description}
                       </Typography>
                     </CardContent>
-                    <CardActions>
+                    <CardActions sx={{ mt: 'auto', px: 2, pb: 2 }}>
                       <Button 
                         href={resource.url} 
                         target="_blank" 
                         startIcon={<Launch />}
                         variant="outlined"
                         size="small"
+                        fullWidth
+                        sx={{ fontWeight: 500 }}
                       >
                         Open Resource
                       </Button>
@@ -516,18 +660,50 @@ const Interview: React.FC = () => {
 
         <Box sx={{ display: 'grid', gap: 3, gridTemplateColumns: { xs: '1fr', lg: '1fr 1fr 1fr' } }}>
           {interviewTips.map((tipCategory, index) => (
-            <Card key={index} sx={{ height: 'fit-content' }}>
-              <CardContent>
-                <Typography variant="h6" gutterBottom sx={{ fontWeight: 600, color: 'primary.main' }}>
+            <Card 
+              key={index} 
+              sx={{ 
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
+                '&:hover': {
+                  transform: 'translateY(-4px)',
+                  boxShadow: 4
+                }
+              }}
+            >
+              <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+                <Typography 
+                  variant="h6" 
+                  gutterBottom 
+                  sx={{ 
+                    fontWeight: 600, 
+                    color: 'primary.main',
+                    textAlign: 'center',
+                    pb: 1,
+                    borderBottom: '2px solid',
+                    borderColor: 'primary.light',
+                    mb: 2
+                  }}
+                >
                   {tipCategory.category}
                 </Typography>
-                <List dense>
+                <List dense sx={{ flexGrow: 1 }}>
                   {tipCategory.tips.map((tip, tipIndex) => (
-                    <ListItem key={tipIndex}>
-                      <ListItemIcon>
+                    <ListItem key={tipIndex} sx={{ py: 0.5 }}>
+                      <ListItemIcon sx={{ minWidth: '30px' }}>
                         <CheckCircle color="success" fontSize="small" />
                       </ListItemIcon>
-                      <ListItemText primary={tip} />
+                      <ListItemText 
+                        primary={tip} 
+                        sx={{ 
+                          '& .MuiTypography-root': { 
+                            fontSize: '0.875rem',
+                            lineHeight: 1.4
+                          } 
+                        }}
+                      />
                     </ListItem>
                   ))}
                 </List>
