@@ -1,4 +1,8 @@
-const internshipsData = [
+// Import comprehensive internships data
+const { comprehensiveInternshipsData } = require('./comprehensiveInternshipsSeeds');
+
+// Original core internships (keeping for compatibility)
+const originalInternshipsData = [
   {
     title: 'Software Engineer Intern',
     company: {
@@ -32,9 +36,9 @@ const internshipsData = [
       currency: 'USD',
       period: 'monthly'
     },
-    applicationDeadline: new Date('2024-03-15'),
-    startDate: new Date('2024-06-01'),
-    endDate: new Date('2024-08-23'),
+    applicationDeadline: new Date('2026-03-15'),
+    startDate: new Date('2026-06-01'),
+    endDate: new Date('2026-08-23'),
     applicationUrl: 'https://careers.google.com/students/',
     category: 'Software Engineering',
     level: 'Entry Level',
@@ -76,9 +80,9 @@ const internshipsData = [
       currency: 'USD',
       period: 'monthly'
     },
-    applicationDeadline: new Date('2024-02-28'),
-    startDate: new Date('2024-06-03'),
-    endDate: new Date('2024-08-25'),
+    applicationDeadline: new Date('2026-02-28'),
+    startDate: new Date('2026-06-03'),
+    endDate: new Date('2026-08-25'),
     applicationUrl: 'https://careers.microsoft.com/students/',
     category: 'Software Engineering',
     level: 'Entry Level',
@@ -120,9 +124,9 @@ const internshipsData = [
       currency: 'USD',
       period: 'monthly'
     },
-    applicationDeadline: new Date('2024-03-01'),
-    startDate: new Date('2024-05-28'),
-    endDate: new Date('2024-08-30'),
+    applicationDeadline: new Date('2026-03-01'),
+    startDate: new Date('2026-05-28'),
+    endDate: new Date('2026-08-30'),
     applicationUrl: 'https://www.metacareers.com/students/',
     category: 'Software Engineering',
     level: 'Entry Level',
@@ -164,9 +168,9 @@ const internshipsData = [
       currency: 'USD',
       period: 'monthly'
     },
-    applicationDeadline: new Date('2024-03-20'),
-    startDate: new Date('2024-06-01'),
-    endDate: new Date('2024-08-23'),
+    applicationDeadline: new Date('2026-03-20'),
+    startDate: new Date('2026-06-01'),
+    endDate: new Date('2026-08-23'),
     applicationUrl: 'https://openai.com/careers/',
     category: 'AI/ML',
     level: 'Advanced',
@@ -208,9 +212,9 @@ const internshipsData = [
       currency: 'USD',
       period: 'monthly'
     },
-    applicationDeadline: new Date('2024-02-20'),
-    startDate: new Date('2024-06-01'),
-    endDate: new Date('2024-08-23'),
+    applicationDeadline: new Date('2026-02-20'),
+    startDate: new Date('2026-06-01'),
+    endDate: new Date('2026-08-23'),
     applicationUrl: 'https://jobs.netflix.com/students/',
     category: 'Data Science',
     level: 'Intermediate',
@@ -252,9 +256,9 @@ const internshipsData = [
       currency: 'USD',
       period: 'monthly'
     },
-    applicationDeadline: new Date('2024-02-15'),
-    startDate: new Date('2024-06-10'),
-    endDate: new Date('2024-09-01'),
+    applicationDeadline: new Date('2026-02-15'),
+    startDate: new Date('2026-06-10'),
+    endDate: new Date('2026-09-01'),
     applicationUrl: 'https://amazon.jobs/students/',
     category: 'DevOps',
     level: 'Entry Level',
@@ -264,5 +268,8 @@ const internshipsData = [
     tags: ['internship', 'devops', 'aws', 'cloud']
   }
 ];
+
+// Combine original internships with comprehensive internships from 20 major companies
+const internshipsData = [...originalInternshipsData, ...comprehensiveInternshipsData];
 
 module.exports = { internshipsData };
