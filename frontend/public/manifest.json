@@ -3,17 +3,17 @@
   "name": "CodeLaunch - Launch Your Software Engineering Career",
   "icons": [
     {
-      "src": "images/softwareinsightlogo.png",
+      "src": "favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/png"
+      "type": "image/x-icon"
     },
     {
-      "src": "images/softwareinsightlogo.png",
+      "src": "images/codelaunchlogo.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "images/softwareinsightlogo.png",
+      "src": "images/codelaunchlogo.png",
       "type": "image/png",
       "sizes": "512x512"
     }

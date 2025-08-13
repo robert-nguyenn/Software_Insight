@@ -136,7 +136,7 @@ const Footer: React.FC = () => {
                 <motion.img
                   whileHover={{ scale: 1.05, rotate: 5 }}
                   transition={{ duration: 0.3 }}
-                  src="/images/softwareinsightlogo.png"
+                  src="/images/codelaunchlogo.png"
                   alt="CodeLaunch Logo"
                   style={{
                     height: '32px',
