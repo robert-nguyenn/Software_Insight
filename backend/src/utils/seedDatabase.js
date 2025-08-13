@@ -22,7 +22,7 @@ const sampleUsers = [
   {
     firstName: 'Admin',
     lastName: 'User',
-    email: 'admin@softwareinsight.com',
+    email: 'admin@codelaunch.com',
     password: 'admin123',
     role: 'admin',
     profilePicture: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
@@ -466,7 +466,7 @@ async function seedDatabase() {
 
     console.log('Database seeded successfully!');
     console.log('\nSample login credentials:');
-    console.log('Admin: admin@softwareinsight.com / admin123');
+    console.log('Admin: admin@codelaunch.com / admin123');
     console.log('Student: john@example.com / password123');
     console.log('Student: jane@example.com / password123');
     console.log('Student: sarah@example.com / password123');

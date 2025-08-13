@@ -267,7 +267,7 @@ const seedData = async () => {
     console.log('✅ Seed data created successfully!');
     console.log(`
 📊 Summary:
-- Admin user: admin@softwareinsight.com (password: admin123)
+- Admin user: admin@codelaunch.com (password: admin123)
 - Courses: ${createdCourses.length}
 - Testimonials: ${testimonialsData.length}
 - Internships: ${internshipsData.length}

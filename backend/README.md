@@ -132,7 +132,7 @@ The API will be available at `http://localhost:5000`
 ## Default Admin Account
 
 After running the seed script, you can login with:
-- **Email**: admin@softwareinsight.com
+- **Email**: admin@codelaunch.com
 - **Password**: admin123
 
 ## Environment Variables

@@ -375,9 +375,9 @@ const TermsOfService: React.FC = () => {
             border: '1px solid #cbd5e1',
           }}>
             <Typography variant="body1" component="div" sx={{ lineHeight: 1.8 }}>
-              <strong>Email:</strong> legal@codelaunch.com<br />
+              <strong>Email:</strong> robert.nguyenanh@gmail.com<br />
               <strong>Address:</strong> CodeLaunch, Inc.<br />
-              123 Tech Street, San Francisco, CA 94105
+              Danville, Kentucky, USA
             </Typography>
           </Box>
         </MotionBox>

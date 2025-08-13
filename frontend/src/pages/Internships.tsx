@@ -4,7 +4,6 @@ import {
   Typography,
   Card,
   CardContent,
-  CardActions,
   Button,
   Chip,
   Box,
@@ -28,7 +27,6 @@ import {
   Business,
   AttachMoney,
   Search,
-  Language,
   CalendarToday,
   Login,
   BookmarkBorder,
@@ -559,6 +557,48 @@ const Internships: React.FC = () => {
     const acceptanceRates = ['< 15%', '< 10%', '< 5%', '< 3%', '< 1%'];
     const leetCodeCounts = ['100+', '150+', '200+', '250+', '300+'];
     
+    // Company-specific focus areas based on their business domain
+    const getCompanySpecificFocusAreas = (name: string) => {
+      const companyFocusMap: { [key: string]: string[] } = {
+        'Pinterest': ['Visual Search', 'Recommendation Systems', 'Computer Vision', 'Data Science', 'User Experience'],
+        'Dropbox': ['Distributed Systems', 'File Storage', 'Cloud Architecture', 'Security', 'Collaboration Tools'],
+        'LinkedIn': ['Professional Networks', 'Recruiting Tech', 'Social Algorithms', 'Enterprise Solutions', 'Career Development'],
+        'Zoom': ['Video Technology', 'Real-time Communication', 'WebRTC', 'Scalability', 'Audio Processing'],
+        'Spotify': ['Music Technology', 'Recommendation Algorithms', 'Audio Processing', 'Data Analytics', 'Content Discovery'],
+        'Uber': ['Marketplace Algorithms', 'Location Services', 'Real-time Systems', 'Mobile Technology', 'Logistics'],
+        'Airbnb': ['Marketplace Trust', 'Travel Technology', 'Search & Discovery', 'Hospitality Tech', 'Community Building'],
+        'Tesla': ['Autonomous Driving', 'Electric Vehicles', 'Machine Learning', 'Embedded Systems', 'Battery Technology'],
+        'Stripe': ['Payment Processing', 'Financial Infrastructure', 'API Design', 'Fraud Detection', 'Global Commerce'],
+        'NVIDIA': ['GPU Computing', 'AI Acceleration', 'Computer Graphics', 'Parallel Computing', 'High Performance'],
+        'Salesforce': ['CRM Technology', 'Cloud Platforms', 'Enterprise Software', 'Customer Success', 'Business Automation'],
+        'Adobe': ['Creative Software', 'Digital Media', 'Content Creation', 'Design Tools', 'Creative Cloud'],
+        'Oracle': ['Database Systems', 'Enterprise Software', 'Cloud Infrastructure', 'Business Applications', 'Data Management'],
+        'IBM': ['Enterprise AI', 'Cloud Computing', 'Quantum Computing', 'Consulting Solutions', 'Watson Technology'],
+        'Snap Inc.': ['AR Technology', 'Mobile Apps', 'Computer Vision', 'Content Creation', 'Social Media'],
+        'Twitch': ['Live Streaming', 'Gaming Technology', 'Content Creation', 'Community Building', 'Real-time Chat'],
+        'Discord': ['Gaming Communication', 'Voice Technology', 'Community Platforms', 'Real-time Messaging', 'Social Gaming'],
+        'Reddit': ['Social Platforms', 'Content Aggregation', 'Community Management', 'Discussion Forums', 'User Engagement'],
+        'DoorDash': ['Food Delivery', 'Logistics Optimization', 'Local Commerce', 'Mobile Technology', 'Marketplace Systems']
+      };
+
+      // If we have specific focus areas for this company, use them
+      if (companyFocusMap[name]) {
+        return companyFocusMap[name];
+      }
+
+      // For other companies, generate varied focus areas based on hash
+      const allFocusAreas = [
+        ['Backend Systems', 'API Development', 'Database Design', 'Microservices', 'Cloud Architecture'],
+        ['Frontend Development', 'User Experience', 'Mobile Apps', 'Web Technologies', 'Design Systems'],
+        ['Machine Learning', 'Data Science', 'AI Systems', 'Analytics', 'Predictive Modeling'],
+        ['DevOps', 'Infrastructure', 'Automation', 'Monitoring', 'Security'],
+        ['Product Engineering', 'Feature Development', 'A/B Testing', 'User Research', 'Performance'],
+        ['System Architecture', 'Scalability', 'Distributed Systems', 'Load Balancing', 'Optimization']
+      ];
+      
+      return allFocusAreas[hash % allFocusAreas.length];
+    };
+    
     const hash = hashCode(companyName);
     const difficultyIndex = hash % difficulties.length;
     const acceptanceIndex = hash % acceptanceRates.length;
@@ -579,7 +619,7 @@ const Internships: React.FC = () => {
       techStack: ['Various technologies'],
       difficulty: difficulties[difficultyIndex],
       acceptanceRate: acceptanceRates[acceptanceIndex],
-      focusAreas: ['Technical Skills', 'Problem Solving', 'Communication', 'System Design'],
+      focusAreas: getCompanySpecificFocusAreas(companyName),
       interviewRounds: 3 + (hash % 3), // 3-5 rounds
       onlineAssessment: hash % 2 === 0 ? 'Yes - coding challenge required' : 'Varies by role',
       totalLeetCode: leetCodeCounts[leetcodeIndex],
@@ -1001,34 +1041,6 @@ const Internships: React.FC = () => {
                     </Box>
                   </Box>
                 </CardContent>
-
-                <Divider />
-
-                <CardActions sx={{ p: 2, justifyContent: 'space-between' }}>
-                  <Tooltip title="Company Website">
-                    <IconButton
-                      size="small"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        window.open(companyInfo.website, '_blank');
-                      }}
-                    >
-                      <Language />
-                    </IconButton>
-                  </Tooltip>
-                  
-                  <Button
-                    variant="contained"
-                    size="small"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleViewDetails(internship._id);
-                    }}
-                    sx={{ borderRadius: 20 }}
-                  >
-                    View Details
-                  </Button>
-                </CardActions>
               </Card>
             </motion.div>
           );

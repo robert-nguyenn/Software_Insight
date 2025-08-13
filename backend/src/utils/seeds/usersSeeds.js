@@ -1,7 +1,7 @@
 const usersData = [
   {
     name: 'Admin User',
-    email: 'admin@softwareinsight.com',
+    email: 'admin@codelaunch.com',
     password: 'admin123',
     role: 'admin',
     bio: 'System administrator for CodeLaunch platform',

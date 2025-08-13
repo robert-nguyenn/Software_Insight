@@ -447,9 +447,9 @@ const Interview: React.FC = () => {
           variant="contained" 
           size="large" 
           sx={{ 
-            bgcolor: 'white', 
-            color: 'primary.main',
-            '&:hover': { bgcolor: 'grey.100' }
+            bgcolor: 'primary.main', 
+            color: 'white',
+            '&:hover': { bgcolor: 'primary.dark' }
           }}
           href="/courses"
         >
