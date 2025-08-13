@@ -6,13 +6,24 @@ import {
   Link,
   Divider,
   Stack,
+  IconButton,
+  useTheme,
 } from '@mui/material';
 import {
   Email,
   Phone,
   LocationOn,
+  LinkedIn,
+  GitHub,
+  Twitter,
+  Facebook,
+  ArrowUpward,
 } from '@mui/icons-material';
 import { Link as RouterLink } from 'react-router-dom';
+import { motion } from 'framer-motion';
+
+const MotionBox = motion(Box);
+const MotionIconButton = motion(IconButton);
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -229,7 +240,8 @@ const Footer: React.FC = () => {
           
           <Stack direction="row" spacing={3}>
             <Link
-              href="#"
+              component={RouterLink}
+              to="/privacy-policy"
               sx={{
                 color: 'grey.400',
                 textDecoration: 'none',
@@ -240,7 +252,8 @@ const Footer: React.FC = () => {
               Privacy Policy
             </Link>
             <Link
-              href="#"
+              component={RouterLink}
+              to="/terms-of-service"
               sx={{
                 color: 'grey.400',
                 textDecoration: 'none',
@@ -251,7 +264,8 @@ const Footer: React.FC = () => {
               Terms of Service
             </Link>
             <Link
-              href="#"
+              component={RouterLink}
+              to="/cookie-policy"
               sx={{
                 color: 'grey.400',
                 textDecoration: 'none',
