@@ -34,10 +34,10 @@ const Login: React.FC = () => {
     }
   }, [isAuthenticated, navigate, location]);
 
-  // Clear errors when component mounts or form changes
+  // Clear errors when component mounts
   useEffect(() => {
     clearError();
-  }, [clearError]);
+  }, []);  // Empty dependency array - only run once on mount
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;

@@ -23,6 +23,9 @@ import Register from '../pages/Register';
 import Profile from '../pages/Profile';
 import Dashboard from '../pages/Dashboard';
 import NotFound from '../pages/NotFound';
+import PrivacyPolicy from '../pages/PrivacyPolicy';
+import TermsOfService from '../pages/TermsOfService';
+import CookiePolicy from '../pages/CookiePolicy';
 
 // Create React Query client
 const queryClient = new QueryClient({
@@ -250,6 +253,9 @@ const App: React.FC = () => {
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/login" element={<Login />} />
                   <Route path="/register" element={<Register />} />
+                  <Route path="/privacy" element={<PrivacyPolicy />} />
+                  <Route path="/terms" element={<TermsOfService />} />
+                  <Route path="/cookies" element={<CookiePolicy />} />
                   
                   {/* Protected Routes */}
                   <Route

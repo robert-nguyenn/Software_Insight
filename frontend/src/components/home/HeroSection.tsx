@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { getTrustIndicators } from '../../data/homeData';
 
-const MotionBox = motion(Box);
+const MotionBox = motion.create(Box);
 
 export const HeroSection: React.FC = () => {
   const trustIndicators = getTrustIndicators();

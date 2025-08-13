@@ -8,7 +8,8 @@ const testimonialsData = [
     rating: 5,
     featured: true,
     isApproved: true,
-    approvedAt: new Date()
+    approvedAt: new Date(),
+    avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face'
   },
   {
     name: 'Michael Johnson',
@@ -19,7 +20,8 @@ const testimonialsData = [
     rating: 5,
     featured: true,
     isApproved: true,
-    approvedAt: new Date()
+    approvedAt: new Date(),
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face'
   },
   {
     name: 'Sarah Williams',
@@ -30,7 +32,8 @@ const testimonialsData = [
     rating: 5,
     featured: true,
     isApproved: true,
-    approvedAt: new Date()
+    approvedAt: new Date(),
+    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face'
   },
   {
     name: 'David Park',
@@ -41,7 +44,8 @@ const testimonialsData = [
     rating: 5,
     featured: false,
     isApproved: true,
-    approvedAt: new Date()
+    approvedAt: new Date(),
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face'
   },
   {
     name: 'Jessica Martinez',
@@ -52,7 +56,8 @@ const testimonialsData = [
     rating: 5,
     featured: true,
     isApproved: true,
-    approvedAt: new Date()
+    approvedAt: new Date(),
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face'
   },
   {
     name: 'Ryan Thompson',
@@ -63,7 +68,8 @@ const testimonialsData = [
     rating: 5,
     featured: false,
     isApproved: true,
-    approvedAt: new Date()
+    approvedAt: new Date(),
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face'
   },
   {
     name: 'Priya Patel',
@@ -74,7 +80,8 @@ const testimonialsData = [
     rating: 5,
     featured: true,
     isApproved: true,
-    approvedAt: new Date()
+    approvedAt: new Date(),
+    avatar: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=150&h=150&fit=crop&crop=face'
   },
   {
     name: 'Alex Kim',
@@ -85,7 +92,8 @@ const testimonialsData = [
     rating: 5,
     featured: false,
     isApproved: true,
-    approvedAt: new Date()
+    approvedAt: new Date(),
+    avatar: 'https://images.unsplash.com/photo-1507591064344-4c6ce005b128?w=150&h=150&fit=crop&crop=face'
   }
 ];
 
