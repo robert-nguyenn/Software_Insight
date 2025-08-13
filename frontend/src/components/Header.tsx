@@ -121,7 +121,7 @@ const Header: React.FC = () => {
       <Box sx={{ p: 2, display: 'flex', alignItems: 'center' }}>
         <img
           src="/images/softwareinsightlogo.png"
-          alt="Software Insight Logo"
+          alt="CodeLaunch Logo"
           style={{
             height: '32px',
             width: 'auto',
@@ -129,7 +129,7 @@ const Header: React.FC = () => {
           }}
         />
         <Typography variant="h6" sx={{ fontWeight: 'bold', color: theme.palette.primary.main }}>
-          Software Insight
+          CodeLaunch
         </Typography>
       </Box>
       <Divider />
@@ -328,7 +328,7 @@ const Header: React.FC = () => {
           >
             <img
               src="/images/softwareinsightlogo.png"
-              alt="Software Insight Logo"
+              alt="CodeLaunch Logo"
               style={{
                 height: '40px',
                 width: 'auto',
@@ -342,7 +342,7 @@ const Header: React.FC = () => {
                 display: { xs: 'none', sm: 'block' },
               }}
             >
-              Software Insight
+              CodeLaunch
             </Typography>
           </Box>
 

@@ -20,6 +20,7 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
+  Badge,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -29,11 +30,18 @@ import {
   Search,
   Language,
   CalendarToday,
+  Login,
+  BookmarkBorder,
+  Bookmark,
+  Info,
 } from '@mui/icons-material';
 import { internshipsAPI } from '../services/api';
 import { Internship } from '../types';
+import { useAuth } from '../contexts/AuthContext';
+import { motion } from 'framer-motion';
 
 const Internships: React.FC = () => {
+  const { isAuthenticated, user } = useAuth();
   const [internships, setInternships] = useState<Internship[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -42,6 +50,7 @@ const Internships: React.FC = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [selectedCompany, setSelectedCompany] = useState<any>(null);
   const [interviewDialogOpen, setInterviewDialogOpen] = useState(false);
+  const [bookmarkedInternships, setBookmarkedInternships] = useState<Set<string>>(new Set());
   const navigate = useNavigate();
 
   const itemsPerPage = 12;
@@ -488,6 +497,94 @@ const Internships: React.FC = () => {
         </Box>
       </Box>
 
+      {/* Sign-in Prompt for Non-authenticated Users */}
+      {!isAuthenticated && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <Box 
+            sx={{ 
+              mb: 4,
+              p: 4,
+              background: 'linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(124, 58, 237, 0.08) 100%)',
+              border: '1px solid rgba(37, 99, 235, 0.15)',
+              borderRadius: 3,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              flexWrap: 'wrap',
+              gap: 3,
+            }}
+          >
+            <Box sx={{ flex: 1, minWidth: '300px' }}>
+              <Typography 
+                variant="h6" 
+                sx={{ 
+                  fontWeight: '600',
+                  color: 'primary.main',
+                  mb: 1,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 1,
+                }}
+              >
+                <Info color="primary" />
+                Sign in to save your favorite internships!
+              </Typography>
+              <Typography variant="body1" sx={{ color: 'text.secondary', lineHeight: 1.6 }}>
+                Track your application progress, bookmark opportunities, 
+                and get personalized recommendations based on your interests.
+              </Typography>
+            </Box>
+            <Box sx={{ display: 'flex', gap: 2, flexShrink: 0 }}>
+              <Button 
+                variant="contained"
+                size="large"
+                startIcon={<Login />}
+                onClick={() => navigate('/login')}
+                sx={{
+                  background: 'linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)',
+                  px: 3,
+                  py: 1.5,
+                  borderRadius: 2,
+                  fontWeight: '600',
+                  '&:hover': {
+                    background: 'linear-gradient(135deg, #2563eb 0%, #7c3aed 100%)',
+                    transform: 'translateY(-1px)',
+                  },
+                  transition: 'all 0.2s ease',
+                }}
+              >
+                Sign In
+              </Button>
+              <Button 
+                variant="outlined"
+                size="large"
+                onClick={() => navigate('/register')}
+                sx={{
+                  borderColor: 'primary.main',
+                  color: 'primary.main',
+                  px: 3,
+                  py: 1.5,
+                  borderRadius: 2,
+                  fontWeight: '600',
+                  '&:hover': {
+                    borderColor: 'primary.dark',
+                    background: 'rgba(59, 130, 246, 0.04)',
+                    transform: 'translateY(-1px)',
+                  },
+                  transition: 'all 0.2s ease',
+                }}
+              >
+                Create Account
+              </Button>
+            </Box>
+          </Box>
+        </motion.div>
+      )}
+
       {error && (
         <Alert severity="error" sx={{ mb: 4 }}>
           {error}
@@ -504,23 +601,85 @@ const Internships: React.FC = () => {
       >
         {internships.map((internship) => {
           const companyInfo = getCompanyInfo(internship.company.name);
+          const isBookmarked = bookmarkedInternships.has(internship._id);
+          
+          const handleBookmarkToggle = (e: React.MouseEvent) => {
+            e.stopPropagation();
+            if (!isAuthenticated) {
+              navigate('/login');
+              return;
+            }
+            
+            const newBookmarks = new Set(bookmarkedInternships);
+            if (isBookmarked) {
+              newBookmarks.delete(internship._id);
+            } else {
+              newBookmarks.add(internship._id);
+            }
+            setBookmarkedInternships(newBookmarks);
+          };
           
           return (
-            <Card
+            <motion.div
               key={internship._id}
-              sx={{
-                height: '100%',
-                display: 'flex',
-                flexDirection: 'column',
-                transition: 'all 0.3s ease-in-out',
-                cursor: 'pointer',
-                '&:hover': {
-                  transform: 'translateY(-8px)',
-                  boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
-                },
-              }}
-              onClick={() => handleViewDetails(internship._id)}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              whileHover={{ y: -8 }}
             >
+              <Card
+                sx={{
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                  cursor: 'pointer',
+                  border: isBookmarked ? '2px solid' : '1px solid',
+                  borderColor: isBookmarked ? 'primary.main' : 'divider',
+                  position: 'relative',
+                  '&:hover': {
+                    transform: 'translateY(-8px)',
+                    boxShadow: '0 20px 40px rgba(0,0,0,0.15)',
+                  },
+                }}
+                onClick={() => handleViewDetails(internship._id)}
+              >
+                {/* Bookmark Button */}
+                <Box
+                  sx={{
+                    position: 'absolute',
+                    top: 12,
+                    right: 12,
+                    zIndex: 2,
+                  }}
+                >
+                  <Tooltip title={isAuthenticated ? (isBookmarked ? "Remove bookmark" : "Bookmark internship") : "Sign in to bookmark"}>
+                    <IconButton
+                      onClick={handleBookmarkToggle}
+                      sx={{
+                        background: 'rgba(255, 255, 255, 0.9)',
+                        backdropFilter: 'blur(10px)',
+                        '&:hover': {
+                          background: 'rgba(255, 255, 255, 1)',
+                          transform: 'scale(1.1)',
+                        },
+                      }}
+                    >
+                      <Badge 
+                        color="primary" 
+                        variant="dot" 
+                        invisible={!isBookmarked}
+                      >
+                        {isBookmarked ? (
+                          <Bookmark sx={{ color: 'primary.main' }} />
+                        ) : (
+                          <BookmarkBorder sx={{ color: 'action.active' }} />
+                        )}
+                      </Badge>
+                    </IconButton>
+                  </Tooltip>
+                </Box>
+
                 {/* Company Header */}
                 <Box
                   sx={{
@@ -553,6 +712,18 @@ const Internships: React.FC = () => {
                   <Box>
                     <Typography variant="h5" fontWeight="bold">
                       {internship.company.name}
+                      {isBookmarked && (
+                        <Chip 
+                          label="Bookmarked" 
+                          size="small" 
+                          sx={{ 
+                            ml: 1, 
+                            fontSize: '0.7rem',
+                            backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                            color: 'white',
+                          }}
+                        />
+                      )}
                     </Typography>
                     <Typography variant="body2" sx={{ opacity: 0.9 }}>
                       {companyInfo.industry}
@@ -706,6 +877,7 @@ const Internships: React.FC = () => {
                   </Button>
                 </CardActions>
               </Card>
+            </motion.div>
           );
         })}
       </Box>

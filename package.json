@@ -1,5 +1,5 @@
 {
-  "name": "software-insight-platform",
+  "name": "codelaunch-platform",
   "version": "1.0.0",
   "description": "🚀 Complete Educational Technology Platform - Connecting students with top tech companies through courses, internships, and career development resources",
   "main": "backend/src/server.js",
@@ -31,12 +31,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/robert-nguyenn/Software_Insight.git"
+    "url": "https://github.com/robert-nguyenn/CodeLaunch.git"
   },
   "bugs": {
-    "url": "https://github.com/robert-nguyenn/Software_Insight/issues"
+    "url": "https://github.com/robert-nguyenn/CodeLaunch/issues"
   },
-  "homepage": "https://github.com/robert-nguyenn/Software_Insight#readme",
+  "homepage": "https://github.com/robert-nguyenn/CodeLaunch#readme",
   "keywords": [
     "software-engineering",
     "education-technology",
@@ -56,13 +56,13 @@
   ],
   "author": {
     "name": "Robert Nguyen",
-    "email": "contact@softwareinsight.com",
+    "email": "contact@codelaunch.com",
     "url": "https://github.com/robert-nguyenn"
   },
   "contributors": [
     {
       "name": "Robert Nguyen",
-      "email": "contact@softwareinsight.com",
+      "email": "contact@codelaunch.com",
       "url": "https://linkedin.com/in/robert-nguyenn"
     }
   ],

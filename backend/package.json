@@ -1,7 +1,7 @@
 {
-  "name": "software-insight-backend",
+  "name": "codelaunch-backend",
   "version": "1.0.0",
-  "description": "Backend API for Software Insight platform",
+  "description": "Backend API for CodeLaunch platform",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
@@ -11,7 +11,7 @@
     "seed:full": "node src/utils/seedDatabase.js"
   },
   "keywords": ["education", "software", "api", "nodejs", "express"],
-  "author": "Software Insight Team",
+  "author": "CodeLaunch Team",
   "license": "MIT",
   "dependencies": {
     "express": "^4.18.2",

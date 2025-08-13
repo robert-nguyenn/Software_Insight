@@ -32,8 +32,13 @@ import {
   Work,
   Timeline,
   PlayArrow,
-  OpenInNew
+  OpenInNew,
+  Login,
+  Info,
 } from '@mui/icons-material';
+import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 
 // Import data from separate files
 import {
@@ -50,6 +55,8 @@ import { TabPanel } from '../components/interview/TabPanel';
 import { getDifficultyColor, getFilteredResources } from '../components/interview/utils';
 
 const Interview: React.FC = () => {
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
   const [tabValue, setTabValue] = useState(0);
   const [completedProblems, setCompletedProblems] = useState<Set<string>>(new Set());
   const [completedBehavioral, setCompletedBehavioral] = useState<Set<string>>(new Set());
@@ -141,6 +148,94 @@ const Interview: React.FC = () => {
           Practice coding problems, master system design, and nail behavioral questions.
         </Typography>
       </Box>
+
+      {/* Sign-in Prompt for Non-authenticated Users */}
+      {!isAuthenticated && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <Box 
+            sx={{ 
+              mb: 4,
+              p: 4,
+              background: 'linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(124, 58, 237, 0.08) 100%)',
+              border: '1px solid rgba(37, 99, 235, 0.15)',
+              borderRadius: 3,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              flexWrap: 'wrap',
+              gap: 3,
+            }}
+          >
+            <Box sx={{ flex: 1, minWidth: '300px' }}>
+              <Typography 
+                variant="h6" 
+                sx={{ 
+                  fontWeight: '600',
+                  color: 'primary.main',
+                  mb: 1,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 1,
+                }}
+              >
+                <Info color="primary" />
+                Sign in to track your interview prep progress!
+              </Typography>
+              <Typography variant="body1" sx={{ color: 'text.secondary', lineHeight: 1.6 }}>
+                Save your completed problems, track your learning journey, 
+                and get personalized recommendations based on your preparation goals.
+              </Typography>
+            </Box>
+            <Box sx={{ display: 'flex', gap: 2, flexShrink: 0 }}>
+              <Button 
+                variant="contained"
+                size="large"
+                startIcon={<Login />}
+                onClick={() => navigate('/login')}
+                sx={{
+                  background: 'linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)',
+                  px: 3,
+                  py: 1.5,
+                  borderRadius: 2,
+                  fontWeight: '600',
+                  '&:hover': {
+                    background: 'linear-gradient(135deg, #2563eb 0%, #7c3aed 100%)',
+                    transform: 'translateY(-1px)',
+                  },
+                  transition: 'all 0.2s ease',
+                }}
+              >
+                Sign In
+              </Button>
+              <Button 
+                variant="outlined"
+                size="large"
+                onClick={() => navigate('/register')}
+                sx={{
+                  borderColor: 'primary.main',
+                  color: 'primary.main',
+                  px: 3,
+                  py: 1.5,
+                  borderRadius: 2,
+                  fontWeight: '600',
+                  '&:hover': {
+                    borderColor: 'primary.dark',
+                    background: 'rgba(59, 130, 246, 0.04)',
+                    transform: 'translateY(-1px)',
+                  },
+                  transition: 'all 0.2s ease',
+                }}
+              >
+                Create Account
+              </Button>
+            </Box>
+          </Box>
+        </motion.div>
+      )}
 
       {/* Navigation Tabs */}
       <Box sx={{ borderBottom: 1, borderColor: 'divider', mb: 3 }}>
