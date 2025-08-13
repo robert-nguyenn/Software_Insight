@@ -34,7 +34,7 @@ const sampleUsers = [
     lastName: 'Doe',
     email: 'john@example.com',
     password: 'password123',
-    role: 'student',
+    role: 'user',
     profilePicture: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
     bio: 'Computer Science student passionate about web development',
     enrolledCourses: []
@@ -44,7 +44,7 @@ const sampleUsers = [
     lastName: 'Smith',
     email: 'jane@example.com',
     password: 'password123',
-    role: 'student',
+    role: 'user',
     profilePicture: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face',
     bio: 'Data science enthusiast looking to break into tech',
     enrolledCourses: []
@@ -54,7 +54,7 @@ const sampleUsers = [
     lastName: 'Johnson',
     email: 'sarah@example.com',
     password: 'password123',
-    role: 'student',
+    role: 'user',
     profilePicture: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
     bio: 'Self-taught developer transitioning from marketing',
     enrolledCourses: []
@@ -361,8 +361,13 @@ async function seedDatabase() {
     console.log('Creating users...');
     const hashedUsers = await Promise.all(
       sampleUsers.map(async (user) => ({
-        ...user,
-        password: await bcrypt.hash(user.password, 10)
+        name: `${user.firstName} ${user.lastName}`,
+        email: user.email,
+        password: await bcrypt.hash(user.password, 10),
+        role: user.role,
+        avatar: user.profilePicture,
+        bio: user.bio,
+        enrolledCourses: user.enrolledCourses || []
       }))
     );
     const createdUsers = await User.insertMany(hashedUsers);
@@ -403,7 +408,7 @@ async function seedDatabase() {
 
     // Enroll some users in courses for testing
     console.log('Enrolling users in courses...');
-    const studentUsers = createdUsers.filter(user => user.role === 'student');
+    const studentUsers = createdUsers.filter(user => user.role === 'user');
     
     if (studentUsers.length > 0 && createdCourses.length > 0) {
       // Enroll first student in Frontend course
