@@ -3,7 +3,6 @@ const User = require('../models/User');
 const Course = require('../models/Course');
 const Testimonial = require('../models/Testimonial');
 const Internship = require('../models/Internship');
-const { techRoadmaps } = require('./techRoadmapSeeds');
 const { usersData, coursesData, testimonialsData, internshipsData } = require('./seeds');
 
 const seedData = async () => {
@@ -30,7 +29,7 @@ const seedData = async () => {
       shortDescription: 'Complete roadmap to become a full-stack web developer with hands-on projects and free resources',
       description: 'Master the complete web development stack from frontend to backend. This comprehensive roadmap includes free YouTube courses, documentation, and practical projects to build your portfolio for internship applications.',
       level: 'Beginner',
-      category: 'Full Stack',
+      category: 'Full Stack Development',
       duration: '12 weeks',
       technologies: ['HTML', 'CSS', 'JavaScript', 'React', 'Node.js', 'MongoDB', 'Express.js'],
       prerequisites: ['Basic computer skills', 'Understanding of internet basics'],
@@ -242,8 +241,8 @@ const seedData = async () => {
       tags: ['web development', 'full stack', 'javascript', 'react', 'nodejs', 'internship prep']
     };
 
-    // Combine original course with new comprehensive roadmaps and courses from seed data
-    const allCourses = [originalFullStackCourse, ...techRoadmaps, ...coursesData];
+    // Combine original course with courses from seed data
+    const allCourses = [originalFullStackCourse, ...coursesData];
 
     // Create courses one by one to trigger pre-save middleware for slug generation
     const createdCourses = [];
@@ -251,14 +250,18 @@ const seedData = async () => {
       const course = await Course.create(courseData);
       createdCourses.push(course);
     }
-    console.log('📚 Created comprehensive tech roadmaps and courses');
+    console.log('📚 Created comprehensive courses and tech content');
 
     // Create sample testimonials from seed data
     await Testimonial.insertMany(testimonialsData);
     console.log('⭐ Created testimonials from seed data');
 
-    // Create sample internships from seed data
-    await Internship.insertMany(internshipsData);
+    // Create sample internships from seed data with proper postedBy reference
+    const internshipsWithUser = internshipsData.map(internship => ({
+      ...internship,
+      postedBy: adminUser._id
+    }));
+    await Internship.insertMany(internshipsWithUser);
     console.log('💼 Created internships from seed data');
 
     console.log('✅ Seed data created successfully!');

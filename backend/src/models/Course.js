@@ -31,7 +31,36 @@ const courseSchema = new mongoose.Schema({
   category: {
     type: String,
     required: [true, 'Please specify course category'],
-    enum: ['Frontend', 'Backend', 'Full Stack', 'Mobile', 'DevOps', 'Data Science', 'AI/ML', 'Other']
+    enum: [
+      'Frontend Development', 
+      'Backend Development', 
+      'Full Stack Development', 
+      'Mobile Development', 
+      'DevOps', 
+      'Data Science', 
+      'Data Engineering',
+      'Machine Learning',
+      'Artificial Intelligence', 
+      'Computer Science',
+      'Software Engineering',
+      'Game Development',
+      'Internet of Things',
+      'Blockchain',
+      'Cybersecurity',
+      'Cloud Computing',
+      'Product Management',
+      'Business Analytics',
+      'Digital Marketing',
+      'Leadership',
+      'Entrepreneurship',
+      'Financial Technology',
+      'No-Code Development',
+      'Design',
+      'Career Development',
+      'Programming',
+      'Interview Preparation',
+      'Other'
+    ]
   },
   duration: {
     type: String,
@@ -86,7 +115,7 @@ const courseSchema = new mongoose.Schema({
     description: String,
     difficulty: {
       type: String,
-      enum: ['Easy', 'Medium', 'Hard'],
+      enum: ['Easy', 'Medium', 'Hard', 'Expert'],
       default: 'Medium'
     },
     technologies: [String],
@@ -103,6 +132,7 @@ const courseSchema = new mongoose.Schema({
     socialLinks: {
       github: String,
       linkedin: String,
+      twitter: String,
       portfolio: String
     }
   },
@@ -115,6 +145,11 @@ const courseSchema = new mongoose.Schema({
     default: false
   },
   price: {
+    type: Number,
+    default: 0,
+    min: 0
+  },
+  originalPrice: {
     type: Number,
     default: 0,
     min: 0
