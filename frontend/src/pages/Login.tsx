@@ -88,7 +88,7 @@ const Login: React.FC = () => {
               Welcome Back
             </Typography>
             <Typography variant="body1" color="text.secondary">
-              Sign in to your Software Insight account
+              Sign in to your CodeLaunch account
             </Typography>
           </Box>
 

@@ -120,7 +120,7 @@ const Header: React.FC = () => {
     >
       <Box sx={{ p: 2, display: 'flex', alignItems: 'center' }}>
         <img
-          src="/images/softwareinsightlogo.png"
+          src="/images/codelaunchlogo.png"
           alt="CodeLaunch Logo"
           style={{
             height: '32px',
@@ -327,7 +327,7 @@ const Header: React.FC = () => {
             }}
           >
             <img
-              src="/images/softwareinsightlogo.png"
+              src="/images/codelaunchlogo.png"
               alt="CodeLaunch Logo"
               style={{
                 height: '40px',

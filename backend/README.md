@@ -1,6 +1,6 @@
-# Backend - Software Insight API
+# Backend - CodeLaunch API
 
-This is the backend API for the Software Insight platform, built with Node.js, Express, and MongoDB.
+This is the backend API for the CodeLaunch platform, built with Node.js, Express, and MongoDB.
 
 ## Features
 
@@ -132,7 +132,7 @@ The API will be available at `http://localhost:5000`
 ## Default Admin Account
 
 After running the seed script, you can login with:
-- **Email**: admin@softwareinsight.com
+- **Email**: admin@codelaunch.com
 - **Password**: admin123
 
 ## Environment Variables

@@ -31,7 +31,7 @@ export const CTASection: React.FC = () => {
             Ready to Start Your Journey?
           </Typography>
           <Typography variant="h6" sx={{ mb: 4, opacity: 0.9 }}>
-            Join hundreds of students who have transformed their careers with Software Insight
+            Join hundreds of students who have transformed their careers with CodeLaunch
           </Typography>
           
           <Stack

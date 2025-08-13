@@ -267,7 +267,7 @@ const seedData = async () => {
     console.log('✅ Seed data created successfully!');
     console.log(`
 📊 Summary:
-- Admin user: admin@softwareinsight.com (password: admin123)
+- Admin user: admin@codelaunch.com (password: admin123)
 - Courses: ${createdCourses.length}
 - Testimonials: ${testimonialsData.length}
 - Internships: ${internshipsData.length}
@@ -282,7 +282,7 @@ const seedData = async () => {
 // Connect to database and run seed
 const runSeed = async () => {
   try {
-    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/software_insight');
+    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/codelaunch');
     console.log('📊 Connected to MongoDB');
     
     await seedData();

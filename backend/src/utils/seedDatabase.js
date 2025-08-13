@@ -22,11 +22,11 @@ const sampleUsers = [
   {
     firstName: 'Admin',
     lastName: 'User',
-    email: 'admin@softwareinsight.com',
+    email: 'admin@codelaunch.com',
     password: 'admin123',
     role: 'admin',
     profilePicture: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
-    bio: 'Administrator of Software Insight platform',
+    bio: 'Administrator of CodeLaunch platform',
     enrolledCourses: []
   },
   {
@@ -67,7 +67,7 @@ const sampleTestimonials = [
     name: 'Alex Rodriguez',
     role: 'Software Engineer at Google',
     company: 'Google',
-    content: 'Software Insight\'s comprehensive roadmaps helped me land my dream job at Google. The structured approach and real-world projects were exactly what I needed to prepare for big tech interviews.',
+    content: 'CodeLaunch\'s comprehensive roadmaps helped me land my dream job at Google. The structured approach and real-world projects were exactly what I needed to prepare for big tech interviews.',
     rating: 5,
     avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
     featured: true,
@@ -326,7 +326,7 @@ const sampleContacts = [
     lastName: 'Brown',
     email: 'lisa.brown@email.com',
     subject: 'Partnership opportunity',
-    message: 'We are a tech recruitment company and would like to explore partnership opportunities with Software Insight.',
+    message: 'We are a tech recruitment company and would like to explore partnership opportunities with CodeLaunch.',
     category: 'business',
     status: 'in_progress',
     priority: 'high'
@@ -346,7 +346,7 @@ const sampleContacts = [
 async function seedDatabase() {
   try {
     // Connect to MongoDB
-    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/software_insight');
+    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/codelaunch');
     console.log('Connected to MongoDB');
 
     // Clear existing data
@@ -471,7 +471,7 @@ async function seedDatabase() {
 
     console.log('Database seeded successfully!');
     console.log('\nSample login credentials:');
-    console.log('Admin: admin@softwareinsight.com / admin123');
+    console.log('Admin: admin@codelaunch.com / admin123');
     console.log('Student: john@example.com / password123');
     console.log('Student: jane@example.com / password123');
     console.log('Student: sarah@example.com / password123');

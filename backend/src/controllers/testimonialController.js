@@ -7,7 +7,7 @@ const mockTestimonials = [
     _id: '1',
     studentName: 'Sarah Johnson',
     rating: 5,
-    comment: 'Software Insight transformed my career! The courses are comprehensive and the instructors are amazing.',
+    comment: 'CodeLaunch transformed my career! The courses are comprehensive and the instructors are amazing.',
     course: { _id: '1', title: 'Full Stack Development', slug: 'full-stack-development' },
     featured: true,
     createdAt: new Date('2024-01-15'),

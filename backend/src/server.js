@@ -70,7 +70,7 @@ app.use('/api/upload', uploadRoutes);
 // Root route
 app.get('/', (req, res) => {
   res.status(200).json({
-    message: 'Software Insight API Server',
+    message: 'CodeLaunch API Server',
     version: '1.0.0',
     status: 'running',
     endpoints: {
