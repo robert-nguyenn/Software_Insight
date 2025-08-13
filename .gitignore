@@ -3,10 +3,14 @@ node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+backend/node_modules/
+frontend/node_modules/
 
 # Production builds
 /build
 /dist
+frontend/build/
+backend/dist/
 
 # Environment variables
 .env
@@ -14,6 +18,12 @@ yarn-error.log*
 .env.development.local
 .env.test.local
 .env.production.local
+backend/.env
+frontend/.env
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
 
 # IDE and editor files
 .vscode/
@@ -34,6 +44,7 @@ Thumbs.db
 # Logs
 logs
 *.log
+backend/logs/
 
 # Runtime data
 pids
@@ -43,12 +54,20 @@ pids
 
 # Coverage directory used by tools like istanbul
 coverage/
+.nyc_output
+
+# Test files
+*.test.js
+*.spec.js
 
 # Dependency directories
 jspm_packages/
 
 # Optional npm cache directory
 .npm
+
+# Optional eslint cache
+.eslintcache
 
 # Optional REPL history
 .node_repl_history
@@ -59,22 +78,33 @@ jspm_packages/
 # Yarn Integrity file
 .yarn-integrity
 
-# MongoDB data
+# Database files
 data/
+*.db
+*.sqlite
+*.sqlite3
 
 # Uploads
 uploads/
-
-# Backend specific
 backend/uploads/
-backend/logs/
 
-# Frontend specific
-frontend/build/
-frontend/.env.local
-frontend/.env.development.local
-frontend/.env.test.local
-frontend/.env.production.local
+# Cache directories
+.cache/
+.parcel-cache/
+
+# Temporary folders
+tmp/
+temp/
+
+# Documentation build
+docs/build/
+
+# Deployment
+.vercel
+.netlify
+
+# TypeScript
+*.tsbuildinfo
 
 # Package lock files (optional - some teams prefer to commit these)
 # package-lock.json

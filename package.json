@@ -1,33 +1,89 @@
 {
-  "name": "software-insight-project",
+  "name": "software-insight-platform",
   "version": "1.0.0",
-  "description": "Full-stack Software Insight platform with React frontend and Node.js backend",
+  "description": "🚀 Complete Educational Technology Platform - Connecting students with top tech companies through courses, internships, and career development resources",
+  "main": "backend/src/server.js",
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
   "scripts": {
     "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
     "dev:backend": "cd backend && npm run dev",
     "dev:frontend": "cd frontend && npm start",
     "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
     "build": "cd frontend && npm run build",
+    "build:backend": "cd backend && npm run build",
     "start": "cd backend && npm start",
+    "start:prod": "NODE_ENV=production cd backend && npm start",
     "seed": "cd backend && npm run seed",
-    "test": "cd backend && npm test && cd ../frontend && npm test"
-  },
-  "devDependencies": {
-    "concurrently": "^7.6.0"
+    "seed:full": "cd backend && npm run seed:full",
+    "test": "concurrently \"cd backend && npm test\" \"cd frontend && npm test -- --watchAll=false\"",
+    "test:backend": "cd backend && npm test",
+    "test:frontend": "cd frontend && npm test -- --watchAll=false",
+    "lint": "concurrently \"cd backend && npm run lint\" \"cd frontend && npm run lint\"",
+    "lint:fix": "concurrently \"cd backend && npm run lint:fix\" \"cd frontend && npm run lint:fix\"",
+    "clean": "rm -rf backend/node_modules frontend/node_modules node_modules",
+    "reset": "npm run clean && npm run install:all",
+    "deploy": "npm run build && npm run start:prod",
+    "health": "curl http://localhost:5000/api/health",
+    "docs": "echo 'Documentation available in README.md and docs/ folder'"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/robert-nguyenn/Software_Insight.git"
   },
+  "bugs": {
+    "url": "https://github.com/robert-nguyenn/Software_Insight/issues"
+  },
+  "homepage": "https://github.com/robert-nguyenn/Software_Insight#readme",
   "keywords": [
-    "software",
-    "education",
+    "software-engineering",
+    "education-technology",
     "internships",
     "courses",
+    "career-development",
     "react",
+    "typescript",
     "nodejs",
-    "mongodb"
+    "express",
+    "mongodb",
+    "material-ui",
+    "full-stack",
+    "portfolio-project",
+    "big-tech",
+    "recruiting"
   ],
-  "author": "Robert Nguyen",
-  "license": "MIT"
+  "author": {
+    "name": "Robert Nguyen",
+    "email": "contact@softwareinsight.com",
+    "url": "https://github.com/robert-nguyenn"
+  },
+  "contributors": [
+    {
+      "name": "Robert Nguyen",
+      "email": "contact@softwareinsight.com",
+      "url": "https://linkedin.com/in/robert-nguyenn"
+    }
+  ],
+  "license": "MIT",
+  "private": false,
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "config": {
+    "mongodbMemoryServer": {
+      "version": "6.0.3"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run test"
+    }
+  }
 }
