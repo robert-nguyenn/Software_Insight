@@ -1,6 +1,6 @@
-# Backend - Software Insight API
+# Backend - CodeLaunch API
 
-This is the backend API for the Software Insight platform, built with Node.js, Express, and MongoDB.
+This is the backend API for the CodeLaunch platform, built with Node.js, Express, and MongoDB.
 
 ## Features
 

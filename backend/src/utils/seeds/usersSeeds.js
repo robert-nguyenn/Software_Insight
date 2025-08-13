@@ -4,7 +4,7 @@ const usersData = [
     email: 'admin@softwareinsight.com',
     password: 'admin123',
     role: 'admin',
-    bio: 'System administrator for Software Insight platform',
+    bio: 'System administrator for CodeLaunch platform',
     skills: ['Management', 'Technical Support', 'Education']
   },
   {
@@ -12,7 +12,7 @@ const usersData = [
     email: 'demo.student@internprep.com',
     password: 'demo123',
     role: 'user',
-    bio: 'Demo account for exploring the Software Insight internship preparation platform',
+    bio: 'Demo account for exploring the CodeLaunch internship preparation platform',
     skills: ['JavaScript', 'Python', 'React', 'Problem Solving'],
     socialLinks: {
       github: 'https://github.com/demostudent',

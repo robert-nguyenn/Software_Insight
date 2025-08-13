@@ -27,7 +27,7 @@ export const FeaturesSection: React.FC = () => {
           sx={{ textAlign: 'center', mb: 6 }}
         >
           <Typography variant="h2" sx={{ fontWeight: 'bold', mb: 2 }}>
-            Why Choose Software Insight?
+            Why Choose CodeLaunch?
           </Typography>
           <Typography variant="h6" color="text.secondary" sx={{ maxWidth: '600px', mx: 'auto' }}>
             We provide everything you need to succeed in your software engineering journey,

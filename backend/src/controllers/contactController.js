@@ -74,11 +74,11 @@ const submitContact = async (req, res) => {
       const userMailOptions = {
         from: process.env.EMAIL_USER,
         to: email,
-        subject: 'Thank you for contacting Software Insight',
+        subject: 'Thank you for contacting CodeLaunch',
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
             <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; text-align: center; border-radius: 8px 8px 0 0;">
-              <h1 style="color: white; margin: 0; font-size: 28px;">Software Insight</h1>
+              <h1 style="color: white; margin: 0; font-size: 28px;">CodeLaunch</h1>
               <p style="color: #f8f9fa; margin: 10px 0 0 0;">Empowering Future Developers</p>
             </div>
             
@@ -88,7 +88,7 @@ const submitContact = async (req, res) => {
               <p style="color: #666; line-height: 1.6;">Dear ${name},</p>
               
               <p style="color: #666; line-height: 1.6;">
-                Thank you for contacting Software Insight. We have received your message and our team will review it shortly.
+                Thank you for contacting CodeLaunch. We have received your message and our team will review it shortly.
               </p>
               
               <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
@@ -117,13 +117,13 @@ const submitContact = async (req, res) => {
               
               <p style="color: #666; line-height: 1.6;">
                 Best regards,<br>
-                The Software Insight Team
+                The CodeLaunch Team
               </p>
             </div>
             
             <div style="background-color: #f8f9fa; padding: 20px; text-align: center; border-radius: 0 0 8px 8px;">
               <p style="color: #6c757d; font-size: 14px; margin: 0;">
-                © ${new Date().getFullYear()} Software Insight. All rights reserved.
+                © ${new Date().getFullYear()} CodeLaunch. All rights reserved.
               </p>
             </div>
           </div>
@@ -335,7 +335,7 @@ const respondToContact = async (req, res) => {
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
             <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; text-align: center; border-radius: 8px 8px 0 0;">
-              <h1 style="color: white; margin: 0;">Software Insight</h1>
+              <h1 style="color: white; margin: 0;">CodeLaunch</h1>
               <p style="color: #f8f9fa; margin: 10px 0 0 0;">Response to Your Inquiry</p>
             </div>
             
@@ -363,7 +363,7 @@ const respondToContact = async (req, res) => {
               
               <p style="color: #666;">
                 Best regards,<br>
-                The Software Insight Team
+                The CodeLaunch Team
               </p>
             </div>
           </div>

@@ -103,9 +103,31 @@ const Internships: React.FC = () => {
       avgSalary: '$8,500/month',
       difficulty: 'Extremely Hard',
       acceptanceRate: '< 1%',
-      onlineAssessment: 'None typically, but may have coding challenges',
+      onlineAssessment: 'None typically, but may have coding challenges for certain roles',
       totalLeetCode: '300+ problems recommended',
-      focusAreas: ['Algorithms', 'Data Structures', 'System Design', 'Googleyness']
+      focusAreas: ['Algorithms', 'Data Structures', 'System Design', 'Googleyness', 'Leadership'],
+      secretInfo: {
+        hiddenFacts: [
+          '🤫 Google uses a "Googleyness" metric - they look for intellectual humility, fun, and grit',
+          '🔍 Interviewers are trained to ask follow-up questions even if you get the optimal solution',
+          '⚡ Getting "Hire" from 4+ interviewers often leads to L4, while exceptional performance can skip to L5',
+          '🧠 Google values thinking process over final answer - explaining your thought process is crucial',
+          '🏆 Past interns who return full-time often get fast-tracked through the process'
+        ],
+        insiderTips: [
+          'Practice explaining code while writing - Google interviewers love clear communication',
+          'Study Google-specific algorithms: PageRank, MapReduce concepts, Bigtable',
+          'Mention interest in Google products/research during behavioral rounds',
+          'Prepare for "Design YouTube" or "Design Google Search" system design questions'
+        ],
+        actualQuestions: [
+          'Design a data structure for autocomplete (asked 70% of the time)',
+          'Find the k-th largest element in a stream',
+          'Implement LRU cache with O(1) operations',
+          'Design a URL shortener like bit.ly',
+          'How would you detect fraud in Google Ads?'
+        ]
+      }
     },
     'Meta': {
       logo: 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg',
@@ -155,7 +177,29 @@ const Internships: React.FC = () => {
       acceptanceRate: '< 1%',
       onlineAssessment: 'Possible coding assessment before phone screen',
       totalLeetCode: '250+ problems recommended',
-      focusAreas: ['Coding', 'Product Sense', 'Meta Values', 'Communication']
+      focusAreas: ['Coding', 'Product Sense', 'Meta Values', 'Communication', 'Impact'],
+      secretInfo: {
+        hiddenFacts: [
+          '🤫 Meta heavily weighs "Move Fast" - show examples of quick iteration and learning from failures',
+          '🔍 They track how many people you\'ve mentored/helped - mention peer programming experience',
+          '⚡ Meta values "Meta-ing" - being able to think about thinking, processes about processes',
+          '🧠 They prefer candidates who have built consumer products or understand user behavior',
+          '🏆 Interns who get return offers often have their projects deployed to production'
+        ],
+        insiderTips: [
+          'Mention experience with React/GraphQL/PyTorch in casual conversation',
+          'Study Meta\'s approach to ML: recommendation systems, content moderation, computer vision',
+          'Prepare stories about building products that scale to millions of users',
+          'Show interest in AR/VR and metaverse technologies during conversations'
+        ],
+        actualQuestions: [
+          'Design Instagram\'s newsfeed ranking algorithm',
+          'How would you detect fake accounts on Facebook?',
+          'Implement a chat system like Messenger',
+          'Design a system for live video streaming',
+          'How would you build Meta\'s content recommendation system?'
+        ]
+      }
     },
     'Apple': {
       logo: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg',
@@ -214,7 +258,29 @@ const Internships: React.FC = () => {
       acceptanceRate: '< 2%',
       onlineAssessment: 'Rare, mostly direct to phone screen',
       totalLeetCode: '400+ problems recommended',
-      focusAreas: ['Technical Excellence', 'Attention to Detail', 'Innovation', 'Quality']
+      focusAreas: ['Technical Excellence', 'Attention to Detail', 'Innovation', 'Quality', 'User Focus'],
+      secretInfo: {
+        hiddenFacts: [
+          '🤫 Apple values "Thinking Different" - they prefer unconventional approaches to problems',
+          '🔍 They deeply care about user privacy - mention GDPR, differential privacy in conversations',
+          '⚡ Apple has a "no-politics" culture - focus on product excellence over everything else',
+          '🧠 They prefer candidates who are both technically excellent AND design-minded',
+          '🏆 Interns often get to work on unreleased products under strict NDAs'
+        ],
+        insiderTips: [
+          'Study Apple\'s approach to hardware-software integration',
+          'Prepare questions about accessibility and inclusive design',
+          'Mention experience with iOS development, Swift, or macOS',
+          'Show genuine passion for Apple products and ecosystem'
+        ],
+        actualQuestions: [
+          'Design the backend for Apple Music\'s recommendation system',
+          'How would you implement Apple Pay\'s security system?',
+          'Optimize battery life for iOS applications',
+          'Design a system for iCloud photo sync across devices',
+          'How would you build Siri\'s natural language processing?'
+        ]
+      }
     },
     'Amazon': {
       logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg',
@@ -264,7 +330,29 @@ const Internships: React.FC = () => {
       acceptanceRate: '< 3%',
       onlineAssessment: 'Always required - 2 coding + behavioral questions',
       totalLeetCode: '200+ problems recommended',
-      focusAreas: ['Coding', 'Leadership Principles', 'Customer Focus', 'Data-driven decisions']
+      focusAreas: ['Coding', 'Leadership Principles', 'Customer Focus', 'Data-driven decisions', 'Ownership'],
+      secretInfo: {
+        hiddenFacts: [
+          '🤫 Amazon heavily weights Leadership Principles - 50% of decision is based on LP responses',
+          '🔍 They track your OA1 debug results - completing all debugging scenarios is crucial',
+          '⚡ "Bar Raiser" interviewer has veto power - they\'re from a different team specifically trained',
+          '🧠 Amazon prefers stories with measurable business impact and customer obsession',
+          '🏆 Interns who show "Ownership" often get return offers with competing salary matches'
+        ],
+        insiderTips: [
+          'Prepare 3-4 stories for each Leadership Principle using STAR method',
+          'Mention AWS services casually (S3, Lambda, DynamoDB) even for non-AWS roles',
+          'Practice OA2 questions from "Elements of Programming Interviews"',
+          'Show interest in Amazon\'s long-term thinking and customer obsession'
+        ],
+        actualQuestions: [
+          'Design Amazon\'s recommendation system for "Customers who bought this also bought"',
+          'How would you optimize Amazon\'s warehouse robot pathfinding?',
+          'Implement Amazon\'s review spam detection system',
+          'Design the architecture for Amazon Prime Video streaming',
+          'How would you handle Amazon\'s Black Friday traffic surge?'
+        ]
+      }
     },
     'Microsoft': {
       logo: 'https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg',
@@ -314,7 +402,29 @@ const Internships: React.FC = () => {
       acceptanceRate: '< 5%',
       onlineAssessment: 'Sometimes - depends on role and recruiter',
       totalLeetCode: '150+ problems recommended',
-      focusAreas: ['Technical Skills', 'Growth Mindset', 'Collaboration', 'Problem Solving']
+      focusAreas: ['Technical Skills', 'Growth Mindset', 'Collaboration', 'Problem Solving', 'Inclusion'],
+      secretInfo: {
+        hiddenFacts: [
+          '🤫 Microsoft values "Growth Mindset" over raw talent - show examples of learning from failures',
+          '🔍 They prefer collaborative coding - explain your thought process and ask for input',
+          '⚡ Azure knowledge gives a significant advantage even for non-cloud roles',
+          '🧠 Microsoft looks for candidates who can work across diverse, global teams',
+          '🏆 Interns who contribute to open-source projects (especially Microsoft ones) get noticed'
+        ],
+        insiderTips: [
+          'Mention experience with .NET, TypeScript, or Azure services',
+          'Show interest in accessibility and inclusive design principles',
+          'Prepare stories about collaborating with diverse, remote teams',
+          'Study Microsoft\'s approach to AI: Copilot, Bing Chat, Azure AI'
+        ],
+        actualQuestions: [
+          'Design Microsoft Teams\' real-time collaboration features',
+          'How would you implement Excel\'s auto-save functionality?',
+          'Build a system for Visual Studio Code\'s extension marketplace',
+          'Design Azure\'s auto-scaling for virtual machines',
+          'How would you optimize Outlook\'s email search across millions of messages?'
+        ]
+      }
     },
     'Netflix': {
       logo: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg',
@@ -364,7 +474,29 @@ const Internships: React.FC = () => {
       acceptanceRate: '< 3%',
       onlineAssessment: 'Rare - usually direct to technical screen',
       totalLeetCode: '200+ problems recommended',
-      focusAreas: ['System Design', 'Culture Fit', 'Autonomy', 'High Performance']
+      focusAreas: ['System Design', 'Culture Fit', 'Autonomy', 'High Performance', 'Data-driven'],
+      secretInfo: {
+        hiddenFacts: [
+          '🤫 Netflix values "Freedom & Responsibility" - they want self-directed, high-performance individuals',
+          '🔍 They pay top of market but expect exceptional results - average performance leads to generous severance',
+          '⚡ Netflix prioritizes streaming optimization and content recommendation algorithms',
+          '🧠 They prefer candidates who can work with minimal supervision and make data-driven decisions',
+          '🏆 Interns who show exceptional autonomy often get fast-tracked to senior roles'
+        ],
+        insiderTips: [
+          'Study Netflix\'s approach to microservices and cloud architecture',
+          'Show interest in machine learning for content recommendation',
+          'Demonstrate ability to work independently and take ownership',
+          'Prepare questions about Netflix\'s unique culture and high-performance standards'
+        ],
+        actualQuestions: [
+          'Design Netflix\'s content recommendation algorithm',
+          'How would you optimize video streaming quality based on network conditions?',
+          'Build a system to detect and prevent account sharing',
+          'Design Netflix\'s A/B testing platform for UI experiments',
+          'How would you implement Netflix\'s download feature for offline viewing?'
+        ]
+      }
     }
   };
 
@@ -412,6 +544,26 @@ const Internships: React.FC = () => {
   };
 
   const getCompanyInfo = (companyName: string) => {
+    // Use a hash of the company name to generate varied difficulties and acceptance rates
+    const hashCode = (str: string) => {
+      let hash = 0;
+      for (let i = 0; i < str.length; i++) {
+        const char = str.charCodeAt(i);
+        hash = ((hash << 5) - hash) + char;
+        hash = hash & hash; // Convert to 32bit integer
+      }
+      return Math.abs(hash);
+    };
+
+    const difficulties = ['Medium', 'Hard', 'Very Hard', 'Extremely Hard'];
+    const acceptanceRates = ['< 15%', '< 10%', '< 5%', '< 3%', '< 1%'];
+    const leetCodeCounts = ['100+', '150+', '200+', '250+', '300+'];
+    
+    const hash = hashCode(companyName);
+    const difficultyIndex = hash % difficulties.length;
+    const acceptanceIndex = hash % acceptanceRates.length;
+    const leetcodeIndex = hash % leetCodeCounts.length;
+
     return companyData[companyName] || {
       logo: '',
       headquarters: 'N/A',
@@ -425,14 +577,15 @@ const Internships: React.FC = () => {
       locations: ['Multiple locations'],
       benefits: ['Competitive benefits package'],
       techStack: ['Various technologies'],
-      difficulty: 'Hard',
-      acceptanceRate: 'Competitive',
-      focusAreas: ['General Skills', 'Problem Solving', 'Communication'],
-      interviewRounds: 3,
-      onlineAssessment: 'Yes - coding challenge',
-      totalLeetCode: 'Varies',
+      difficulty: difficulties[difficultyIndex],
+      acceptanceRate: acceptanceRates[acceptanceIndex],
+      focusAreas: ['Technical Skills', 'Problem Solving', 'Communication', 'System Design'],
+      interviewRounds: 3 + (hash % 3), // 3-5 rounds
+      onlineAssessment: hash % 2 === 0 ? 'Yes - coding challenge required' : 'Varies by role',
+      totalLeetCode: leetCodeCounts[leetcodeIndex],
       rounds: [],
-      proTip: 'Practice coding problems and system design.'
+      proTip: 'Practice coding problems and system design. Research company culture.',
+      name: companyName
     };
   };
 
@@ -980,33 +1133,97 @@ const Internships: React.FC = () => {
                 <Typography variant="h6" gutterBottom color="primary.main">
                   🎯 Interview Rounds
                 </Typography>
-                {selectedCompany.rounds && selectedCompany.rounds.map((round: any, index: number) => (
-                  <Box key={index} sx={{ mb: 3, p: 2, border: '1px solid', borderColor: 'grey.200', borderRadius: 2 }}>
-                    <Typography variant="subtitle1" fontWeight="600" gutterBottom>
-                      Round {index + 1}: {round.type}
-                    </Typography>
-                    <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: 2, mb: 2 }}>
-                      <Box>
-                        <Typography variant="caption" color="text.secondary">Duration</Typography>
-                        <Typography variant="body2">{round.duration}</Typography>
+                {selectedCompany.interviewProcess && typeof selectedCompany.interviewProcess === 'object' ? (
+                  Object.entries(selectedCompany.interviewProcess).map(([roundKey, round]: [string, any], index: number) => (
+                    <Box key={index} sx={{ mb: 3, p: 3, border: '1px solid', borderColor: 'grey.200', borderRadius: 2, bgcolor: 'grey.50' }}>
+                      <Typography variant="subtitle1" fontWeight="600" gutterBottom color="primary.main">
+                        Round {index + 1}: {round.name}
+                      </Typography>
+                      <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: 2, mb: 2 }}>
+                        <Box>
+                          <Typography variant="caption" color="text.secondary">Duration</Typography>
+                          <Typography variant="body2" fontWeight="600">{round.duration}</Typography>
+                        </Box>
+                        <Box>
+                          <Typography variant="caption" color="text.secondary">Type</Typography>
+                          <Typography variant="body2" fontWeight="600">{round.type}</Typography>
+                        </Box>
+                        <Box>
+                          <Typography variant="caption" color="text.secondary">Format</Typography>
+                          <Typography variant="body2" fontWeight="600">{round.format}</Typography>
+                        </Box>
                       </Box>
-                      <Box>
-                        <Typography variant="caption" color="text.secondary">LeetCode Questions</Typography>
-                        <Typography variant="body2">{round.leetcodeCount}</Typography>
+                      
+                      <Box sx={{ mb: 2 }}>
+                        <Typography variant="caption" color="text.secondary" display="block">
+                          <strong>🔥 Typical Questions:</strong>
+                        </Typography>
+                        <Typography variant="body2" sx={{ bgcolor: 'white', p: 1, borderRadius: 1, border: '1px solid', borderColor: 'grey.300' }}>
+                          {round.questions}
+                        </Typography>
                       </Box>
-                      <Box>
-                        <Typography variant="caption" color="text.secondary">Focus</Typography>
-                        <Typography variant="body2">{round.focus}</Typography>
+
+                      <Box sx={{ mb: 2 }}>
+                        <Typography variant="caption" color="text.secondary" display="block">
+                          <strong>📚 Key Topics:</strong>
+                        </Typography>
+                        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5, mt: 0.5 }}>
+                          {Array.isArray(round.topics) ? round.topics.map((topic: string, topicIndex: number) => (
+                            <Chip key={topicIndex} label={topic} size="small" color="primary" variant="outlined" />
+                          )) : (
+                            <Typography variant="body2" sx={{ bgcolor: 'white', p: 1, borderRadius: 1, border: '1px solid', borderColor: 'grey.300' }}>
+                              {round.topics}
+                            </Typography>
+                          )}
+                        </Box>
+                      </Box>
+
+                      <Box sx={{ p: 2, bgcolor: 'success.50', borderRadius: 1, border: '1px solid', borderColor: 'success.200' }}>
+                        <Typography variant="caption" color="success.dark" fontWeight="600" display="block">
+                          💡 Insider Tip:
+                        </Typography>
+                        <Typography variant="body2" color="success.dark">
+                          {round.tips}
+                        </Typography>
                       </Box>
                     </Box>
-                    <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
-                      <strong>Topics:</strong> {round.topics}
-                    </Typography>
-                    <Typography variant="body2" color="primary.dark">
-                      <strong>💡 Tip:</strong> {round.tip}
+                  ))
+                ) : selectedCompany.rounds && selectedCompany.rounds.length > 0 ? (
+                  selectedCompany.rounds.map((round: any, index: number) => (
+                    <Box key={index} sx={{ mb: 3, p: 2, border: '1px solid', borderColor: 'grey.200', borderRadius: 2 }}>
+                      <Typography variant="subtitle1" fontWeight="600" gutterBottom>
+                        Round {index + 1}: {round.type}
+                      </Typography>
+                      <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: 2, mb: 2 }}>
+                        <Box>
+                          <Typography variant="caption" color="text.secondary">Duration</Typography>
+                          <Typography variant="body2">{round.duration}</Typography>
+                        </Box>
+                        <Box>
+                          <Typography variant="caption" color="text.secondary">LeetCode Questions</Typography>
+                          <Typography variant="body2">{round.leetcodeCount}</Typography>
+                        </Box>
+                        <Box>
+                          <Typography variant="caption" color="text.secondary">Focus</Typography>
+                          <Typography variant="body2">{round.focus}</Typography>
+                        </Box>
+                      </Box>
+                      <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+                        <strong>Topics:</strong> {round.topics}
+                      </Typography>
+                      <Typography variant="body2" color="primary.dark">
+                        <strong>💡 Tip:</strong> {round.tip}
+                      </Typography>
+                    </Box>
+                  ))
+                ) : (
+                  <Box sx={{ p: 3, bgcolor: 'warning.50', borderRadius: 2, border: '1px solid', borderColor: 'warning.200' }}>
+                    <Typography variant="body2" color="warning.dark">
+                      🔒 Detailed interview process information is available for premium companies. 
+                      General process typically includes: Application Review → Coding Assessment → Technical Interviews → Final Review.
                     </Typography>
                   </Box>
-                ))}
+                )}
               </Box>
 
               {/* Focus Areas */}
@@ -1020,6 +1237,51 @@ const Internships: React.FC = () => {
                   ))}
                 </Box>
               </Box>
+
+              {/* Secret Insider Information */}
+              {selectedCompany.secretInfo && (
+                <Box sx={{ mb: 4 }}>
+                  <Typography variant="h6" gutterBottom color="error.main">
+                    🔒 Insider Intelligence (Confidential)
+                  </Typography>
+                  
+                  {/* Hidden Facts */}
+                  <Box sx={{ mb: 3, p: 2, bgcolor: 'error.50', borderRadius: 2, border: '1px solid', borderColor: 'error.200' }}>
+                    <Typography variant="subtitle1" fontWeight="600" gutterBottom color="error.dark">
+                      🤫 Hidden Facts & Company Secrets
+                    </Typography>
+                    {selectedCompany.secretInfo.hiddenFacts?.map((fact: string, index: number) => (
+                      <Typography key={index} variant="body2" sx={{ mb: 1, color: 'error.dark' }}>
+                        • {fact}
+                      </Typography>
+                    ))}
+                  </Box>
+
+                  {/* Insider Tips */}
+                  <Box sx={{ mb: 3, p: 2, bgcolor: 'warning.50', borderRadius: 2, border: '1px solid', borderColor: 'warning.200' }}>
+                    <Typography variant="subtitle1" fontWeight="600" gutterBottom color="warning.dark">
+                      💡 Insider Tips (What Recruiters Won't Tell You)
+                    </Typography>
+                    {selectedCompany.secretInfo.insiderTips?.map((tip: string, index: number) => (
+                      <Typography key={index} variant="body2" sx={{ mb: 1, color: 'warning.dark' }}>
+                        • {tip}
+                      </Typography>
+                    ))}
+                  </Box>
+
+                  {/* Actual Questions Asked */}
+                  <Box sx={{ mb: 3, p: 2, bgcolor: 'info.50', borderRadius: 2, border: '1px solid', borderColor: 'info.200' }}>
+                    <Typography variant="subtitle1" fontWeight="600" gutterBottom color="info.dark">
+                      🎯 Actual Questions Asked (From Recent Interviews)
+                    </Typography>
+                    {selectedCompany.secretInfo.actualQuestions?.map((question: string, index: number) => (
+                      <Typography key={index} variant="body2" sx={{ mb: 1, color: 'info.dark' }}>
+                        • {question}
+                      </Typography>
+                    ))}
+                  </Box>
+                </Box>
+              )}
 
               {/* Pro Tips */}
               <Box sx={{ p: 2, bgcolor: 'success.50', borderRadius: 2, border: '1px solid', borderColor: 'success.200' }}>
