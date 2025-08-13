@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Container,
   Typography,
@@ -17,7 +17,9 @@ import {
   AccordionSummary,
   AccordionDetails,
   Link,
-  CardActions
+  CardActions,
+  Checkbox,
+  FormControlLabel
 } from '@mui/material';
 import {
   Code,
@@ -49,6 +51,76 @@ import { getDifficultyColor, getFilteredResources } from '../components/intervie
 
 const Interview: React.FC = () => {
   const [tabValue, setTabValue] = useState(0);
+  const [completedProblems, setCompletedProblems] = useState<Set<string>>(new Set());
+  const [completedBehavioral, setCompletedBehavioral] = useState<Set<string>>(new Set());
+  const [completedSystemDesign, setCompletedSystemDesign] = useState<Set<string>>(new Set());
+
+  // Load completed items from localStorage on component mount
+  useEffect(() => {
+    const savedProblems = localStorage.getItem('completedProblems');
+    const savedBehavioral = localStorage.getItem('completedBehavioral');
+    const savedSystemDesign = localStorage.getItem('completedSystemDesign');
+    
+    if (savedProblems) {
+      setCompletedProblems(new Set(JSON.parse(savedProblems)));
+    }
+    if (savedBehavioral) {
+      setCompletedBehavioral(new Set(JSON.parse(savedBehavioral)));
+    }
+    if (savedSystemDesign) {
+      setCompletedSystemDesign(new Set(JSON.parse(savedSystemDesign)));
+    }
+  }, []);
+
+  // Save completed items to localStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem('completedProblems', JSON.stringify(Array.from(completedProblems)));
+  }, [completedProblems]);
+
+  useEffect(() => {
+    localStorage.setItem('completedBehavioral', JSON.stringify(Array.from(completedBehavioral)));
+  }, [completedBehavioral]);
+
+  useEffect(() => {
+    localStorage.setItem('completedSystemDesign', JSON.stringify(Array.from(completedSystemDesign)));
+  }, [completedSystemDesign]);
+
+  // Handle checkbox toggle for problems
+  const handleProblemToggle = (problemName: string) => {
+    setCompletedProblems(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(problemName)) {
+        newSet.delete(problemName);
+      } else {
+        newSet.add(problemName);
+      }
+      return newSet;
+    });
+  };
+
+  const handleBehavioralToggle = (questionText: string) => {
+    setCompletedBehavioral(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(questionText)) {
+        newSet.delete(questionText);
+      } else {
+        newSet.add(questionText);
+      }
+      return newSet;
+    });
+  };
+
+  const handleSystemDesignToggle = (topicName: string) => {
+    setCompletedSystemDesign(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(topicName)) {
+        newSet.delete(topicName);
+      } else {
+        newSet.add(topicName);
+      }
+      return newSet;
+    });
+  };
 
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
@@ -110,12 +182,20 @@ const Interview: React.FC = () => {
                 <Typography variant="h6" sx={{ fontWeight: 600 }}>
                   {category}
                 </Typography>
-                <Chip 
-                  label={`${problems.length} problems`} 
-                  size="small" 
-                  color="primary" 
-                  variant="outlined"
-                />
+                <Box sx={{ display: 'flex', gap: 1 }}>
+                  <Chip 
+                    label={`${problems.filter(p => completedProblems.has(p.name)).length}/${problems.length} completed`} 
+                    size="small" 
+                    color="success" 
+                    variant="outlined"
+                  />
+                  <Chip 
+                    label={`${problems.length} problems`} 
+                    size="small" 
+                    color="primary" 
+                    variant="outlined"
+                  />
+                </Box>
               </Box>
             </AccordionSummary>
             <AccordionDetails>
@@ -123,12 +203,32 @@ const Interview: React.FC = () => {
                 {problems.map((problem, index) => (
                   <ListItem key={index} sx={{ py: 1 }}>
                     <ListItemIcon>
-                      <PlayArrow color="action" />
+                      <FormControlLabel
+                        control={
+                          <Checkbox
+                            checked={completedProblems.has(problem.name)}
+                            onChange={() => handleProblemToggle(problem.name)}
+                            size="small"
+                            color="success"
+                          />
+                        }
+                        label=""
+                        sx={{ mr: 0 }}
+                      />
                     </ListItemIcon>
                     <ListItemText 
                       primary={
                         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                          <Link href={problem.url} target="_blank" sx={{ textDecoration: 'none', fontWeight: 500 }}>
+                          <Link 
+                            href={problem.url} 
+                            target="_blank" 
+                            sx={{ 
+                              textDecoration: 'none', 
+                              fontWeight: 500,
+                              textDecorationLine: completedProblems.has(problem.name) ? 'line-through' : 'none',
+                              opacity: completedProblems.has(problem.name) ? 0.7 : 1
+                            }}
+                          >
                             {problem.name}
                           </Link>
                           <Chip 
@@ -143,6 +243,9 @@ const Interview: React.FC = () => {
                             color="default"
                             variant="filled"
                           />
+                          {completedProblems.has(problem.name) && (
+                            <CheckCircle color="success" fontSize="small" />
+                          )}
                         </Box>
                       }
                       secondary={`Companies: ${problem.companies.join(', ')}`}
@@ -169,9 +272,37 @@ const Interview: React.FC = () => {
           {systemDesignTopics.map((topic, index) => (
             <Card key={index} sx={{ height: 'fit-content' }}>
               <CardContent>
-                <Typography variant="h6" gutterBottom sx={{ fontWeight: 600, color: 'primary.main' }}>
-                  {topic.topic}
-                </Typography>
+                <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 1, mb: 2 }}>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={completedSystemDesign.has(topic.topic)}
+                        onChange={() => handleSystemDesignToggle(topic.topic)}
+                        size="small"
+                        color="success"
+                      />
+                    }
+                    label=""
+                    sx={{ mr: 0, mt: -0.5 }}
+                  />
+                  <Box sx={{ flex: 1 }}>
+                    <Typography 
+                      variant="h6" 
+                      gutterBottom 
+                      sx={{ 
+                        fontWeight: 600, 
+                        color: 'primary.main',
+                        textDecorationLine: completedSystemDesign.has(topic.topic) ? 'line-through' : 'none',
+                        opacity: completedSystemDesign.has(topic.topic) ? 0.7 : 1
+                      }}
+                    >
+                      {topic.topic}
+                      {completedSystemDesign.has(topic.topic) && (
+                        <CheckCircle color="success" fontSize="small" sx={{ ml: 1 }} />
+                      )}
+                    </Typography>
+                  </Box>
+                </Box>
                 <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
                   {topic.description}
                 </Typography>
@@ -190,7 +321,7 @@ const Interview: React.FC = () => {
                             {resource.title}
                           </Link>
                         }
-                        secondary={resource.type}
+                        secondary={resource.description}
                       />
                     </ListItem>
                   ))}
@@ -208,66 +339,44 @@ const Interview: React.FC = () => {
           Behavioral Interview Questions
         </Typography>
         <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
-          Practice common behavioral questions with the STAR method. Each question includes templates, sample answers, and expert tips.
+          Practice common behavioral questions with the STAR method. Check off questions as you prepare your answers.
         </Typography>
 
         {behavioralQuestions.map((question, index) => (
           <Accordion key={index} sx={{ mb: 2 }}>
             <AccordionSummary expandIcon={<ExpandMore />}>
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', pr: 2 }}>
-                <Typography variant="h6" sx={{ fontWeight: 600 }}>
-                  {question.question}
-                </Typography>
-                <Chip 
-                  label={question.category} 
-                  size="small" 
-                  color="secondary" 
-                  variant="outlined"
-                />
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={completedBehavioral.has(question.question)}
+                        onChange={() => handleBehavioralToggle(question.question)}
+                        size="small"
+                        color="success"
+                        onClick={(e) => e.stopPropagation()}
+                      />
+                    }
+                    label=""
+                    sx={{ mr: 0 }}
+                  />
+                  <Typography 
+                    variant="h6" 
+                    sx={{ 
+                      fontWeight: 600,
+                      textDecorationLine: completedBehavioral.has(question.question) ? 'line-through' : 'none',
+                      opacity: completedBehavioral.has(question.question) ? 0.7 : 1
+                    }}
+                  >
+                    {question.question}
+                  </Typography>
+                  {completedBehavioral.has(question.question) && (
+                    <CheckCircle color="success" fontSize="small" />
+                  )}
+                </Box>
               </Box>
             </AccordionSummary>
             <AccordionDetails>
-              <Box sx={{ mb: 3 }}>
-                <Typography variant="subtitle1" sx={{ fontWeight: 600, mb: 1, color: 'primary.main' }}>
-                  STAR Framework:
-                </Typography>
-                <List dense>
-                  <ListItem>
-                    <ListItemText 
-                      primary="Situation" 
-                      secondary={question.template.situation}
-                    />
-                  </ListItem>
-                  <ListItem>
-                    <ListItemText 
-                      primary="Task" 
-                      secondary={question.template.task}
-                    />
-                  </ListItem>
-                  <ListItem>
-                    <ListItemText 
-                      primary="Action" 
-                      secondary={question.template.action}
-                    />
-                  </ListItem>
-                  <ListItem>
-                    <ListItemText 
-                      primary="Result" 
-                      secondary={question.template.result}
-                    />
-                  </ListItem>
-                </List>
-              </Box>
-
-              <Box sx={{ mb: 3, p: 2, bgcolor: 'grey.50', borderRadius: 1 }}>
-                <Typography variant="subtitle1" sx={{ fontWeight: 600, mb: 1, color: 'primary.main' }}>
-                  Sample Answer:
-                </Typography>
-                <Typography variant="body2" sx={{ fontStyle: 'italic' }}>
-                  "{question.sampleAnswer}"
-                </Typography>
-              </Box>
-
               <Box>
                 <Typography variant="subtitle1" sx={{ fontWeight: 600, mb: 1, color: 'primary.main' }}>
                   Tips:

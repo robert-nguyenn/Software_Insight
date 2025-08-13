@@ -8,7 +8,7 @@ const comprehensiveInternshipsData = [
     title: 'Software Engineering Intern',
     company: {
       name: 'Apple',
-      website: 'https://jobs.apple.com/',
+      website: 'https://jobs.apple.com/en-us/search?location=united-states-USA&team=internships-STDNT-INTRN',
       description: 'Apple is a multinational technology company that designs, develops, and sells consumer electronics, computer software, and online services.'
     },
     location: {

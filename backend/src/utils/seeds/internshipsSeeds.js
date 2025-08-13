@@ -7,7 +7,7 @@ const originalInternshipsData = [
     title: 'Software Engineer Intern',
     company: {
       name: 'Google',
-      website: 'https://careers.google.com/',
+      website: 'https://careers.google.com/students/',
       description: 'A multinational technology company that specializes in Internet-related services and products.'
     },
     location: {
@@ -51,7 +51,7 @@ const originalInternshipsData = [
     title: 'Software Development Engineer Intern',
     company: {
       name: 'Microsoft',
-      website: 'https://careers.microsoft.com/',
+      website: 'https://careers.microsoft.com/students/',
       description: 'A multinational technology corporation that develops, manufactures, licenses, supports, and sells computer software, consumer electronics, personal computers, and related services.'
     },
     location: {
@@ -95,7 +95,7 @@ const originalInternshipsData = [
     title: 'Software Engineer Intern',
     company: {
       name: 'Meta',
-      website: 'https://www.metacareers.com/',
+      website: 'https://www.metacareers.com/students/',
       description: 'A technology company that builds the future of social connection and immersive experiences.'
     },
     location: {
@@ -227,7 +227,7 @@ const originalInternshipsData = [
     title: 'DevOps Engineer Intern',
     company: {
       name: 'Amazon',
-      website: 'https://amazon.jobs/',
+      website: 'https://www.amazon.jobs/en/teams/internships-for-students',
       description: 'The world\'s largest online retailer and a prominent cloud service provider through Amazon Web Services (AWS).'
     },
     location: {
