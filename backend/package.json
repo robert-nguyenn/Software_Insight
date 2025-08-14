@@ -7,8 +7,10 @@
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
     "test": "jest",
+    "setup": "node setup.js",
     "seed": "node src/utils/seedData.js",
-    "seed:full": "node src/utils/seedDatabase.js"
+    "seed:full": "node src/utils/seedDatabase.js",
+    "quick-seed": "node quickSeed.js"
   },
   "keywords": ["education", "software", "api", "nodejs", "express"],
   "author": "CodeLaunch Team",

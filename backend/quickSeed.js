@@ -7,13 +7,15 @@ require('dotenv').config();
 const quickCourses = [
   {
     title: 'Frontend Development',
+    slug: 'frontend-development',
     description: 'Master the skills, land internships, and ace interviews with our comprehensive platform designed by industry experts.',
-    category: 'Technology',
-    level: 'Beginner to Advanced',
+    shortDescription: 'Learn modern frontend development with HTML, CSS, JavaScript, and popular frameworks like React and Vue.js.',
+    category: 'Frontend Development',
+    level: 'Beginner',
     duration: '4-6 months',
     price: 0,
     featured: true,
-    tags: ['HTML', 'CSS', 'JavaScript', 'React', 'Vue.js', 'Frontend'],
+    tags: ['html', 'css', 'javascript', 'react', 'vue.js', 'frontend'],
     instructor: {
       name: 'David Malan',
       bio: 'Professor of Computer Science at Harvard University',
@@ -21,44 +23,45 @@ const quickCourses = [
     },
     thumbnail: '/images/frontend.jpg',
     enrollmentCount: 1250,
-    rating: 4.8,
-    reviewCount: 324,
-    lessons: [
+    rating: {
+      average: 4.8,
+      count: 324
+    },
+    modules: [
       {
         title: 'HTML Fundamentals',
         description: 'Learn the building blocks of web development',
         duration: '2 hours',
-        type: 'video',
-        completed: false,
+        topics: ['HTML Structure', 'Semantic Elements', 'Forms'],
         resources: []
       },
       {
         title: 'CSS Styling',
         description: 'Style your web pages with CSS',
         duration: '3 hours',
-        type: 'video',
-        completed: false,
+        topics: ['CSS Selectors', 'Layout', 'Responsive Design'],
         resources: []
       },
       {
         title: 'JavaScript Basics',
         description: 'Programming fundamentals with JavaScript',
         duration: '4 hours',
-        type: 'video',
-        completed: false,
+        topics: ['Variables', 'Functions', 'DOM Manipulation'],
         resources: []
       }
     ]
   },
   {
     title: 'Backend Development',
+    slug: 'backend-development',
     description: 'Learn server-side programming, databases, and API development with modern technologies.',
-    category: 'Technology',
+    shortDescription: 'Master backend development with Node.js, Python, databases, and API design principles.',
+    category: 'Backend Development',
     level: 'Intermediate',
     duration: '5-7 months',
     price: 0,
     featured: true,
-    tags: ['Node.js', 'Python', 'Database', 'API', 'Server'],
+    tags: ['node.js', 'python', 'database', 'api', 'server'],
     instructor: {
       name: 'Tech Expert',
       bio: 'Senior Backend Engineer with 10+ years experience',
@@ -66,36 +69,38 @@ const quickCourses = [
     },
     thumbnail: '/images/backend.jpg',
     enrollmentCount: 892,
-    rating: 4.7,
-    reviewCount: 203,
-    lessons: [
+    rating: {
+      average: 4.7,
+      count: 203
+    },
+    modules: [
       {
         title: 'Server Fundamentals',
         description: 'Understanding how servers work',
         duration: '2 hours',
-        type: 'video',
-        completed: false,
+        topics: ['HTTP Protocol', 'Client-Server Model', 'REST APIs'],
         resources: []
       },
       {
         title: 'Node.js Basics',
         description: 'Introduction to Node.js runtime',
         duration: '3 hours',
-        type: 'video',
-        completed: false,
+        topics: ['Event Loop', 'Modules', 'Package Management'],
         resources: []
       }
     ]
   },
   {
     title: 'Machine Learning',
+    slug: 'machine-learning',
     description: 'Learn AI and machine learning from basics to advanced concepts.',
-    category: 'Technology',
-    level: 'Intermediate to Advanced',
+    shortDescription: 'Explore machine learning algorithms, neural networks, and AI applications using Python.',
+    category: 'Machine Learning',
+    level: 'Advanced',
     duration: '6-9 months',
     price: 0,
     featured: true,
-    tags: ['Python', 'AI', 'Machine Learning', 'Data Science', 'TensorFlow'],
+    tags: ['python', 'ai', 'machine learning', 'data science', 'tensorflow'],
     instructor: {
       name: 'AI Specialist',
       bio: 'Machine Learning Engineer at Google',
@@ -103,15 +108,16 @@ const quickCourses = [
     },
     thumbnail: '/images/ml.jpg',
     enrollmentCount: 743,
-    rating: 4.8,
-    reviewCount: 189,
-    lessons: [
+    rating: {
+      average: 4.8,
+      count: 189
+    },
+    modules: [
       {
         title: 'Python for ML',
         description: 'Python programming for machine learning',
         duration: '4 hours',
-        type: 'video',
-        completed: false,
+        topics: ['NumPy', 'Pandas', 'Scikit-learn'],
         resources: []
       }
     ]
@@ -122,87 +128,108 @@ const quickCourses = [
 const quickInternships = [
   {
     title: 'Software Engineering Intern',
-    company: 'Google',
-    location: 'Mountain View, CA',
-    type: 'internship',
+    company: {
+      name: 'Google',
+      logo: '/images/google-logo.png',
+      website: 'https://google.com'
+    },
+    location: {
+      city: 'Mountain View',
+      state: 'CA',
+      country: 'USA',
+      remote: false
+    },
+    type: 'Full-time',
     duration: '12 weeks',
     description: 'Work on cutting-edge technology with experienced software engineers.',
     requirements: ['Currently pursuing a degree in Computer Science', 'Strong programming skills'],
     responsibilities: ['Develop software applications', 'Collaborate with teams'],
-    qualifications: ['Strong problem-solving skills', 'Excellent communication'],
-    benefits: ['Competitive stipend', 'Housing assistance', 'Mentorship program'],
-    applicationDeadline: new Date('2024-12-15'),
-    startDate: new Date('2025-06-01'),
-    endDate: new Date('2025-08-30'),
-    isRemote: false,
-    salaryRange: {
-      min: 7000,
-      max: 9000,
+    skills: ['Python', 'Java', 'C++', 'Problem Solving', 'Communication'],
+    stipend: {
+      amount: 8000,
       currency: 'USD',
       period: 'monthly'
     },
+    applicationDeadline: new Date('2024-12-15'),
+    startDate: new Date('2025-06-01'),
+    endDate: new Date('2025-08-30'),
     applicationUrl: 'https://careers.google.com/internships',
     featured: true,
-    tags: ['Python', 'Java', 'C++', 'Software Engineering'],
-    experienceLevel: 'entry',
+    tags: ['python', 'java', 'c++', 'software engineering'],
+    level: 'Entry Level',
     category: 'Software Engineering',
-    applicationCount: 245
+    applicationCount: 245,
+    postedBy: new mongoose.Types.ObjectId()
   },
   {
     title: 'Data Science Intern',
-    company: 'Meta',
-    location: 'Menlo Park, CA',
-    type: 'internship',
+    company: {
+      name: 'Meta',
+      logo: '/images/meta-logo.png',
+      website: 'https://meta.com'
+    },
+    location: {
+      city: 'Menlo Park',
+      state: 'CA',
+      country: 'USA',
+      remote: false
+    },
+    type: 'Full-time',
     duration: '12 weeks',
     description: 'Join our data science team to work on machine learning models.',
     requirements: ['Pursuing a degree in Data Science', 'Proficiency in Python and SQL'],
     responsibilities: ['Develop ML models', 'Analyze large datasets'],
-    qualifications: ['Strong mathematical background', 'Experience with data visualization'],
-    benefits: ['Competitive compensation', 'Housing stipend', 'Networking opportunities'],
-    applicationDeadline: new Date('2024-11-28'),
-    startDate: new Date('2025-05-15'),
-    endDate: new Date('2025-08-15'),
-    isRemote: false,
-    salaryRange: {
-      min: 8000,
-      max: 10000,
+    skills: ['Python', 'SQL', 'Machine Learning', 'Data Visualization', 'Mathematics'],
+    stipend: {
+      amount: 9000,
       currency: 'USD',
       period: 'monthly'
     },
+    applicationDeadline: new Date('2024-11-28'),
+    startDate: new Date('2025-05-15'),
+    endDate: new Date('2025-08-15'),
     applicationUrl: 'https://careers.facebook.com/internships',
     featured: true,
-    tags: ['Python', 'SQL', 'Machine Learning', 'Data Science'],
-    experienceLevel: 'entry',
+    tags: ['python', 'sql', 'machine learning', 'data science'],
+    level: 'Entry Level',
     category: 'Data Science',
-    applicationCount: 189
+    applicationCount: 189,
+    postedBy: new mongoose.Types.ObjectId()
   },
   {
     title: 'Frontend Engineering Intern',
-    company: 'Netflix',
-    location: 'Los Gatos, CA',
-    type: 'internship',
+    company: {
+      name: 'Netflix',
+      logo: '/images/netflix-logo.png',
+      website: 'https://netflix.com'
+    },
+    location: {
+      city: 'Los Gatos',
+      state: 'CA',
+      country: 'USA',
+      remote: true
+    },
+    type: 'Full-time',
     duration: '12 weeks',
     description: 'Help build the next generation of Netflix user interface.',
     requirements: ['Strong knowledge of JavaScript, HTML, CSS', 'Experience with React'],
     responsibilities: ['Develop user-facing features', 'Optimize applications'],
-    qualifications: ['Experience with modern frontend tools', 'Knowledge of version control'],
-    benefits: ['Competitive salary', 'Netflix content access', 'Professional development'],
-    applicationDeadline: new Date('2024-12-01'),
-    startDate: new Date('2025-06-10'),
-    endDate: new Date('2025-09-10'),
-    isRemote: true,
-    salaryRange: {
-      min: 6500,
-      max: 8500,
+    skills: ['React', 'TypeScript', 'JavaScript', 'HTML', 'CSS'],
+    stipend: {
+      amount: 7500,
       currency: 'USD',
       period: 'monthly'
     },
+    applicationDeadline: new Date('2024-12-01'),
+    startDate: new Date('2025-06-10'),
+    endDate: new Date('2025-09-10'),
     applicationUrl: 'https://jobs.netflix.com/internships',
     featured: true,
-    tags: ['React', 'TypeScript', 'JavaScript', 'Frontend'],
-    experienceLevel: 'entry',
-    category: 'Frontend Development',
-    applicationCount: 156
+    tags: ['react', 'typescript', 'javascript', 'frontend'],
+    level: 'Entry Level',
+    category: 'Software Engineering',
+    applicationCount: 156,
+    postedBy: new mongoose.Types.ObjectId()
   }
 ];
 

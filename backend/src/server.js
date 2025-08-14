@@ -104,25 +104,8 @@ app.get('/api/health', (req, res) => {
 app.use(notFound);
 app.use(errorHandler);
 
-// Database connection
-const connectDB = async () => {
-  try {
-    const conn = await mongoose.connect(process.env.MONGODB_URI);
-    console.log(`MongoDB Connected: ${conn.connection.host}`);
-    return true;
-  } catch (error) {
-    console.error('Database connection error:', error.message);
-    console.log('\n=== DATABASE CONNECTION TROUBLESHOOTING ===');
-    console.log('1. Make sure MongoDB is installed and running locally');
-    console.log('2. Install MongoDB Community Server from: https://www.mongodb.com/try/download/community');
-    console.log('3. Start MongoDB service:');
-    console.log('   - Windows: net start MongoDB');
-    console.log('   - macOS/Linux: brew services start mongodb-community');
-    console.log('4. Or use MongoDB Atlas (cloud): https://cloud.mongodb.com/');
-    console.log('==========================================\n');
-    return false;
-  }
-};
+// Database configuration
+const { connectDB } = require('./config/database');
 
 // Start server
 const PORT = process.env.PORT || 5000;
